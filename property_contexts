@@ -1,0 +1,485 @@
+#line 1 "external/sepolicy/property_contexts"
+##########################
+# property service keys
+#
+#
+net.rmnet               u:object_r:net_radio_prop:s0
+net.gprs                u:object_r:net_radio_prop:s0
+net.ppp                 u:object_r:net_radio_prop:s0
+net.qmi                 u:object_r:net_radio_prop:s0
+net.lte                 u:object_r:net_radio_prop:s0
+net.cdma                u:object_r:net_radio_prop:s0
+net.dns                 u:object_r:net_radio_prop:s0
+sys.usb.config          u:object_r:system_radio_prop:s0
+ril.                    u:object_r:radio_prop:s0
+gsm.                    u:object_r:radio_prop:s0
+persist.radio           u:object_r:radio_prop:s0
+
+net.                    u:object_r:system_prop:s0
+dev.                    u:object_r:system_prop:s0
+runtime.                u:object_r:system_prop:s0
+hw.                     u:object_r:system_prop:s0
+sys.                    u:object_r:system_prop:s0
+sys.powerctl            u:object_r:powerctl_prop:s0
+sys.usb.ffs.            u:object_r:ffs_prop:s0
+service.                u:object_r:system_prop:s0
+wlan.                   u:object_r:system_prop:s0
+dhcp.                   u:object_r:dhcp_prop:s0
+dhcp.bt-pan.result      u:object_r:pan_result_prop:s0
+bluetooth.              u:object_r:bluetooth_prop:s0
+
+debug.                  u:object_r:debug_prop:s0
+debug.db.               u:object_r:debuggerd_prop:s0
+log.                    u:object_r:shell_prop:s0
+service.adb.root        u:object_r:shell_prop:s0
+service.adb.tcp.port    u:object_r:shell_prop:s0
+
+persist.audio.          u:object_r:audio_prop:s0
+persist.logd.           u:object_r:logd_prop:s0
+persist.sys.            u:object_r:system_prop:s0
+persist.service.        u:object_r:system_prop:s0
+persist.service.bdroid. u:object_r:bluetooth_prop:s0
+persist.security.       u:object_r:system_prop:s0
+
+# selinux non-persistent properties
+selinux.restorecon_recursive   u:object_r:restorecon_prop:s0
+selinux.                       u:object_r:security_prop:s0
+
+# default property context
+*                       u:object_r:default_prop:s0
+
+# data partition encryption properties
+vold.                   u:object_r:vold_prop:s0
+crypto.                 u:object_r:vold_prop:s0
+
+# ro.build.fingerprint is either set in /system/build.prop, or is
+# set at runtime by system_server.
+build.fingerprint       u:object_r:fingerprint_prop:s0
+
+# ctl properties
+ctl.bootanim            u:object_r:ctl_bootanim_prop:s0
+ctl.dumpstate           u:object_r:ctl_dumpstate_prop:s0
+ctl.fuse_               u:object_r:ctl_fuse_prop:s0
+ctl.mdnsd               u:object_r:ctl_mdnsd_prop:s0
+ctl.ril-daemon          u:object_r:ctl_rildaemon_prop:s0
+ctl.bugreport           u:object_r:ctl_bugreport_prop:s0
+ctl.dhcpcd_bt-pan       u:object_r:ctl_dhcp_pan_prop:s0
+ctl.console             u:object_r:ctl_console_prop:s0
+ctl.                    u:object_r:ctl_default_prop:s0
+
+# NFC properties
+nfc.                    u:object_r:nfc_prop:s0
+
+# These properties are not normally set by processes other than init.
+# They are only distinguished here for setting by qemu-props on the
+# emulator/goldfish.
+config.                 u:object_r:config_prop:s0
+dalvik.                 u:object_r:dalvik_prop:s0
+#line 1 "device/lge/common/sepolicy/property_contexts"
+wifiminid.anytime_connect	u:object_r:minios_prop:s0
+wifiminid.anytime_pw		u:object_r:minios_prop:s0
+wifiminid.anytime_ssid		u:object_r:minios_prop:s0
+wifiminid.is_connected u:object_r:minios_prop:s0
+wifiminid.ssid         u:object_r:minios_prop:s0
+wifiminid.ipaddr       u:object_r:minios_prop:s0
+wifiminid.rssi         u:object_r:minios_prop:s0
+wifiminid.channel      u:object_r:minios_prop:s0
+wifiminid.turning_on   u:object_r:minios_prop:s0
+wifiminid.turning_off  u:object_r:minios_prop:s0
+AAT.camera.flash          u:object_r:aat_camera_prop:s0
+AAT.ldcal                 u:object_r:aat_ldcal_prop:s0
+aat.fail.item             u:object_r:minios_prop:s0
+aat.first.enter           u:object_r:minios_prop:s0
+aat.test.status           u:object_r:minios_prop:s0
+persist.camera.eeprom_aat u:object_r:minios_prop:s0
+adc.n11.                  u:object_r:adc_n11_prop:s0
+boot.laf                   u:object_r:minios_prop:s0
+build.version.base_os     u:object_r:build_version_base_os_prop:s0
+cdma.home.operator.alpha  u:object_r:lg_cdma_prop:s0
+cnap.oic                         u:object_r:cnap_prop:s0
+cnap.yh                          u:object_r:cnap_prop:s0
+com.google.clientidbase   u:object_r:clientidbase_prop:s0
+com.lge.splink_screen_off        u:object_r:splink_prop:s0
+config.zram                      u:object_r:config_zram_prop:s0
+conup                     u:object_r:system_prop:s0
+ctl.Aat_audio          u:object_r:minios_prop:s0
+ctl.Aat_auto_detect    u:object_r:minios_prop:s0
+ctl.Aat_buildfe        u:object_r:minios_prop:s0
+ctl.Aat_camcorder      u:object_r:minios_prop:s0
+ctl.Aat_camera_main    u:object_r:minios_prop:s0
+ctl.Aat_cameraOIS      u:object_r:minios_prop:s0
+ctl.Aat_cameraVT       u:object_r:minios_prop:s0
+ctl.Aat_dmb_hdmi       u:object_r:minios_prop:s0
+ctl.Aat_fm_radio       u:object_r:minios_prop:s0
+ctl.Aat_FingerPrint    u:object_r:minios_prop:s0
+ctl.Aat_Frblank        u:object_r:minios_prop:s0
+ctl.Aat_gps_bt_wifi    u:object_r:minios_prop:s0
+ctl.Aat_HVDCP          u:object_r:minios_prop:s0
+ctl.Aat_irda_irrc      u:object_r:minios_prop:s0
+ctl.Aat_key_press      u:object_r:minios_prop:s0 
+ctl.Aat_led_display    u:object_r:minios_prop:s0
+ctl.Aat_loopback       u:object_r:minios_prop:s0
+ctl.Aat_m_sensor3      u:object_r:minios_prop:s0
+ctl.Aat_mainlist       u:object_r:minios_prop:s0
+ctl.Aat_mp3            u:object_r:minios_prop:s0
+ctl.Aat_nfc_felica     u:object_r:minios_prop:s0
+ctl.Aat_OTG            u:object_r:minios_prop:s0
+ctl.Aat_sensor_auto    u:object_r:minios_prop:s0
+ctl.Aat_sniffing       u:object_r:minios_prop:s0
+ctl.Aat_touch_auto     u:object_r:minios_prop:s0
+ctl.Aat_touch_draw     u:object_r:minios_prop:s0
+ctl.Aat_vibrator       u:object_r:minios_prop:s0
+ctl.Aat_Warning        u:object_r:bluedroid_prop:s0
+ctl.Selfd_main_boot    u:object_r:minios_prop:s0
+ctl.aat_service        u:object_r:minios_prop:s0
+ctl.bdaddr_loader      u:object_r:bluedroid_prop:s0
+ctl.ble_sniff_scan     u:object_r:ble_sniff_prop:s0
+ctl.ckerrorreporter    u:object_r:ckerror_reporter_prop:s0
+ctl.vm_bms             u:object_r:vm_bms_prop:s0
+ctl.ddual_main         u:object_r:minios_prop:s0
+ctl.dhcpcd_wlan0       u:object_r:minios_prop:s0
+ctl.display_server     u:object_r:minios_prop:s0
+ctl.ctl.dsqn           u:object_r:dsqn_prop:s0
+ctl.encrypt            u:object_r:encrypt_prop:s0
+ctl.energy-awareness   u:object_r:ctl_energy_awareness_prop:s0
+ctl.fm_dl              u:object_r:minios_prop:s0
+ctl.latd               u:object_r:minios_prop:s0
+ctl.p2p_supplicant     u:object_r:minios_prop:s0
+ctl.Mfts_led_disp      u:object_r:minios_prop:s0
+ctl.Mfts_main          u:object_r:minios_prop:s0
+ctl.Mfts_touch_auto    u:object_r:minios_prop:s0
+ctl.Mfts_touch_draw    u:object_r:minios_prop:s0
+ctl.mfts_service       u:object_r:minios_prop:s0
+ctl.minios3_ble        u:object_r:minios_prop:s0
+ctl.minios3_genesis    u:object_r:minios_prop:s0
+ctl.minios_qrdisp:aat_result   u:object_r:minios_prop:s0
+ctl.minios_svc         u:object_r:minios_prop:s0
+ctl.mount_encrypt      u:object_r:encrypt_prop:s0
+ctl.netd               u:object_r:minios_prop:s0
+ctl.pre_gps_test       u:object_r:minios_prop:s0
+ctl.surfaceflinger     u:object_r:minios_prop:s0
+ctl.thermald           u:object_r:minios_prop:s0
+ctl.VR_Main            u:object_r:minios_prop:s0
+ctl.VR_M_Sensor        u:object_r:minios_prop:s0
+ctl.VR_Proximity       u:object_r:minios_prop:s0
+ctl.VR_Key             u:object_r:minios_prop:s0
+ctl.VR_Mp3             u:object_r:minios_prop:s0
+ctl.VR_Lcd             u:object_r:minios_prop:s0
+ctl.w_mid              u:object_r:minios_prop:s0
+ctl.zygote             u:object_r:minios_prop:s0
+ctl.zygote_secondary   u:object_r:minios_prop:s0
+hwui.texture_cache_size    u:object_r:texture_cache_size_prop:s0
+netd.fstman.start      u:object_r:fstman_prop:s0
+persist.seempd.        u:object_r:qssp_prop:s0
+persist.sniff.retrans  u:object_r:minios_prop:s0
+rild.modem_restart     u:object_r:rild_modemrestart_prop:s0
+vzw.os.rooted          u:object_r:vzw_rooted_prop:s0
+w_mid.force_terminate  u:object_r:minios_prop:s0
+w_mid.status           u:object_r:minios_prop:s0
+##
+
+# bootanim_prop
+service.bootanim.begin     u:object_r:bootanim_prop:s0
+service.bootanim.exit     u:object_r:bootanim_prop:s0
+service.shutdownanim.exit     u:object_r:bootanim_prop:s0
+###
+
+# bluetooth_prop
+service.bdroid.           u:object_r:bluetooth_prop:s0
+persist.service.btui.     u:object_r:bluetooth_prop:s0
+service.brcm.bt.          u:object_r:bluetooth_prop:s0
+service.btui.             u:object_r:bluetooth_prop:s0
+###
+
+# properties for radio
+net.ims.operator u:object_r:net_radio_prop:s0
+net.ims.country  u:object_r:net_radio_prop:s0
+###
+
+# dumprepoter_prop
+ctl.Aat_result         u:object_r:minios_prop:s0
+ctl.charger_monitor    u:object_r:ctl_charger_monitor_prop:s0
+ctl.digicl    u:object_r:ctl_digicl_prop:s0
+ctl.dumpreporter          u:object_r:ctl_dumpreporter_prop:s0
+ctl.decryptwipe           u:object_r:ctl_decryptwipe_prop:s0
+ctl.ipsecclient                 u:object_r:ctl_ipsec_prop:s0
+ctl.irrc_minios        u:object_r:minios_prop:s0
+ctl.minios_qrdisp:selfd_result  u:object_r:minios_prop:s0
+ctl.minios3_battery    u:object_r:minios_prop:s0
+ctl.minios3_bt_stup    u:object_r:minios_prop:s0
+ctl.minios3_haudio     u:object_r:minios_prop:s0
+ctl.minios3_hdmi       u:object_r:minios_prop:s0
+ctl.minios3_input      u:object_r:minios_prop:s0
+ctl.minios3_per        u:object_r:minios_prop:s0
+ctl.minios3_pm                   u:object_r:minios_prop:s0
+ctl.minios3_sch        u:object_r:minios_prop:s0
+ctl.minios3_sensor     u:object_r:minios_prop:s0
+ctl.minios3_starter     u:object_r:minios_prop:s0
+ctl.minios3_thermal    u:object_r:minios_prop:s0
+ctl.mtk_selfd                    u:object_r:minios_prop:s0
+ctl.ppd                   u:object_r:ppd_prop:s0
+ctl.qrngp      u:object_r:minios_prop:s0
+ctl.quickdump    u:object_r:ctl_quickdump_prop:s0
+ctl.rfs_access    u:object_r:ctl_rfs_access_prop:s0
+ctl.ril-minios u:object_r:minios_prop:s0
+ctl.rmt_storage    u:object_r:ctl_rmt_storage_prop:s0
+ctl.Selfd_accel        u:object_r:minios_prop:s0
+ctl.Selfd_autodetect   u:object_r:minios_prop:s0
+ctl.Selfd_camera       u:object_r:minios_prop:s0
+ctl.Selfd_cameraVT     u:object_r:minios_prop:s0
+ctl.Selfd_gpsbtwifi    u:object_r:minios_prop:s0
+ctl.Selfd_main         u:object_r:minios_prop:s0
+ctl.Selfd_mic          u:object_r:minios_prop:s0
+ctl.Selfd_nfc          u:object_r:minios_prop:s0
+ctl.Selfd_result       u:object_r:minios_prop:s0
+ctl.Selfd_sensorauto   u:object_r:minios_prop:s0
+ctl.Selfd_touch        u:object_r:minios_prop:s0
+ctl.sensorservice      u:object_r:minios_prop:s0
+ctl.shutdownanim          u:object_r:system_prop:s0
+ctl.thermal-engine     u:object_r:ctl_thermal_engine_prop:s0
+ctl.touch_location     u:object_r:minios_prop:s0
+ctl.wcmdmgrd   u:object_r:minios_prop:s0
+ctl.wifiminid  u:object_r:minios_prop:s0
+ctl.wpa_supplicant     u:object_r:minios_prop:s0
+dalvik.vm.dex2oat-filter         u:object_r:dalvik_dex2oat_prop:s0
+dalvik.vm.image-dex2oat-filter   u:object_r:dalvik_dex2oat_prop:s0
+dev.bootcomplete       u:object_r:minios_prop:s0
+fota.log                         u:object_r:fota_prop:s0
+frstd.ctrl.run            u:object_r:frstd_prop:s0
+fw.max_users              u:object_r:multiuser_prop:s0
+hw.camcorder.fpsrange     u:object_r:camcorder_prop:s0
+iq.cadet.ip             u:object_r:iq_cadet_ip_prop:s0
+iq.cadet.listenport       u:object_r:iq_cadet_listenport_prop:s0
+iq.logging.enabled        u:object_r:iq_logging_prop:s0
+laf.mid                u:object_r:minios_prop:s0
+lfullseg.mode.             u:object_r:lfullseg_mode_prop:s0
+lg.data.                  u:object_r:radio_prop:s0
+lg.data.emergencystate    u:object_r:emergencystate_prop:s0
+lge.battery_thermal.interval    u:object_r:minios_prop:s0
+lge.battery_thermal.max    u:object_r:minios_prop:s0
+lge.battery_thermal.min    u:object_r:minios_prop:s0
+lge.data.apn2-disable     u:object_r:apn2_disable_prop:s0
+lge.genesis.current_status   u:object_r:minios_prop:s0
+lge.minios_hapticvibrator    u:object_r:minios_prop:s0
+lge.petname    u:object_r:lge_petname_prop:s0
+lge.policy_data_enable    u:object_r:system_prop:s0
+lge.powerkeypressed      u:object_r:powerkeypressed_prop:s0
+lge.suffix                u:object_r:suffix_prop:s0
+lge.vib_magnitude_index   u:object_r:minios_prop:s0
+lge.vr_plugged            u:object_r:vrmode_prop:s0
+lge.vr_mode               u:object_r:vrmode_prop:s0
+lge.vr_ipd_offset         u:object_r:vrmode_prop:s0
+lite.selfd.status         u:object_r:minios_prop:s0
+minios.                   u:object_r:minios_prop:s0
+mfts.type.jig             u:object_r:minios_prop:s0
+mts.                      u:object_r:mts_prop:s0
+mts.act                   u:object_r:mts_prop:s0
+mts.curcount              u:object_r:mts_curcount_prop:s0
+net.ims.                        u:object_r:ims_prop:s0
+net.ims.reg               u:object_r:net_radio_prop:s0
+net.is_dropping_packet    u:object_r:radio_prop:s0
+net.Is_phone_booted       u:object_r:boot_prop:s0
+net.pcscf0                u:object_r:net_pcscf_prop:s0
+net.tcp.buffersize.       u:object_r:radio_prop:s0
+net.tethering.            u:object_r:radio_prop:s0
+persist.ap.macaddress           u:object_r:system_prop:s0
+persist.boot.first    u:object_r:persist_boot_first_prop:s0
+persist.call.imsservicestate     u:object_r:imsservicestate_prop:s0
+persist.camera.snapshot.number   u:object_r:camera_snapshot_prop:s0
+persist.camera.tcc_aat           u:object_r:qualcomm_camera_prop:s0
+persist.configurationver         u:object_r:fota_prop:s0
+persist.data.eut.         u:object_r:persist_eut_prop:s0
+persist.data.lgetest.0    u:object_r:persist_data_lgetest_prop:s0
+persist.data.iwlan.enable        u:object_r:persist_iwlan_prop:s0
+persist.data.ois.         u:object_r:persist_data_ois_prop:s0
+persist.data.sbp.update         u:object_r:update_prop:s0
+persist.data.sensor              u:object_r:sensor_name_prop:s0
+persist.data.sensor_name  u:object_r:sensor_name_prop:s0
+persist.data.tethering_oc       u:object_r:system_prop:s0
+persist.data_disable_bypaypopup u:object_r:radio_prop:s0
+persist.data_netmgrd_mtu  u:object_r:net_radio_prop:s0
+persist.data_user_enabled u:object_r:userenable_prop:s0
+persist.debug.nodex       u:object_r:persist_debug_prop:s0
+persist.downloaded_time         u:object_r:persist_time_prop:s0
+persist.fbi.enabled             u:object_r:fbi_enabled_prop:s0
+persist.gsm.mms.                u:object_r:gsm_mms_prop:s0
+persist.gsm.sms.dcnaddress      u:object_r:system_prop:s0
+persist.gsm.sms.forcegsm7       u:object_r:sms_prop:s0
+persist.last_update_time        u:object_r:persist_time_prop:s0
+persist.lg.data.                u:object_r:radio_prop:s0
+persist.lg.ims.                 u:object_r:ims_prop:s0
+persist.lg.volte_enabled    u:object_r:volte_enabled_prop:s0
+persist.lge.appbox.ntcode u:object_r:persist_appbox_ntcode_prop:s0
+persist.lge.appman.errc_done     u:object_r:update_prop:s0
+persist.lge.appman.firstboot     u:object_r:update_prop:s0
+persist.lge.appman.installstart u:object_r:update_prop:s0
+persist.lge.atd.build.date       u:object_r:minios_prop:s0
+persist.lge.atd.build.num        u:object_r:minios_prop:s0
+persist.lge.branch.name          u:object_r:minios_prop:s0
+persist.lge.hardreset            u:object_r:system_lge_prop:s0
+persist.lge.laf.build.date       u:object_r:minios_prop:s0
+persist.lge.laf.build.num        u:object_r:minios_prop:s0
+persist.lge.minios.build.date    u:object_r:minios_prop:s0
+persist.lge.minios.build.num     u:object_r:minios_prop:s0
+persist.lge.postinstallstart u:object_r:postinstallstart_prop:s0
+persist.lge.postfirstboot    u:object_r:postinstallfirst_prop:s0
+persist.lge.saat.build.date      u:object_r:minios_prop:s0
+persist.lge.saat.build.num       u:object_r:minios_prop:s0
+persist.lge.use.fmradio          u:object_r:fm_radio_prop:s0
+persist.log.tag    u:object_r:persist_log_tag_prop:s0
+persist.mape.server              u:object_r:mptcp_prop:s0
+persist.mfts.running             u:object_r:minios_prop:s0
+persist.mms.pre-install         u:object_r:mms_prop:s0
+persist.profiled.build.version   u:object_r:profiled_build_version_prop:s0
+persist.proxy.profnai     u:object_r:proxy_prop:s0
+persist.qcril.datacall_timeout   u:object_r:datacall_prop:s0
+persist.sensors.                u:object_r:persist_sensors_prop:s0
+persist.sensors.onhand.en       u:object_r:sensors_onhand_prop:s0
+persist.service.avrcp.          u:object_r:avrcp_prop:s0
+persist.service.hf.call.status  u:object_r:hf_call_status_prop:s0
+persist.service.main.enable    u:object_r:persist_service_main_enable_prop:s0
+persist.service.odm_log.enable  u:object_r:lg_odm_prop:s0
+persist.service.radio.enable    u:object_r:persist_service_radio_enable_prop:s0
+persist.service.system.enable    u:object_r:persist_service_system_enable_prop:s0
+persist.sys.cota.changed        u:object_r:cota_prop:s0
+persist.sys.hotssid.ksc5601     u:object_r:system_prop:s0
+persist.sys.ktpopup             u:object_r:system_prop:s0
+persist.sys.ntcode_list         u:object_r:persist_sys_prop:s0
+persist.sys.security            u:object_r:system_prop:s0
+persist.sys.usb.config          u:object_r:usb_config_prop:s0
+persist.update_avail_time       u:object_r:persist_time_prop:s0
+pre.aat.testnum                 u:object_r:minios_prop:s0
+pre.from.test                   u:object_r:pre_from_test_prop:s0
+pre.glo.value                   u:object_r:minios_prop:s0
+pre.gps.running                 u:object_r:minios_prop:s0
+pre.gps.value                    u:object_r:pre_gps_value_prop:s0
+pre.qr.display            u:object_r:pre_qr_display_prop:s0
+qrcode.img.size           u:object_r:minios_prop:s0
+sbp.bootanim              u:object_r:system_prop:s0
+sbp.lge.opname            u:object_r:system_prop:s0
+sbp.oppartition.          u:object_r:update_prop:s0
+selfd.                    u:object_r:selfd_prop:s0
+service.adb.     u:object_r:adb_prop:s0
+service.mex.play                 u:object_r:system_lge_prop:s0
+service.mex.progress             u:object_r:system_lge_prop:s0
+service.mex.wav                  u:object_r:system_lge_prop:s0
+service.plushome.currenthome    u:object_r:system_lge_prop:s0
+settings.knockon.test           u:object_r:knockon_prop:s0
+sys.aat.ldcal             u:object_r:minios_prop:s0
+sys.allautotest.rf.online u:object_r:minios_prop:s0
+sys.ara.applet.using      u:object_r:sys_ara_prop:s0
+sys.bluefactorymode    u:object_r:minios_prop:s0
+sys.boot_sound.off        u:object_r:boot_soundoff_prop:s0
+sys.camera_orientation    u:object_r:sys_camera_orientation_prop:s0
+sys.hdmi.                  u:object_r:sys_hdmi_prop:s0
+sys.ims.DATA_DAEMON_STATUS u:object_r:ims_prop:s0
+sys.lge.                        u:object_r:system_lge_prop:s0
+sys.navibar.                    u:object_r:system_navibar_prop:s0
+sys.radio.gpri.complete         u:object_r:system_radio_gpri_prop:s0
+sys.usb.provisioned             u:object_r:system_lge_prop:s0
+sys.usb.rps_mask                u:object_r:usb_config_prop:s0
+tdmb.mode.on                    u:object_r:system_prop:s0
+upgrade.mpdn.db           u:object_r:radio_prop:s0
+usb.authorized            u:object_r:usb_authorized_prop:s0
+usb_uicc.loading                 u:object_r:uicc_loading_prop:s0
+user.language                   u:object_r:system_prop:s0
+user.region                     u:object_r:system_prop:s0
+vr.perfd.controller.start       u:object_r:vr_prop:s0
+wifi.country.code         u:object_r:wifi_prop:s0
+wifi.lge.assoclistsize    u:object_r:wifi_prop:s0
+wifi.lge.fota_updated            u:object_r:wifi_prop:s0
+wifi.lge.ssr                     u:object_r:wifi_prop:s0
+wifi.lge.supportp2p5g           u:object_r:dhcp_prop:s0
+wifi_ftm.diagd_start      u:object_r:wifi_prop:s0
+wifi_ftm.wififtmd_start  u:object_r:wififtm_prop:s0
+wifi_ftm.wififtmd2_start  u:object_r:wififtm_prop:s0
+wlan.driver.status              u:object_r:wififtm_prop:s0
+wlan.cmcc.connect.type          u:object_r:system_prop:s0
+wlan.lge.siminserted            u:object_r:system_prop:s0
+wlan.monitor.status             u:object_r:wifi_prop:s0
+
+# mdfpp prop
+persist.service.ccaudit.enable  u:object_r:mdfpp_prop:s0
+sys.bc.selftest.status       u:object_r:mdfpp_prop:s0
+sys.openssl.selftest.status  u:object_r:mdfpp_prop:s0
+#line 1 "device/lge/common/sepolicy/qcom/property_contexts"
+# thermald prop
+persist.sys.thermald_miti_off  u:object_r:thermald_prop:s0
+###
+
+# bluetooth prop
+qualcomm.bt.                     u:object_r:bluetooth_prop:s0
+###
+
+# uicc_prop
+ctl_usb_uicc                     u:object_r:uicc_prop:s0
+usb_uicc.enabled                 u:object_r:uicc_prop:s0
+###
+
+# Etc qcom property
+ctl.dpmd                         u:object_r:ctl_dpmd_prop:s0
+ctl.sdcard                       u:object_r:ctl_fuse_prop:s0
+ctl.RIDL                         u:object_r:ctl_ridl_prop:s0
+mobicore.tbase.loaded            u:object_r:mobicore_prop:s0
+persist.lge.att.remove           u:object_r:wfd_prop:s0
+qc.sdk.us.digitalpen             u:object_r:qualcomm_digitalpen_prop:s0
+qualcomm.perf.                   u:object_r:qualcomm_pref_prop:s0
+radio.noril                      u:object_r:radio_noril_prop:s0
+wifi.lge.offloading.ongoing      u:object_r:offloading_ongoing_prop:s0
+###
+
+# camera_prop
+cwamera.4k2k.enable        u:object_r:camera_prop:s0
+persist.camera.ais.hal u:object_r:camera_prop:s0
+persist.camera.testvtcam  u:object_r:camera_prop:s0
+persist.camera.zsl.queuedepth    u:object_r:camera_prop:s0
+persist.data.front.minfps u:object_r:camera_prop:s0
+persist.data.rear.minfps  u:object_r:camera_prop:s0
+persist.camera.use_ais u:object_r:camera_prop:s0
+###
+#line 1 "device/qcom/sepolicy/common/property_contexts"
+wc_transport.              u:object_r:bluetooth_prop:s0
+sys.usb_uicc.              u:object_r:uicc_prop:s0
+dolby.audio.               u:object_r:audio_prop:s0
+persist.bluetooth.         u:object_r:bluetooth_prop:s0
+sys.ims.                   u:object_r:qcom_ims_prop:s0
+hw.fm.                     u:object_r:fm_prop:s0
+sys.usf.                   u:object_r:usf_prop:s0
+qc.sdk.us.                 u:object_r:usf_prop:s0
+radio.atfwd.               u:object_r:radio_prop:s0
+ctl.qmuxd                  u:object_r:ctl_qmuxd_prop:s0
+ctl.netmgrd                u:object_r:ctl_netmgrd_prop:s0
+ctl.port-bridge            u:object_r:ctl_port-bridge_prop:s0
+min_freq_0                 u:object_r:freq_prop:s0
+min_freq_4                 u:object_r:freq_prop:s0
+ctl.perfd                  u:object_r:perfd_prop:s0
+ctl.iop                    u:object_r:perfd_prop:s0
+qualcomm.bluetooth.        u:object_r:bluetooth_prop:s0
+ctl.ipacm                  u:object_r:ipacm_prop:s0
+ctl.ipacm-diag             u:object_r:ipacm-diag_prop:s0
+ctl.qti                    u:object_r:qti_prop:s0
+ctl.sensors                u:object_r:sensors_prop:s0
+ctl.msm_irqbalance         u:object_r:msm_irqbalance_prop:s0
+ctl.msm_irqbal_lb          u:object_r:msm_irqbalance_prop:s0
+camera.                    u:object_r:camera_prop:s0
+persist.camera.            u:object_r:camera_prop:s0
+sf.lcd_density             u:object_r:sf_lcd_density_prop:s0
+opengles.version           u:object_r:opengles_prop:s0
+qualcomm.bt.hci_transport  u:object_r:bluetooth_prop:s0
+ctl.mdm_helper             u:object_r:mdm_helper_prop:s0
+ctl.mpdecision             u:object_r:mpdecision_prop:s0
+qualcomm.perf.cores_online u:object_r:mpdecision_prop:s0
+netd.fstman.               u:object_r:netd_prop:s0
+location.                  u:object_r:location_prop:s0
+qc.izat.                   u:object_r:location_prop:s0
+persist.rmnet.mux          u:object_r:rmnet_mux_prop:s0
+qemu.hw.mainkeys           u:object_r:qemu_hw_mainkeys_prop:s0
+dbg.coresight.cfg_file     u:object_r:coresight_prop:s0
+ctl.hbtp                   u:object_r:ctl_hbtp_prop:s0
+sys.audio.init             u:object_r:audio_prop:s0
+alarm_boot                 u:object_r:alarm_boot_prop:s0
+debug.sf.nobootanimation   u:object_r:boot_animation_prop:s0
+debug.gralloc.             u:object_r:debug_gralloc_prop:s0
+# DOLBY_START
+dolby.                     u:object_r:dolby_prop:s0
+# DOLBY_END
