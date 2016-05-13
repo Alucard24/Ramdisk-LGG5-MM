@@ -51,9 +51,11 @@ echo "256" > /proc/sys/kernel/random/write_wakeup_threshold;
 
 # some nice thing for dev
 if [ ! -e /cpufreq ]; then
-	$BB ln -s /sys/devices/system/cpu/cpu0/cpufreq/ /cpufreq0;
-	$BB ln -s /sys/devices/system/cpu/cpu2/cpufreq/ /cpufreq2;
+	$BB ln -s /sys/devices/system/cpu/cpu0/cpufreq/ /cpufreq0-1;
+	$BB ln -s /sys/devices/system/cpu/cpu2/cpufreq/ /cpufreq2-3;
+	$BB ln -s /sys/module/msm_performance/parameters/ /hotplugs/msm_performance;
 	$BB ln -s /sys/module/msm_thermal/parameters/ /cputemp;
+	$BB ln -s /sys/module/msm_thermal/core_control/ /cputempcc;
 fi;
 
 CRITICAL_PERM_FIX()
