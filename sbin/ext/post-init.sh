@@ -102,14 +102,91 @@ fi;
 
 $BB chmod -R 0777 /data/.alucard/;
 
-# Load parameters for Synapse
+# reset profiles auto trigger to be used by kernel ADMIN, in case of need, if new value added in default profiles
+# just set numer $RESET_MAGIC + 1 and profiles will be reset one time on next boot with new kernel.
+# incase that ADMIN feel that something wrong with global STweaks config and profiles, then ADMIN can add +1 to CLEAN_ALU_DIR
+# to clean all files on first boot from /data/.alucard/ folder.
+RESET_MAGIC=1;
+CLEAN_ALU_DIR=1;
+
+if [ ! -e /data/.alucard/reset_profiles ]; then
+	echo "$RESET_MAGIC" > /data/.alucard/reset_profiles;
+fi;
+if [ ! -e /data/reset_alu_dir ]; then
+	echo "$CLEAN_ALU_DIR" > /data/reset_alu_dir;
+fi;
+if [ -e /data/.alucard/.active.profile ]; then
+	PROFILE=$(cat /data/.alucard/.active.profile);
+else
+	echo "default" > /data/.alucard/.active.profile;
+	PROFILE=$(cat /data/.alucard/.active.profile);
+fi;
+if [ "$(cat /data/reset_alu_dir)" -eq "$CLEAN_ALU_DIR" ]; then
+	if [ "$(cat /data/.alucard/reset_profiles)" != "$RESET_MAGIC" ]; then
+		if [ ! -e /data/.alucard_old ]; then
+			mkdir /data/.alucard_old;
+		fi;
+		cp -a /data/.alucard/*.profile /data/.alucard_old/;
+		$BB rm -f /data/.alucard/*.profile;
+		if [ -e /data/data/com.af.synapse/databases ]; then
+			$BB rm -R /data/data/com.af.synapse/databases;
+		fi;
+		echo "$RESET_MAGIC" > /data/.alucard/reset_profiles;
+	else
+		echo "no need to reset profiles or delete .alucard folder";
+	fi;
+else
+	# Clean /data/.alucard/ folder from all files to fix any mess but do it in smart way.
+	if [ -e /data/.alucard/"$PROFILE".profile ]; then
+		cp /data/.alucard/"$PROFILE".profile /sdcard/"$PROFILE".profile_backup;
+	fi;
+	if [ ! -e /data/.alucard_old ]; then
+		mkdir /data/.alucard_old;
+	fi;
+	cp -a /data/.alucard/* /data/.alucard_old/;
+	$BB rm -f /data/.alucard/*
+	if [ -e /data/data/com.af.synapse/databases ]; then
+		$BB rm -R /data/data/com.af.synapse/databases;
+	fi;
+	echo "$CLEAN_ALU_DIR" > /data/reset_alu_dir;
+	echo "$RESET_MAGIC" > /data/.alucard/reset_profiles;
+	echo "$PROFILE" > /data/.alucard/.active.profile;
+fi;
+
+[ ! -f /data/.alucard/default.profile ] && cp -a /res/customconfig/default.profile /data/.alucard/default.profile;
+[ ! -f /data/.alucard/battery.profile ] && cp -a /res/customconfig/battery.profile /data/.alucard/battery.profile;
+[ ! -f /data/.alucard/performance.profile ] && cp -a /res/customconfig/performance.profile /data/.alucard/performance.profile;
+[ ! -f /data/.alucard/extreme_performance.profile ] && cp -a /res/customconfig/extreme_performance.profile /data/.alucard/extreme_performance.profile;
+[ ! -f /data/.alucard/extreme_battery.profile ] && cp -a /res/customconfig/extreme_battery.profile /data/.alucard/extreme_battery.profile;
+
+$BB chmod -R 0777 /data/.alucard/;
+
+. /res/customconfig/customconfig-helper;
+read_defaults;
+read_config;
+
+# Load parameters....
 DEBUG=/data/.alucard/;
 BUSYBOX_VER=$(busybox | grep "BusyBox v" | cut -c0-15);
 echo "$BUSYBOX_VER" > $DEBUG/busybox_ver;
 #$BB dmesg > $DEBUG/kernel_debug.log;
 #$BB mount > $DEBUG/partition_mount.log;
 
+# start CORTEX by tree root, so it's will not be terminated.
+sed -i "s/cortexbrain_background_process=[0-1]*/cortexbrain_background_process=1/g" /sbin/ext/cortexbrain-tune.sh;
+if [ "$(pgrep -f "cortexbrain-tune.sh" | wc -l)" -eq "0" ]; then
+	$BB nohup $BB sh /sbin/ext/cortexbrain-tune.sh > /data/.alucard/cortex.txt &
+fi;
+
 OPEN_RW;
+
+if [ "$stweaks_boot_control" == "yes" ]; then
+	# apply STweaks settings
+	$BB sh /res/uci_boot.sh apply;
+	$BB mv /res/uci_boot.sh /res/uci.sh;
+else
+	$BB mv /res/uci_boot.sh /res/uci.sh;
+fi;
 
 ######################################
 # Loading Modules
@@ -143,10 +220,16 @@ OPEN_RW;
 
 # Start any init.d scripts that may be present in the rom or added by the user
 $BB chmod -R 755 /system/etc/init.d/;
-if [ -e /system/etc/init.d/99SuperSUDaemon ]; then
-	$BB nohup $BB sh /system/etc/init.d/99SuperSUDaemon > /data/.alucard/root.txt &
+if [ "$init_d" == "on" ]; then
+	(
+		$BB nohup $BB run-parts /system/etc/init.d/ > /data/.alucard/init.d.txt &
+	)&
 else
-	echo "no root script in init.d";
+	if [ -e /system/etc/init.d/99SuperSUDaemon ]; then
+		$BB nohup $BB sh /system/etc/init.d/99SuperSUDaemon > /data/.alucard/root.txt &
+	else
+		echo "no root script in init.d";
+	fi;
 fi;
 
 OPEN_RW;
@@ -154,11 +237,18 @@ OPEN_RW;
 # Fix critical perms again after init.d mess
 CRITICAL_PERM_FIX;
 
-# Load Custom Modules
-MODULES_LOAD;
+if [ "$stweaks_boot_control" == "yes" ]; then
+	$BB sh /sbin/ext/cortexbrain-tune.sh apply_cpu update > /dev/null;
+	# Load Custom Modules
+	# MODULES_LOAD;
+fi;
 
 (
 	sleep 30;
+
+	# get values from profile
+	PROFILE=$(cat /data/.alucard/.active.profile);
+	. /data/.alucard/"$PROFILE".profile;
 
 	# script finish here, so let me know when
 	TIME_NOW=$(date)
@@ -166,3 +256,10 @@ MODULES_LOAD;
 
 	$BB mount -o remount,ro /system;
 )&
+
+# Stop LG logging to /data/logger/$FILE we dont need that. draning power.
+setprop persist.service.events.enable 0
+setprop persist.service.main.enable 0
+setprop persist.service.power.enable 0
+setprop persist.service.radio.enable 0
+setprop persist.service.system.enable 0

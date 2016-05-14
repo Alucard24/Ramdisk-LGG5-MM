@@ -59,9 +59,6 @@ cd /;
 $BB cp /sbin/busybox /system/xbin/;
 
 /system/xbin/busybox --install -s /system/xbin/
-if [ -e /system/xbin/wget ]; then
-	rm /system/xbin/wget;
-fi;
 chmod 06755 /system/xbin/busybox;
 if [ -e /system/xbin/su ]; then
 	$BB chmod 06755 /system/xbin/su;

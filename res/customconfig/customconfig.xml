@@ -1,0 +1,526 @@
+<settingsRoot>
+<settingsTab name="CPU">
+
+	<settingsPane description="Set Stweaks settings to be applyed on BOOT." name="Global BOOT Settings">
+
+		<spinner description="Master Switch, Load all settings from all TABS on boot, default is LOAD." name="Enable On Boot" action="generic_cortex /tmp/stweaks_boot_control">
+			<spinnerItem name="Load all Settings on boot" value="yes"/> 
+			<spinnerItem name="Don't load all Settings on boot" value="no"/> 
+		</spinner>
+
+		<button description="Push to load all tuned settings if master switch is OFF or was OFF, if it was ON when phone booted then no need to push!! wait till you see that settings are loaded" name="LOAD ALL" action="push-actions/reload_settings" label="LOAD ALL"/>
+
+	</settingsPane>
+
+	<settingsPane description="The following settings are for all global CPU configuration, use it only if you know what you are doing." name="CPU Global Settings">
+
+		<spinner description="Maximum CPU-Speed for CPU0 and CPU1. CPU Frequency steps from 307.200 kHz to 1.593.600 kHz! (Default: 1.593.600 kHz)" name="Max Normal Frequency" action="scaling_max_freq_cpu01">
+			<spinnerItem name="1.593.600 kHz" value="1593600"/> 
+			<spinnerItem name="1.478.400 kHz" value="1478400"/> 
+			<spinnerItem name="1.401.600 kHz" value="1401600"/> 
+			<spinnerItem name="1.324.800 kHz" value="1324800"/> 
+			<spinnerItem name="1.228.800 kHz" value="1228800"/> 
+			<spinnerItem name="1.190.400 kHz" value="1190400"/> 
+			<spinnerItem name="1.113.600 kHz" value="1113600"/> 
+			<spinnerItem name="1.036.800 kHz" value="1036800"/> 
+			<spinnerItem name="960.000 kHz" value="960000"/> 
+			<spinnerItem name="844.800 kHz" value="844800"/> 
+			<spinnerItem name="729.600 kHz" value="729600"/> 
+			<spinnerItem name="652.800 kHz" value="652800"/> 
+			<spinnerItem name="556.800 kHz" value="556800"/> 
+			<spinnerItem name="480.000 kHz" value="480000"/> 
+			<spinnerItem name="422.400 kHz" value="422400"/> 
+			<spinnerItem name="307.200 kHz" value="307200"/> 
+		</spinner>
+
+		<spinner description="Maximum CPU-Speed for CPU2 and CPU3. CPU Frequency steps from 307.200 kHz to 2.150.400 kHz! (Default: 2.150.400 kHz)" name="Max Normal Frequency" action="scaling_max_freq_cpu23">
+			<spinnerItem name="2.150.400 kHz" value="2150400"/> 
+			<spinnerItem name="2.073.600 kHz" value="2073600"/> 
+			<spinnerItem name="1.996.800 kHz" value="1996800"/> 
+			<spinnerItem name="1.920.000 kHz" value="1920000"/> 
+			<spinnerItem name="1.824.000 kHz" value="1824000"/> 
+			<spinnerItem name="1.785.600 kHz" value="1785600"/> 
+			<spinnerItem name="1.708.800 kHz" value="1708800"/> 
+			<spinnerItem name="1.632.000 kHz" value="1632000"/> 
+			<spinnerItem name="1.555.200 kHz" value="1555200"/> 
+			<spinnerItem name="1.478.400 kHz" value="1478400"/> 
+			<spinnerItem name="1.401.600 kHz" value="1401600"/> 
+			<spinnerItem name="1.324.800 kHz" value="1324800"/> 
+			<spinnerItem name="1.248.000 kHz" value="1248000"/> 
+			<spinnerItem name="1.190.400 kHz" value="1190400"/> 
+			<spinnerItem name="1.113.600 kHz" value="1113600"/> 
+			<spinnerItem name="1.036.800 kHz" value="1036800"/> 
+			<spinnerItem name="940.800 kHz" value="940800"/> 
+			<spinnerItem name="883.200 kHz" value="883200"/> 
+			<spinnerItem name="806.400 kHz" value="806400"/> 
+			<spinnerItem name="729.600 kHz" value="729600"/> 
+			<spinnerItem name="652.800 kHz" value="652800"/> 
+			<spinnerItem name="556.800 kHz" value="556800"/> 
+			<spinnerItem name="480.000 kHz" value="480000"/> 
+			<spinnerItem name="403.200 kHz" value="403200"/> 
+			<spinnerItem name="307.200 kHz" value="307200"/> 
+		</spinner>
+
+		<spinner description="Minimum CPU-Speed for CPU0 and CPU1. CPU Frequency step from 307.200 kHz to 1.593.600 kHz! (Default: 307.200 kHz)" name="Min Frequency" action="scaling_min_freq_cpu01">
+			<spinnerItem name="1.593.600 kHz" value="1593600"/> 
+			<spinnerItem name="1.478.400 kHz" value="1478400"/> 
+			<spinnerItem name="1.401.600 kHz" value="1401600"/> 
+			<spinnerItem name="1.324.800 kHz" value="1324800"/> 
+			<spinnerItem name="1.228.800 kHz" value="1228800"/> 
+			<spinnerItem name="1.190.400 kHz" value="1190400"/> 
+			<spinnerItem name="1.113.600 kHz" value="1113600"/> 
+			<spinnerItem name="1.036.800 kHz" value="1036800"/> 
+			<spinnerItem name="960.000 kHz" value="960000"/> 
+			<spinnerItem name="844.800 kHz" value="844800"/> 
+			<spinnerItem name="729.600 kHz" value="729600"/> 
+			<spinnerItem name="652.800 kHz" value="652800"/> 
+			<spinnerItem name="556.800 kHz" value="556800"/> 
+			<spinnerItem name="480.000 kHz" value="480000"/> 
+			<spinnerItem name="422.400 kHz" value="422400"/> 
+			<spinnerItem name="307.200 kHz" value="307200"/> 
+		</spinner>
+
+		<spinner description="Minimum CPU-Speed for CPU2 and CPU3. CPU Frequency step from 307.200 kHz to 2.150.400 kHz! (Default: 307.200 kHz)" name="Min Frequency" action="scaling_min_freq_cpu23">
+			<spinnerItem name="2.150.400 kHz" value="2150400"/> 
+			<spinnerItem name="2.073.600 kHz" value="2073600"/> 
+			<spinnerItem name="1.996.800 kHz" value="1996800"/> 
+			<spinnerItem name="1.920.000 kHz" value="1920000"/> 
+			<spinnerItem name="1.824.000 kHz" value="1824000"/> 
+			<spinnerItem name="1.785.600 kHz" value="1785600"/> 
+			<spinnerItem name="1.708.800 kHz" value="1708800"/> 
+			<spinnerItem name="1.632.000 kHz" value="1632000"/> 
+			<spinnerItem name="1.555.200 kHz" value="1555200"/> 
+			<spinnerItem name="1.478.400 kHz" value="1478400"/> 
+			<spinnerItem name="1.401.600 kHz" value="1401600"/> 
+			<spinnerItem name="1.324.800 kHz" value="1324800"/> 
+			<spinnerItem name="1.248.000 kHz" value="1248000"/> 
+			<spinnerItem name="1.190.400 kHz" value="1190400"/> 
+			<spinnerItem name="1.113.600 kHz" value="1113600"/> 
+			<spinnerItem name="1.036.800 kHz" value="1036800"/> 
+			<spinnerItem name="940.800 kHz" value="940800"/> 
+			<spinnerItem name="883.200 kHz" value="883200"/> 
+			<spinnerItem name="806.400 kHz" value="806400"/> 
+			<spinnerItem name="729.600 kHz" value="729600"/> 
+			<spinnerItem name="652.800 kHz" value="652800"/> 
+			<spinnerItem name="556.800 kHz" value="556800"/> 
+			<spinnerItem name="480.000 kHz" value="480000"/> 
+			<spinnerItem name="403.200 kHz" value="403200"/> 
+			<spinnerItem name="307.200 kHz" value="307200"/> 
+		</spinner>
+
+	</settingsPane>
+
+	<settingsPane description="Set CPU settings to save power." name="CPU Idle and Power Settings">
+
+		<checkbox description="Enable or disable Power-efficient work queues will help to reduce power consumption at the cost of slight performance overhead. By enabling this, PE work queues are used for unbound scheduled work to save load on sibling CPU cores and queuing work on CPU 0." name="Power-efficient work queues"  action="generic01 /sys/module/workqueue/parameters/power_efficient" label="Power-efficient work queues"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="CPU-TUNING">
+
+	<settingsPane description="Set advanced governor settings. These settings are active only if the screen is on." name="Governor Parameters tuning">
+
+		<spinner description="This will set the CPU0 and CPU1 governors. Default CPU governor will only be set during early stages of booting (before init.d execution), and can be overridden by any other scripts or applications. (Default: Alucard)" name="Default CPU Governor" action="scaling_governor_cpu01">
+			<spinnerItem name="alucard" value="alucard"/>
+			<spinnerItem name="conservative" value="conservative"/> 
+			<spinnerItem name="darkness" value="darkness"/>
+			<spinnerItem name="interactive" value="interactive"/> 
+			<spinnerItem name="nightmare" value="nightmare"/> 
+			<spinnerItem name="ondemand" value="ondemand"/> 
+		</spinner>
+
+		<spinner description="This will set the CPU2 and CPU3 governors. Default CPU governor will only be set during early stages of booting (before init.d execution), and can be overridden by any other scripts or applications. (Default: Alucard)" name="Default CPU Governor" action="scaling_governor_cpu23">
+			<spinnerItem name="alucard" value="alucard"/>
+			<spinnerItem name="conservative" value="conservative"/> 
+			<spinnerItem name="darkness" value="darkness"/>
+			<spinnerItem name="interactive" value="interactive"/> 
+			<spinnerItem name="nightmare" value="nightmare"/> 
+			<spinnerItem name="ondemand" value="ondemand"/> 
+		</spinner>
+
+		<button description="Use this button to push all new changes to the governor in real time!" name="GOV Policy Install" action="push-actions/cpu_tuning_update" label="Apply settings to GOV core"/>
+
+	</settingsPane>
+
+	<settingsPane description="Global governor Configuration, see descriptions" name="GLOBAL GOV CONFIGURATON">
+
+		<seekBar description="Measured as percentage, when load on CPU(CPU0 or CPU1) is equal to above up threshold, CPU is scaled Up. Lower value - early scale up, and vice-verse. (Only for Ondemand, Conservative) (Default: 80%)" name="up_threshold_01" action="generic_cortex /tmp/up_threshold_01" unit="%" min="1" reversed="false" step="1" max="100"/>
+
+		<seekBar description="Measured as percentage, when load on CPU(CPU2 or CPU3) is equal to above up threshold, CPU is scaled Up. Lower value - early scale up, and vice-verse. (Only for Ondemand, Conservative) (Default: 80%)" name="up_threshold_23" action="generic_cortex /tmp/up_threshold_23" unit="%" min="1" reversed="false" step="1" max="100"/>
+
+		<seekBar description="Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU0 or CPU1) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for OnDemand, Conservative, Nightmare, Darkness, Alucard) (Default: 10.000 µs)" name="sampling_rate_01" action="generic_cortex /tmp/sampling_rate_01" unit="µs" min="10000" reversed="false" step="5000" max="200000"/>
+
+		<seekBar description="Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU2 or CPU3) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for OnDemand, Conservative, Nightmare, Darkness, Alucard) (Default: 10.000 µs)" name="sampling_rate_23" action="generic_cortex /tmp/sampling_rate_23" unit="µs" min="10000" reversed="false" step="5000" max="200000"/>
+
+		<seekBar description="Acts as a multiplier for sampling interval for re-evaluating the load when CPU(CPU0 or CPU1) is truly busy and is on highest clock frequency (policy max). Setting to 1 makes no difference and causes CPU to immediately scale down from highest frequency. Sampling down factor is NOT valid for lower frequencies and low load conditions. Note that CPU is scaled up to max frequency when max_load_freq is greater than up_threshold X current frequency. (or to cur_freq + (freq_step X policy.max_freq) whichever is smaller) Max_load_freq is an arbitrary frequency calculated as the maximum of load_frequencies. (Only for Ondemand, Conservartive) (Default: 1)" name="sampling_down_factor_01" action="generic_cortex /tmp/sampling_down_factor_01" unit="int" min="1" reversed="false" step="1" max="10"/>
+
+		<seekBar description="Acts as a multiplier for sampling interval for re-evaluating the load when CPU(CPU2 or CPU3) is truly busy and is on highest clock frequency (policy max). Setting to 1 makes no difference and causes CPU to immediately scale down from highest frequency. Sampling down factor is NOT valid for lower frequencies and low load conditions. Note that CPU is scaled up to max frequency when max_load_freq is greater than up_threshold X current frequency. (or to cur_freq + (freq_step X policy.max_freq) whichever is smaller) Max_load_freq is an arbitrary frequency calculated as the maximum of load_frequencies. (Only for Ondemand, Conservartive) (Default: 1)" name="sampling_down_factor_23" action="generic_cortex /tmp/sampling_down_factor_23" unit="int" min="1" reversed="false" step="1" max="10"/>
+
+		<seekBar description="Defines how much as a percentage of maximum frequency, governor should increase CPU(CPU0 or CPU1) frequency each time CPU load reaches up_threshold or inc_cpu_load. (Only for Ondemand, Nightmare, Conservative) (Default: 30%)" name="freq_step_01" action="generic_cortex /tmp/freq_step_01" unit="%" min="5" reversed="false" step="1" max="100"/>
+
+		<seekBar description="Defines how much as a percentage of maximum frequency, governor should increase CPU(CPU2 or CPU3) frequency each time CPU load reaches up_threshold or inc_cpu_load. (Only for Ondemand, Nightmare, Conservative) (Default: 30%)" name="freq_step_23" action="generic_cortex /tmp/freq_step_23" unit="%" min="5" reversed="false" step="1" max="100"/>
+
+		<spinner description="Until freq_for_responsiveness, Up Threshold considered for sampling load is up_threshold_at_min_freq. Also during the part where CPU(CPU0 or CPU1) is at maximum load frequency, governor need to find the optimal frequency as the next frequency - which should not trigger up_threshold in the next sampling. When such a frequency_next is found to be a) less than freq_for_responsiveness b) will not trigger down_threshold in the next sample, then the optimal frequency is set to freq_for_responsiveness. (Only for Nightmare) (Default: 422.400 kHz)" name="freq_for_responsiveness_01" action="generic_cortex /tmp/freq_for_responsiveness_01">
+			<spinnerItem name="1.593.600 kHz" value="1593600"/> 
+			<spinnerItem name="1.478.400 kHz" value="1478400"/> 
+			<spinnerItem name="1.401.600 kHz" value="1401600"/> 
+			<spinnerItem name="1.324.800 kHz" value="1324800"/> 
+			<spinnerItem name="1.228.800 kHz" value="1228800"/> 
+			<spinnerItem name="1.190.400 kHz" value="1190400"/> 
+			<spinnerItem name="1.113.600 kHz" value="1113600"/> 
+			<spinnerItem name="1.036.800 kHz" value="1036800"/> 
+			<spinnerItem name="960.000 kHz" value="960000"/> 
+			<spinnerItem name="844.800 kHz" value="844800"/> 
+			<spinnerItem name="729.600 kHz" value="729600"/> 
+			<spinnerItem name="652.800 kHz" value="652800"/> 
+			<spinnerItem name="556.800 kHz" value="556800"/> 
+			<spinnerItem name="480.000 kHz" value="480000"/> 
+			<spinnerItem name="422.400 kHz" value="422400"/> 
+			<spinnerItem name="307.200 kHz" value="307200"/> 
+		</spinner>
+
+		<spinner description="Until freq_for_responsiveness, Up Threshold considered for sampling load is up_threshold_at_min_freq. Also during the part where CPU(CPU2 or CPU3) is at maximum load frequency, governor need to find the optimal frequency as the next frequency - which should not trigger up_threshold in the next sampling. When such a frequency_next is found to be a) less than freq_for_responsiveness b) will not trigger down_threshold in the next sample, then the optimal frequency is set to freq_for_responsiveness. (Only for Nightmare) (Default: 403.200 kHz)" name="freq_for_responsiveness_23" action="generic_cortex /tmp/freq_for_responsiveness_23">
+			<spinnerItem name="2.150.400 kHz" value="2150400"/> 
+			<spinnerItem name="2.073.600 kHz" value="2073600"/> 
+			<spinnerItem name="1.996.800 kHz" value="1996800"/> 
+			<spinnerItem name="1.920.000 kHz" value="1920000"/> 
+			<spinnerItem name="1.824.000 kHz" value="1824000"/> 
+			<spinnerItem name="1.785.600 kHz" value="1785600"/> 
+			<spinnerItem name="1.708.800 kHz" value="1708800"/> 
+			<spinnerItem name="1.632.000 kHz" value="1632000"/> 
+			<spinnerItem name="1.555.200 kHz" value="1555200"/> 
+			<spinnerItem name="1.478.400 kHz" value="1478400"/> 
+			<spinnerItem name="1.401.600 kHz" value="1401600"/> 
+			<spinnerItem name="1.324.800 kHz" value="1324800"/> 
+			<spinnerItem name="1.248.000 kHz" value="1248000"/> 
+			<spinnerItem name="1.190.400 kHz" value="1190400"/> 
+			<spinnerItem name="1.113.600 kHz" value="1113600"/> 
+			<spinnerItem name="1.036.800 kHz" value="1036800"/> 
+			<spinnerItem name="940.800 kHz" value="940800"/> 
+			<spinnerItem name="883.200 kHz" value="883200"/> 
+			<spinnerItem name="806.400 kHz" value="806400"/> 
+			<spinnerItem name="729.600 kHz" value="729600"/> 
+			<spinnerItem name="652.800 kHz" value="652800"/> 
+			<spinnerItem name="556.800 kHz" value="556800"/> 
+			<spinnerItem name="480.000 kHz" value="480000"/> 
+			<spinnerItem name="403.200 kHz" value="403200"/> 
+			<spinnerItem name="307.200 kHz" value="307200"/> 
+		</spinner>
+
+		<seekBar description="This is same as the up_threshold found for the Ondemand governor but for the opposite direction. For example when set to its default value of 20 it means that if the CPUCPU(CPU0 or CPU1) usage needs to be below 20% between samples to have the frequency decreased. (Only for Conservative) (Default: 20%)" name="down_threshold_01" action="generic_cortex /tmp/down_threshold_01" unit="%" min="1" reversed="false" step="1" max="100"/>
+
+		<seekBar description="This is same as the up_threshold found for the Ondemand governor but for the opposite direction. For example when set to its default value of 20 it means that if the CPUCPU(CPU2 or CPU3) usage needs to be below 20% between samples to have the frequency decreased. (Only for Conservative) (Default: 20%)" name="down_threshold_23" action="generic_cortex /tmp/down_threshold_23" unit="%" min="1" reversed="false" step="1" max="100"/>
+
+	</settingsPane>
+
+	<settingsPane description="Nightmare, Darkness and Alucard governor Configuration, see descriptions" name="NIGHTMARE | DARKNESS | ALUCARD GOV CONFIGURATON">
+
+		<seekBar description="This threshold is used as up threshold while sampling at frequencies less than freq_for_responsiveness. Above that, normal inc_cpu_load is used. This gives us an option to make scaling aggressive/relaxed until a frequency and normal for higher frequencies. (CPU0 or CPU1 only for Nightmare, Alucard). (Default: 60%)" name="inc_cpu_load_at_min_freq_01" action="generic_cortex /tmp/inc_cpu_load_at_min_freq_01" unit="%" min="1" reversed="false" step="1" max="100"/>
+
+		<seekBar description="This threshold is used as up threshold while sampling at frequencies less than freq_for_responsiveness. Above that, normal inc_cpu_load is used. This gives us an option to make scaling aggressive/relaxed until a frequency and normal for higher frequencies. (CPU2 or CPU3 only for Nightmare, Alucard). (Default: 60%)" name="inc_cpu_load_at_min_freq_23" action="generic_cortex /tmp/inc_cpu_load_at_min_freq_23" unit="%" min="1" reversed="false" step="1" max="100"/>
+
+		<seekBar description="The frequency at which governor scales CPU(CPU0 or CPU1) up. Load big or equal inc_cpu_load: cpu scaled up. (Only for Nightmare, Alucard). (Default: 70%)" name="inc_cpu_load_01" action="generic_cortex /tmp/inc_cpu_load_01" unit="%" min="10" reversed="false" step="1" max="100"/>
+
+		<seekBar description="The frequency at which governor scales CPU(CPU2 or CPU3) up. Load big or equal inc_cpu_load: cpu scaled up. (Only for Nightmare, Alucard). (Default: 70%)" name="inc_cpu_load_23" action="generic_cortex /tmp/inc_cpu_load_23" unit="%" min="10" reversed="false" step="1" max="100"/>
+
+		<seekBar description="This threshold is used as down threshold while sampling at frequencies less than freq_responsiveness. Above that, normal dec_cpu_load is used. This gives us an option to make scaling aggressive/relaxed until a frequency and normal for higher frequencies. (CPU0 or CPU1 only for Alucard). (Default: 60%)" name="dec_cpu_load_at_min_freq_01" action="generic_cortex /tmp/dec_cpu_load_at_min_freq_01" unit="%" min="1" reversed="false" step="1" max="100"/>
+
+		<seekBar description="This threshold is used as down threshold while sampling at frequencies less than freq_responsiveness. Above that, normal dec_cpu_load is used. This gives us an option to make scaling aggressive/relaxed until a frequency and normal for higher frequencies. (CPU2 or CPU3 only for Alucard). (Default: 60%)" name="dec_cpu_load_at_min_freq_23" action="generic_cortex /tmp/dec_cpu_load_at_min_freq_23" unit="%" min="1" reversed="false" step="1" max="100"/>
+
+		<seekBar description="The frequency at which governor scales CPU(CPU0 or CPU1) down. Load less than dec_cpu_load: cpu scaled down. (Only for Nightmare, Alucard). (Default: 70%)" name="dec_cpu_load_01" action="generic_cortex /tmp/dec_cpu_load_01" unit="%" min="10" reversed="false" step="1" max="100"/>
+
+		<seekBar description="The frequency at which governor scales CPU(CPU2 or CPU3) down. Load less than dec_cpu_load: cpu scaled down. (Only for Nightmare, Alucard). (Default: 70%)" name="dec_cpu_load_23" action="generic_cortex /tmp/dec_cpu_load_23" unit="%" min="10" reversed="false" step="1" max="100"/>
+
+		<spinner description="When current freq is greater than freq_for_responsiviness_max, freq_step_dec will be equal to freq_step_dec_at_max_freq. (CPU0 or CPU1 only for Nightmare). (Default: 1.593.600 kHz)" name="freq_for_responsiveness_max_01" action="generic_cortex /tmp/freq_for_responsiveness_max_01">
+			<spinnerItem name="1.593.600 kHz" value="1593600"/> 
+			<spinnerItem name="1.478.400 kHz" value="1478400"/> 
+			<spinnerItem name="1.401.600 kHz" value="1401600"/> 
+			<spinnerItem name="1.324.800 kHz" value="1324800"/> 
+			<spinnerItem name="1.228.800 kHz" value="1228800"/> 
+			<spinnerItem name="1.190.400 kHz" value="1190400"/> 
+			<spinnerItem name="1.113.600 kHz" value="1113600"/> 
+			<spinnerItem name="1.036.800 kHz" value="1036800"/> 
+			<spinnerItem name="960.000 kHz" value="960000"/> 
+			<spinnerItem name="844.800 kHz" value="844800"/> 
+			<spinnerItem name="729.600 kHz" value="729600"/> 
+			<spinnerItem name="652.800 kHz" value="652800"/> 
+			<spinnerItem name="556.800 kHz" value="556800"/> 
+			<spinnerItem name="480.000 kHz" value="480000"/> 
+			<spinnerItem name="422.400 kHz" value="422400"/> 
+			<spinnerItem name="307.200 kHz" value="307200"/> 
+		</spinner>
+
+		<spinner description="When current freq is greater than freq_for_responsiviness_max, freq_step_dec will be equal to freq_step_dec_at_max_freq. (CPU2 or CPU3 only for Nightmare). (Default: 2.150.400 kHz)" name="freq_for_responsiveness_max_23" action="generic_cortex /tmp/freq_for_responsiveness_max_23">
+			<spinnerItem name="2.150.400 kHz" value="2150400"/> 
+			<spinnerItem name="2.073.600 kHz" value="2073600"/> 
+			<spinnerItem name="1.996.800 kHz" value="1996800"/> 
+			<spinnerItem name="1.920.000 kHz" value="1920000"/> 
+			<spinnerItem name="1.824.000 kHz" value="1824000"/> 
+			<spinnerItem name="1.785.600 kHz" value="1785600"/> 
+			<spinnerItem name="1.708.800 kHz" value="1708800"/> 
+			<spinnerItem name="1.632.000 kHz" value="1632000"/> 
+			<spinnerItem name="1.555.200 kHz" value="1555200"/> 
+			<spinnerItem name="1.478.400 kHz" value="1478400"/> 
+			<spinnerItem name="1.401.600 kHz" value="1401600"/> 
+			<spinnerItem name="1.324.800 kHz" value="1324800"/> 
+			<spinnerItem name="1.248.000 kHz" value="1248000"/> 
+			<spinnerItem name="1.190.400 kHz" value="1190400"/> 
+			<spinnerItem name="1.113.600 kHz" value="1113600"/> 
+			<spinnerItem name="1.036.800 kHz" value="1036800"/> 
+			<spinnerItem name="940.800 kHz" value="940800"/> 
+			<spinnerItem name="883.200 kHz" value="883200"/> 
+			<spinnerItem name="806.400 kHz" value="806400"/> 
+			<spinnerItem name="729.600 kHz" value="729600"/> 
+			<spinnerItem name="652.800 kHz" value="652800"/> 
+			<spinnerItem name="556.800 kHz" value="556800"/> 
+			<spinnerItem name="480.000 kHz" value="480000"/> 
+			<spinnerItem name="403.200 kHz" value="403200"/> 
+			<spinnerItem name="307.200 kHz" value="307200"/> 
+		</spinner>
+
+		<spinner description="Until freq_responsiveness, Up Threshold considered for sampling load is inc_cpu_load_at_min_freq. Also during the part where CPU(CPU0 or CPU1) is at maximum load frequency, governor need to find the optimal frequency as the next frequency - which should not trigger up_threshold in the next sampling. When such a frequency_next is found to be a) less than freq_responsiveness b) will not trigger down_threshold in the next sample, then the optimal frequency is set to freq_responsiveness. (Only for Alucard) (Default: 1.113.600 kHz)" name="freq_responsiveness_01" action="generic_cortex /tmp/freq_responsiveness_01">
+			<spinnerItem name="1.593.600 kHz" value="1593600"/> 
+			<spinnerItem name="1.478.400 kHz" value="1478400"/> 
+			<spinnerItem name="1.401.600 kHz" value="1401600"/> 
+			<spinnerItem name="1.324.800 kHz" value="1324800"/> 
+			<spinnerItem name="1.228.800 kHz" value="1228800"/> 
+			<spinnerItem name="1.190.400 kHz" value="1190400"/> 
+			<spinnerItem name="1.113.600 kHz" value="1113600"/> 
+			<spinnerItem name="1.036.800 kHz" value="1036800"/> 
+			<spinnerItem name="960.000 kHz" value="960000"/> 
+			<spinnerItem name="844.800 kHz" value="844800"/> 
+			<spinnerItem name="729.600 kHz" value="729600"/> 
+			<spinnerItem name="652.800 kHz" value="652800"/> 
+			<spinnerItem name="556.800 kHz" value="556800"/> 
+			<spinnerItem name="480.000 kHz" value="480000"/> 
+			<spinnerItem name="422.400 kHz" value="422400"/> 
+			<spinnerItem name="307.200 kHz" value="307200"/> 
+		</spinner>
+
+		<spinner description="Until freq_responsiveness, Up Threshold considered for sampling load is inc_cpu_load_at_min_freq. Also during the part where CPU(CPU2 or CPU3) is at maximum load frequency, governor need to find the optimal frequency as the next frequency - which should not trigger up_threshold in the next sampling. When such a frequency_next is found to be a) less than freq_responsiveness b) will not trigger down_threshold in the next sample, then the optimal frequency is set to freq_responsiveness. (Only for Alucard) (Default: 1.113.600 kHz)" name="freq_responsiveness_23" action="generic_cortex /tmp/freq_responsiveness_23">
+			<spinnerItem name="2.150.400 kHz" value="2150400"/> 
+			<spinnerItem name="2.073.600 kHz" value="2073600"/> 
+			<spinnerItem name="1.996.800 kHz" value="1996800"/> 
+			<spinnerItem name="1.920.000 kHz" value="1920000"/> 
+			<spinnerItem name="1.824.000 kHz" value="1824000"/> 
+			<spinnerItem name="1.785.600 kHz" value="1785600"/> 
+			<spinnerItem name="1.708.800 kHz" value="1708800"/> 
+			<spinnerItem name="1.632.000 kHz" value="1632000"/> 
+			<spinnerItem name="1.555.200 kHz" value="1555200"/> 
+			<spinnerItem name="1.478.400 kHz" value="1478400"/> 
+			<spinnerItem name="1.401.600 kHz" value="1401600"/> 
+			<spinnerItem name="1.324.800 kHz" value="1324800"/> 
+			<spinnerItem name="1.248.000 kHz" value="1248000"/> 
+			<spinnerItem name="1.190.400 kHz" value="1190400"/> 
+			<spinnerItem name="1.113.600 kHz" value="1113600"/> 
+			<spinnerItem name="1.036.800 kHz" value="1036800"/> 
+			<spinnerItem name="940.800 kHz" value="940800"/> 
+			<spinnerItem name="883.200 kHz" value="883200"/> 
+			<spinnerItem name="806.400 kHz" value="806400"/> 
+			<spinnerItem name="729.600 kHz" value="729600"/> 
+			<spinnerItem name="652.800 kHz" value="652800"/> 
+			<spinnerItem name="556.800 kHz" value="556800"/> 
+			<spinnerItem name="480.000 kHz" value="480000"/> 
+			<spinnerItem name="403.200 kHz" value="403200"/> 
+			<spinnerItem name="307.200 kHz" value="307200"/> 
+		</spinner>
+
+		<seekBar description="Governor should increase CPU0 and CPU1 frequency by n step each time CPU load reaches inc_cpu_load_at_min_freq. (Only for Alucard) (Default: 2)" name="pump_inc_step_at_min_freq_01" action="generic_cortex /tmp/pump_inc_step_at_min_freq_01" unit="step" min="1" reversed="false" step="1" max="5"/>
+
+		<seekBar description="Governor should increase CPU2 and CPU3 frequency by n step each time CPU load reaches inc_cpu_load_at_min_freq. (Only for Alucard) (Default: 2)" name="pump_inc_step_at_min_freq_23" action="generic_cortex /tmp/pump_inc_step_at_min_freq_23" unit="step" min="1" reversed="false" step="1" max="5"/>
+
+		<seekBar description="Governor should increase CPU0 and CPU1 frequency by n step each time CPU load reaches inc_cpu_load. (Only for Alucard) (Default: 2)" name="pump_inc_step_01" action="generic_cortex /tmp/pump_inc_step_01" unit="step" min="1" reversed="false" step="1" max="5"/>
+
+		<seekBar description="Governor should increase CPU2 and CPU3 frequency by n step each time CPU load reaches inc_cpu_load. (Only for Alucard) (Default: 2)" name="pump_inc_step_23" action="generic_cortex /tmp/pump_inc_step_23" unit="step" min="1" reversed="false" step="1" max="5"/>
+
+		<seekBar description="Governor should decrease CPU0 and CPU1 frequency by n step each time CPU load is below inc_cpu_load_at_min_freq. (Only for Alucard) (Default: 2)" name="pump_dec_step_at_min_freq_01" action="generic_cortex /tmp/pump_dec_step_at_min_freq_01" unit="step" min="1" reversed="false" step="1" max="5"/>
+
+		<seekBar description="Governor should decrease CPU2 and CPU3 frequency by n step each time CPU load is below inc_cpu_load_at_min_freq. (Only for Alucard) (Default: 2)" name="pump_dec_step_at_min_freq_23" action="generic_cortex /tmp/pump_dec_step_at_min_freq_23" unit="step" min="1" reversed="false" step="1" max="5"/>
+
+		<seekBar description="Governor should decrease CPU0 and CPU1 frequency by n step each time CPU load reaches dec_cpu_load. (Only for Alucard) (Default: 1)" name="pump_dec_step_01" action="generic_cortex /tmp/pump_dec_step_01" unit="step" min="1" reversed="false" step="1" max="5"/>
+
+		<seekBar description="Governor should decrease CPU2 and CPU3 frequency by n step each time CPU load reaches dec_cpu_load. (Only for Alucard) (Default: 1)" name="pump_dec_step_23" action="generic_cortex /tmp/pump_dec_step_23" unit="step" min="1" reversed="false" step="1" max="5"/>
+
+		<seekBar description="Defines how much as a percentage of maximum frequency, governor should increase CPU(CPU0 or CPU1) frequency each time CPU load reaches inc_cpu_load_at_min_freq. (Only for nightmare). (Default: 30%)" name="freq_step_at_min_freq_01" action="generic_cortex /tmp/freq_step_at_min_freq_01" unit="%" min="5" reversed="false" step="1" max="100"/>
+
+		<seekBar description="Defines how much as a percentage of maximum frequency, governor should increase CPU(CPU2 or CPU3) frequency each time CPU load reaches inc_cpu_load_at_min_freq. (Only for nightmare). (Default: 30%)" name="freq_step_at_min_freq_23" action="generic_cortex /tmp/freq_step_at_min_freq_23" unit="%" min="5" reversed="false" step="1" max="100"/>
+
+		<seekBar description="Brake scale up frequency when load big or equal inc_cpu_load_at_min_freq. (CPU0 or CPU1 only for Nightmare). (Default: 20)" name="freq_up_brake_at_min_freq_01" action="generic_cortex /tmp/freq_up_brake_at_min_freq_01" unit="step" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="Brake scale up frequency when load big or equal inc_cpu_load_at_min_freq. (CPU2 or CPU3 only for Nightmare). (Default: 20)" name="freq_up_brake_at_min_freq_23" action="generic_cortex /tmp/freq_up_brake_at_min_freq_23" unit="step" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="Brake scale up frequency when load big or equal inc_cpu_load. (CPU0 or CPU1 only for Nightmare). (Default: 20)" name="freq_up_brake_01" action="generic_cortex /tmp/freq_up_brake_01" unit="step" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="Brake scale up frequency when load big or equal inc_cpu_load. (CPU2 or CPU3 only for Nightmare). (Default: 20)" name="freq_up_brake_23" action="generic_cortex /tmp/freq_up_brake_23" unit="step" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="Defines how much as a percentage of maximum frequency, governor should decrease CPU frequency each time CPU(CPU0 or CPU1) load reaches dec_cpu_load. Only for Nightmare). Default: 10%)" name="freq_step_dec_01" action="generic_cortex /tmp/freq_step_dec_01" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="Defines how much as a percentage of maximum frequency, governor should decrease CPU frequency each time CPU(CPU2 or CPU3) load reaches dec_cpu_load. Only for Nightmare). Default: 10%)" name="freq_step_dec_23" action="generic_cortex /tmp/freq_step_dec_23" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="Defines how much as a percentage of maximum frequency, governor should decrease CPU(CPU0 or CPU1) frequency each time CPU load reaches dec_cpu_load and current freq is greater than freq_for_responsiviness_max. (Only for Nightmare). (Default: 10%)" name="freq_step_dec_at_max_freq_01" action="generic_cortex /tmp/freq_step_dec_at_max_freq_01" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="Defines how much as a percentage of maximum frequency, governor should decrease CPU(CPU2 or CPU3) frequency each time CPU load reaches dec_cpu_load and current freq is greater than freq_for_responsiviness_max. (Only for Nightmare). (Default: 10%)" name="freq_step_dec_at_max_freq_23" action="generic_cortex /tmp/freq_step_dec_at_max_freq_23" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="Number of samples to evaluate cpus frequency scaling up when current cpu(CPU0 or CPU1) frequency is greater than freq_responsiveness. (Default: 1)" name="cpus_up_rate_01" action="generic_cortex /tmp/cpus_up_rate_01" unit="int" min="1" reversed="false" step="1" max="5"/>
+
+		<seekBar description="Number of samples to evaluate cpus frequency scaling up when current cpu(CPU2 or CPU3) frequency is greater than freq_responsiveness. (Default: 1)" name="cpus_up_rate_23" action="generic_cortex /tmp/cpus_up_rate_23" unit="int" min="1" reversed="false" step="1" max="5"/>
+
+		<seekBar description="Number of samples to evaluate cpus frequency scaling up when current cpu(CPU0 or CPU1) frequency is greater than freq_responsiveness. (Default: 1)" name="cpus_up_rate_01" action="generic_cortex /tmp/cpus_up_rate_01" unit="int" min="1" reversed="false" step="1" max="5"/>
+
+		<seekBar description="Number of samples to evaluate cpus frequency scaling up when current cpu(CPU2 or CPU3) frequency is greater than freq_responsiveness. (Default: 1)" name="cpus_up_rate_23" action="generic_cortex /tmp/cpus_up_rate_23" unit="int" min="1" reversed="false" step="1" max="5"/>
+
+		<seekBar description="Number of samples to evaluate cpu frequency scaling down when current cpu(CPU0 or CPU1) frequency is greater than freq_responsiveness. (Default: 1)" name="cpus_down_rate_01" action="generic_cortex /tmp/cpus_down_rate_01" unit="int" min="1" reversed="false" step="1" max="5"/>
+
+		<seekBar description="Number of samples to evaluate cpu frequency scaling down when current cpu(CPU2 or CPU3) frequency is greater than freq_responsiveness. (Default: 1)" name="cpus_down_rate_23" action="generic_cortex /tmp/cpus_down_rate_23" unit="int" min="1" reversed="false" step="1" max="5"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="IO">
+
+	<settingsPane description="Tune IO settings managed by Kernel" name="IO Tuning">
+
+		<seekBar description="Maximum number of kilobytes to read-ahead for INTERNAL SDCARD! file systems on this device. (Default: 1024 kB)" name="kilobytes to read-ahead" action="generic_cortex /tmp/intsd_read_ahead_kb" unit="kB" min="128" reversed="false" step="128" max="4096"/>
+
+		<spinner description="This will set the default IO scheduler for internal sdcard. (Default: CFQ)" name="Default IO Scheduler Int." action="iosched internal /sys/block/mmcblk0/queue/scheduler">
+			<spinnerItem name="BFQ" value="bfq"/>
+			<spinnerItem name="CFQ" value="cfq"/> 
+			<spinnerItem name="DEADLINE" value="deadline"/> 
+			<spinnerItem name="NOOP" value="noop"/> 
+		</spinner>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="Memory">
+
+	<settingsPane description="Tune memory and OOM (low mem management) settings managed by Kernel." name="Memory Tuning">
+
+		<checkbox description="Adaptive LMK help to free RAM more faster when low RAM condition exist and vmpressure is in range of 85-94, apps cleaned from RAM to allow smooth ROM operation and faster load of on screen APP. Disabled by default." name="Adaptive LMK" action="generic01 /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk" label="Adaptive LMK"/>
+
+		<spinner description="Here you can set the low memory reserve ratio, higher ratio give you more free RAM if you see that your free RAM is always loaded and device LAG, but it also uses more battery to gain more free RAM with loaded system. use relaxed ONLY if your free RAM is above 650MB always! if less than 280MB use recommended or high pressure." name="Low Memory Reserve" action="lowmem_reserve">
+			<spinnerItem name="Relaxed" value="relaxed"/>
+			<spinnerItem name="Default" value="default"/>
+			<spinnerItem name="Recommended" value="boosted"/>
+			<spinnerItem name="High Pressure Ratio" value="high_pressure"/>
+		</spinner>
+
+		<seekBar description="Dirty background memory buffer. The more you set, the more memory will be used for write buffer for background operations. Buffer is released when it is needed to free RAM" name="Dirty Background ratio" action="generic /proc/sys/vm/dirty_background_ratio" unit="%" min="0" reversed="false" step="5" max="80"/>
+
+		<seekBar description="Dirty real time memory buffer, more you set, more memory will be used for write buffer for real time operations. Buffer is released when it is needed to free RAM" name="Dirty ratio" action="generic /proc/sys/vm/dirty_ratio" unit="%" min="0" reversed="false" step="5" max="90"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="TCP Congestion Control">
+
+	<settingsPane description="Transmission Control Protocol (TCP) uses a network congestion-avoidance algorithm that includes various aspects of an additive increase|multiplicative decrease (AIMD) scheme, with other schemes such as slow-start to achieve congestion avoidance. The TCP congestion-avoidance algorithm is the primary basis for congestion control in the Internet." name="TCP Congestion control tweaks">
+
+		<spinner description="Set TCP algorithm. (Default: BIC)" name="tcp_congestion_control" action="generic /proc/sys/net/ipv4/tcp_congestion_control">
+			<spinnerItem name="BIC" value="bic"/> 
+			<spinnerItem name="CUBIC" value="cubic"/>
+			<!--spinnerItem name="HTCP" value="htcp"/-->
+			<!--spinnerItem name="HYBLA" value="hybla"/-->
+			<spinnerItem name="RENO" value="reno"/>
+			<!--spinnerItem name="VENO" value="veno"/-->
+			<!--spinnerItem name="WESTWOOD" value="westwood"/-->
+		</spinner>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="Other">
+
+	<settingsPane description="Set some settings and options for your apps." name="Apps">
+
+		<button description="Click here to see current SELINUX status! ON or OFF globaly. default is OFF, you can turn it ON with button below." name="SELINUX STATUS CHECK" action="push-actions/selinux_check" label="SELINUX STATUS CHECK"/>
+
+	</settingsPane>
+
+	<settingsPane description="Set GPS and NTP settings and options." name="GPS - NTP">
+
+		<button description="Click to see your current GPS ZONE" name="GPS ZONE" action="push-actions/gpszonecheck" label="GPS ZONE CHECK"/>
+
+	</settingsPane>
+
+	<settingsPane description="INIT.D" name="INIT.D">
+
+		<checkbox description="Enable or Disable INIT.D scripts RUN on boot. Many new ROMS are running the init.d scripts automatically. You can also force running the scripts, but if you run them and ROM runs them too, we have a problem: all scripts are running X2 times! To avoid conflicts, Stweaks RUN-control is disabled by default. If you know that your ROM is NOT supporting init.d script running, then turn it ON here and reboot." name="INIT.D Scripts RUN control" action="generic_cortex /tmp/init_d" label="Enable INIT.D scripts RUN-control"/>
+
+	</settingsPane>
+
+	<settingsPane description="General tweaks" name="General tweaks">
+
+		<button description="Use this button to Trim System, Data and Cache Nand partitions to speed up Read and Write Access, good to use once in a day or two." name="Trim System, Data and Cache" action="push-actions/fstrim" label="Trim NOW"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="Cortex Tweaks">
+
+	<settingsPane description="This script will manipulate many kernel settings, based on chosen STweaks profile + settings and on screen state (ON or OFF) and we call it CortexBrain. To reset the kernel-settings, after you disable a tweak, you must reboot!" name="CortexBrain Tweaks">
+
+		<spinner description="Enable the background-process from CortexBrain. Disabling it means, losing the functions that sets different settings for screen state (ON/OFF)." name="CortexBrain-Background-Process" action="cortexbrain_background_process">
+			<spinnerItem name="Enable" value="1"/> 
+			<spinnerItem name="Disable" value="0"/> 
+		</spinner>
+
+		<button description="Click to see if the CortexBrain-Background-Process is running or not." name="Check Background-Process" action="push-actions/cortexbrain_background_process_check" label="CHECK SERVICE"/>
+
+		<checkbox description="Enable or Disable Memory-Tweaks (reboot needed)." name="Memory-Tweaks" action="generic_cortex /tmp/cortexbrain_memory" label="Memory-Tweaks"/>
+
+		<checkbox description="Enable or Disable Kernel-Tweaks (reboot needed)." name="Kernel-Tweaks" action="generic_cortex /tmp/cortexbrain_kernel_tweaks" label="Kernel-Tweaks"/>
+
+		<checkbox description="Enable or Disable CPU-Tweaks (reboot needed)." name="CPU-Tweaks" action="generic_cortex /tmp/cortexbrain_cpu" label="CPU-Tweaks"/>
+
+		<checkbox description="Enable or Disable IO-Tweaks (reboot needed)." name="IO-Tweaks" action="generic_cortex /tmp/cortexbrain_io" label="IO-Tweaks"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="PROFILES">
+
+	<settingsPane description="You can check which profile is used." name="Online Profile">
+
+		<button description="This displays your currently used profile." name="Profile Check" action="push-actions/profile" label="Profile Check"/>
+
+	</settingsPane>
+
+	<settingsPane description="Select profile. You can also switch the default profiles (battery, default, performance) via Kernel-Recovery." name="STweaks Profiles">
+
+		<button description="extreme_battery.profile" name="extreme_battery.profile" action="push-actions/config_backup_restore 6" label="EXTREME BATTERY"/>
+
+		<button description="battery.profile" name="battery.profile" action="push-actions/config_backup_restore 3" label="BATTERY"/>
+
+		<button description="default.profile" name="default.profile" action="push-actions/config_backup_restore 4" label="DEFAULT"/>
+
+		<button description="performance.profile" name="performance.profile" action="push-actions/config_backup_restore 5" label="PERFORMANCE"/>
+
+		<button description="extreme_performance.profile" name="extreme_performance.profile" action="push-actions/config_backup_restore 7" label="EXTREME PERFORMANCE"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+<settingsTab name="BACKUP or RESTORE">
+
+	<settingsPane description="Backup or restore your profile after installing new kernel. When you restore your configuration, please wait till this app restarts with the new settings. Some settings will work only after reboot! Restore will take up to 30 sec, just wait here!" name="STweaks Settings Backup or Restore">
+
+		<button description="Backup STweaks User Settings!" name="Settings Backup" action="push-actions/config_backup_restore 1" label="BACKUP NOW"/>
+
+		<button description="Restore STweaks User Settings!" name="Settings Restore" action="push-actions/config_backup_restore 2" label="RESTORE NOW"/>
+
+	</settingsPane>
+
+</settingsTab>
+
+</settingsRoot>
+

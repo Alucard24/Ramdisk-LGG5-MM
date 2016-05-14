@@ -1,0 +1,21 @@
+#!/sbin/busybox sh
+
+if [ "a$2" != "a" ]; then
+
+	filename=$(basename "$2");
+
+	if [ "a$3" == "a" ]; then
+		evalcmd='eval "echo \$$filename"';
+		eval $evalcmd;
+	else
+		newfreq=$3;
+		evalcmd='eval "$filename=$newfreq"';
+		eval $evalcmd;
+		evalcmd='eval "echo \$$filename"';
+		eval $evalcmd;
+
+		if [ -f $2 ]; then
+			echo "$newfreq" > $2;
+		fi;
+	fi;
+fi;
