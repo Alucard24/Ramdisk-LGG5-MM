@@ -29,13 +29,13 @@ if [ ! -d /system/lib/modules ]; then
         $BB mkdir /system/lib/modules;
 fi;
 
-$BB chmod 644 /lib/modules/*.ko;
-cd /lib/modules/;
-for i in *.ko; do
-        $BB rm -f /system/lib/modules/"$i";
-done;
-$BB cp -avr * /system/lib/modules/;
-cd /;
+#$BB chmod 644 /lib/modules/*.ko;
+#cd /lib/modules/;
+#for i in *.ko; do
+#        $BB rm -f /system/lib/modules/"$i";
+#done;
+#$BB cp -avr * /system/lib/modules/;
+#cd /;
 
 # create init.d folder if missing
 if [ ! -d /system/etc/init.d ]; then
@@ -64,7 +64,7 @@ CRITICAL_PERM_FIX()
 	$BB chown -R root:root /tmp;
 	$BB chown -R root:root /res;
 	$BB chown -R root:root /sbin;
-	$BB chown -R root:root /lib;
+	# $BB chown -R root:root /lib;
 	$BB chmod -R 777 /tmp/;
 	$BB chmod -R 775 /res/;
 	$BB chmod -R 06755 /sbin/ext/;
