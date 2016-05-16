@@ -112,6 +112,10 @@
 
 	<settingsPane description="Set CPU settings to save power." name="CPU Idle and Power Settings">
 
+		<checkbox description="Only give sleepers 50% of their service deficit. This allows them to run sooner, but does not allow tons of sleepers to rip the spread apart." name="GENTLE_FAIR_SLEEPERS" action="generic01 /sys/kernel/sched/gentle_fair_sleepers" label="GENTLE_FAIR_SLEEPERS"/>
+
+		<checkbox description="Use arch dependent cpu capacity functions." name="ARCH_CAPACITY" action="generic01 /sys/kernel/sched/arch_capacity" label="ARCH_CAPACITY"/>
+
 		<checkbox description="Enable or disable Power-efficient work queues will help to reduce power consumption at the cost of slight performance overhead. By enabling this, PE work queues are used for unbound scheduled work to save load on sibling CPU cores and queuing work on CPU 0." name="Power-efficient work queues"  action="generic01 /sys/module/workqueue/parameters/power_efficient" label="Power-efficient work queues"/>
 
 	</settingsPane>
