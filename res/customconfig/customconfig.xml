@@ -428,7 +428,7 @@
 		<spinner description="Set TCP algorithm. (Default: BIC)" name="tcp_congestion_control" action="generic /proc/sys/net/ipv4/tcp_congestion_control">
 			<spinnerItem name="BIC" value="bic"/> 
 			<spinnerItem name="CUBIC" value="cubic"/>
-			<spinnerItem name="HSTCP" value="hstcp"/>
+			<spinnerItem name="HSTCP" value="highspeed"/>
 			<spinnerItem name="HTCP" value="htcp"/>
 			<spinnerItem name="RENO" value="reno"/>
 			<spinnerItem name="VENO" value="veno"/>
