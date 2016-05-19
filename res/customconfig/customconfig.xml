@@ -383,6 +383,71 @@
 
 </settingsTab>
 
+<settingsTab name="TOUCH INTERFACE">
+
+	<settingsPane description="Set BOOST Touch options" name="Touch Boost">
+
+		<spinner description="When the screen is touched the initial boost (minimum CPU0 and CPU1 frequency) is set to this value for the duration set in (input_boost_ms). From 307.200 kHz to 1.593.600 kHz (Default: 1.113.600 kHz)" name="Input Boost Frequency CPU0 and CPU1" action="input_boost_freq_01">
+			<spinnerItem name="1.593.600 kHz" value="1593600"/> 
+			<spinnerItem name="1.478.400 kHz" value="1478400"/> 
+			<spinnerItem name="1.401.600 kHz" value="1401600"/> 
+			<spinnerItem name="1.324.800 kHz" value="1324800"/> 
+			<spinnerItem name="1.228.800 kHz" value="1228800"/> 
+			<spinnerItem name="1.190.400 kHz" value="1190400"/> 
+			<spinnerItem name="1.113.600 kHz" value="1113600"/> 
+			<spinnerItem name="1.036.800 kHz" value="1036800"/> 
+			<spinnerItem name="960.000 kHz" value="960000"/> 
+			<spinnerItem name="844.800 kHz" value="844800"/> 
+			<spinnerItem name="729.600 kHz" value="729600"/> 
+			<spinnerItem name="652.800 kHz" value="652800"/> 
+			<spinnerItem name="556.800 kHz" value="556800"/> 
+			<spinnerItem name="480.000 kHz" value="480000"/> 
+			<spinnerItem name="422.400 kHz" value="422400"/> 
+			<spinnerItem name="307.200 kHz" value="307200"/> 
+			<spinnerItem name="DISABLED" value="0"/>
+		</spinner>
+
+		<spinner description="When the screen is touched the initial boost (minimum CPU2 and CPU3 frequency) is set to this value for the duration set in (input_boost_ms). From 307.200 kHz to 2.150.400 kHz (Default: 1.113.600 kHz)" name="Input Boost Frequency CPU2 and CPU3" action="input_boost_freq_23">
+			<spinnerItem name="2.150.400 kHz" value="2150400"/> 
+			<spinnerItem name="2.073.600 kHz" value="2073600"/> 
+			<spinnerItem name="1.996.800 kHz" value="1996800"/> 
+			<spinnerItem name="1.920.000 kHz" value="1920000"/> 
+			<spinnerItem name="1.824.000 kHz" value="1824000"/> 
+			<spinnerItem name="1.785.600 kHz" value="1785600"/> 
+			<spinnerItem name="1.708.800 kHz" value="1708800"/> 
+			<spinnerItem name="1.632.000 kHz" value="1632000"/> 
+			<spinnerItem name="1.555.200 kHz" value="1555200"/> 
+			<spinnerItem name="1.478.400 kHz" value="1478400"/> 
+			<spinnerItem name="1.401.600 kHz" value="1401600"/> 
+			<spinnerItem name="1.324.800 kHz" value="1324800"/> 
+			<spinnerItem name="1.248.000 kHz" value="1248000"/> 
+			<spinnerItem name="1.190.400 kHz" value="1190400"/> 
+			<spinnerItem name="1.113.600 kHz" value="1113600"/> 
+			<spinnerItem name="1.036.800 kHz" value="1036800"/> 
+			<spinnerItem name="940.800 kHz" value="940800"/> 
+			<spinnerItem name="883.200 kHz" value="883200"/> 
+			<spinnerItem name="806.400 kHz" value="806400"/> 
+			<spinnerItem name="729.600 kHz" value="729600"/> 
+			<spinnerItem name="652.800 kHz" value="652800"/> 
+			<spinnerItem name="556.800 kHz" value="556800"/> 
+			<spinnerItem name="480.000 kHz" value="480000"/> 
+			<spinnerItem name="403.200 kHz" value="403200"/> 
+			<spinnerItem name="307.200 kHz" value="307200"/> 
+			<spinnerItem name="DISABLED" value="0"/>
+		</spinner>
+
+	</settingsPane>
+
+	<settingsPane description="Set Boost Touch time" name="Touch Time">
+
+		<seekBar description="Duration of the initial boost period (input_boost_freq). From 20 ms to 500 ms (Default: 40 ms)" name="input_boost_ms" action="generic /sys/module/alu_t_boost/parameters/input_boost_ms" unit="ms" min="20" reversed="false" step="10" max="500"/>
+
+		<seekBar description="Here you can set Touch Boost interval in micro seconds! 100ms is equal 0.1sec, when touch screen report touch here we set timer for how long to wait before setting core min frequency for duration above, this is Ultra Fast even on 500ms" name="CPU Touch Boost Interval" action="generic /sys/module/alu_t_boost/parameters/min_input_interval" unit="ms" min="100" reversed="false" step="50" max="1500"/>
+
+	</settingsPane>
+
+</settingsTab>
+
 <settingsTab name="IO">
 
 	<settingsPane description="Tune IO settings managed by Kernel" name="IO Tuning">
