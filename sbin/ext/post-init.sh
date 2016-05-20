@@ -69,7 +69,8 @@ CRITICAL_PERM_FIX()
 	$BB chmod -R 775 /res/;
 	$BB chmod -R 06755 /sbin/ext/;
 	$BB chmod 06755 /sbin/busybox;
-	$BB chmod 06755 /system/xbin/busybox;
+	#$BB chmod 06755 /system/xbin/busybox;
+	$BB chmod 0555 /system/xbin/busybox;
 }
 CRITICAL_PERM_FIX;
 

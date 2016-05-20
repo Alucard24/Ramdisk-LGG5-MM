@@ -59,12 +59,12 @@ cd /;
 $BB cp /sbin/busybox /system/xbin/;
 
 /system/xbin/busybox --install -s /system/xbin/
-chmod 06755 /system/xbin/busybox;
-if [ -e /system/xbin/su ]; then
-	$BB chmod 06755 /system/xbin/su;
-fi;
-if [ -e /system/xbin/daemonsu ]; then
-	$BB chmod 06755 /system/xbin/daemonsu;
-fi;
+chmod 0555 /system/xbin/busybox;
+#if [ -e /system/xbin/su ]; then
+#	$BB chmod 06755 /system/xbin/su;
+#fi;
+#if [ -e /system/xbin/daemonsu ]; then
+#	$BB chmod 06755 /system/xbin/daemonsu;
+#fi;
 
 $BB sh /sbin/ext/post-init.sh;
