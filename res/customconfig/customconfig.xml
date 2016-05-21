@@ -407,7 +407,7 @@
 			<spinnerItem name="DISABLED" value="0"/>
 		</spinner>
 
-		<spinner description="When the screen is touched the initial boost (minimum CPU2 and CPU3 frequency) is set to this value for the duration set in (input_boost_ms). From 307.200 kHz to 2.150.400 kHz (Default: DISABLED)" name="Input Boost Frequency CPU2 and CPU3" action="input_boost_freq_23">
+		<spinner description="When the screen is touched the initial boost (minimum CPU2 and CPU3 frequency) is set to this value for the duration set in (input_boost_ms). From 307.200 kHz to 2.150.400 kHz (Default: 1.248.000 kHz)" name="Input Boost Frequency CPU2 and CPU3" action="input_boost_freq_23">
 			<spinnerItem name="2.150.400 kHz" value="2150400"/> 
 			<spinnerItem name="2.073.600 kHz" value="2073600"/> 
 			<spinnerItem name="1.996.800 kHz" value="1996800"/> 
