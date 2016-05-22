@@ -383,6 +383,40 @@
 
 </settingsTab>
 
+<settingsTab name="GPU CORE">
+
+	<settingsPane description="Here you can select the GPU Governor, set Min and Max GPU frequency." name="GPU Governors and settings">
+
+		<spinner description="Select GPU Governor that will control GPU frequency according to GPU load and system needs - if you select Performance Governor, then the GPU will be at MAX frequency nonstop!" name="GPU Active Governor" action="gpu_governor">
+			<spinnerItem name="MSM-Adreno (default)" value="msm-adreno-tz"/> 
+			<spinnerItem name="Simple_Ondemand" value="simple_ondemand"/> 
+			<spinnerItem name="Performance" value="performance"/> 
+		</spinner>
+
+		<spinner description="Select GPU Max frequency when needed! GPU will stay at MIN frequency on IDLE." name="GPU Max Speed" action="generic /sys/class/devfreq/b00000.qcom,kgsl-3d0/max_freq">
+			<spinnerItem name="624 MHz" value="624000000"/> 
+			<spinnerItem name="560 MHz" value="560000000"/> 
+			<spinnerItem name="510 MHz" value="510000000"/> 
+			<spinnerItem name="402 MHz" value="401800000"/> 
+			<spinnerItem name="315 MHz" value="315000000"/> 
+			<spinnerItem name="214 MHz" value="214000000"/> 
+			<spinnerItem name="133 MHz" value="133000000"/> 
+		</spinner>
+
+		<spinner description="Select GPU Min frequency when going to IDLE - if you set higher than 133 MHz, then the GPU will hold selected frequency on IDLE." name="GPU Min Speed" action="generic /sys/class/devfreq/b00000.qcom,kgsl-3d0/min_freq">
+			<spinnerItem name="624 MHz" value="624000000"/> 
+			<spinnerItem name="560 MHz" value="560000000"/> 
+			<spinnerItem name="510 MHz" value="510000000"/> 
+			<spinnerItem name="402 MHz" value="401800000"/> 
+			<spinnerItem name="315 MHz" value="315000000"/> 
+			<spinnerItem name="214 MHz" value="214000000"/> 
+			<spinnerItem name="133 MHz" value="133000000"/> 
+		</spinner>
+
+	</settingsPane>
+
+</settingsTab>
+
 <settingsTab name="TOUCH INTERFACE">
 
 	<settingsPane description="Set BOOST Touch options" name="Touch Boost">
