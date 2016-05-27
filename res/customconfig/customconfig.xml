@@ -544,6 +544,11 @@
 
 		<button description="Click here to see current SELINUX status! ON or OFF globaly. default is OFF, you can turn it ON with button below." name="SELINUX STATUS CHECK" action="push-actions/selinux_check" label="SELINUX STATUS CHECK"/>
 
+		<spinner description="Allows you to change your SELinux (Security-Enhanced Linux) Status from Enforcing (policy is enforced) to Permissive (prints warnings instead of enforcing)." name="SeLinux Control" action="generic01 /sys/fs/selinux/enforce">
+			<spinnerItem name="Enforcing" value="on"/> 
+			<spinnerItem name="Permissive" value="off"/> 
+		</spinner>
+
 	</settingsPane>
 
 	<settingsPane description="Set GPS and NTP settings and options." name="GPS - NTP">

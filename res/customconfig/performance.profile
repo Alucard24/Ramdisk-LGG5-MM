@@ -68,6 +68,7 @@ lowmem_reserve=default
 dirty_background_ratio=5
 dirty_ratio=20
 tcp_congestion_control=bic
+enforce=off
 init_d=off
 cortexbrain_background_process=1
 cortexbrain_memory=on

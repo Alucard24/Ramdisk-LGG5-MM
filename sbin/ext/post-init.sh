@@ -20,6 +20,9 @@ OPEN_RW()
 }
 OPEN_RW;
 
+# disable selinux enforcing
+echo "0" > /sys/fs/selinux/enforce;
+
 # run ROM scripts
 $BB sh /system/etc/init.qcom.post_boot.sh;
 
@@ -107,7 +110,7 @@ $BB chmod -R 0777 /data/.alucard/;
 # just set numer $RESET_MAGIC + 1 and profiles will be reset one time on next boot with new kernel.
 # incase that ADMIN feel that something wrong with global STweaks config and profiles, then ADMIN can add +1 to CLEAN_ALU_DIR
 # to clean all files on first boot from /data/.alucard/ folder.
-RESET_MAGIC=2;
+RESET_MAGIC=1;
 CLEAN_ALU_DIR=1;
 
 if [ ! -e /data/.alucard/reset_profiles ]; then
