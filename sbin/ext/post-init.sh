@@ -254,6 +254,13 @@ fi;
 	PROFILE=$(cat /data/.alucard/.active.profile);
 	. /data/.alucard/"$PROFILE".profile;
 
+	# apply selinux enforce setting
+	if [ "$enforce" == "on" ]; then
+		echo "1" > /sys/fs/selinux/enforce;
+	else
+		echo "0" > /sys/fs/selinux/enforce;
+	fi;
+
 	# script finish here, so let me know when
 	TIME_NOW=$(date)
 	echo "$TIME_NOW" > /data/boot_log_alu
