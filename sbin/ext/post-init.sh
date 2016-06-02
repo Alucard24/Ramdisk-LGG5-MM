@@ -24,7 +24,8 @@ OPEN_RW;
 echo "0" > /sys/fs/selinux/enforce;
 
 # run ROM scripts
-$BB sh /system/etc/init.qcom.post_boot.sh;
+# $BB sh /system/etc/init.qcom.post_boot.sh;
+$BB sh /init.qcom.post_boot.sh;
 
 OPEN_RW;
 # clean old modules from /system and add new from ramdisk
