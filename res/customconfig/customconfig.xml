@@ -144,6 +144,8 @@
 			<spinnerItem name="ondemand" value="ondemand"/> 
 		</spinner>
 
+		<checkbox description="Interactive governor cpufreq driver helper. Disabled by default." name="lge triton" action="lge_triton" label="LGE Triton"/>
+
 		<button description="Use this button to push all new changes to the governor in real time!" name="GOV Policy Install" action="push-actions/cpu_tuning_update" label="Apply settings to GOV core"/>
 
 	</settingsPane>

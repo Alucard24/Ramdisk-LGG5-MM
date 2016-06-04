@@ -1,0 +1,23 @@
+#!/sbin/busybox sh
+
+# $1 - "lge_triton"
+# $2 - value=
+# Created By Alucard24
+
+if [ "a$2" != "a" ]; then
+	lge_triton=$2;
+
+	case "${lge_triton}" in
+		on)
+			echo "1" > /sys/devices/system/cpu/triton/enable;
+		;;
+		off)
+			echo "0" > /sys/devices/system/cpu/triton/enable;
+		;;
+		*)
+			lge_triton=off;
+		;;
+	esac;
+fi;
+
+echo ${lge_triton};
