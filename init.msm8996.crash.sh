@@ -35,7 +35,7 @@ export PATH
 enable_trace_events()
 {
     # core setting
-    # echo 55 > /sys/module/msm_rtb/parameters/filter
+    echo 55 > /sys/module/msm_rtb/parameters/filter
     echo 1 > /sys/kernel/debug/tracing/tracing_on
 
     # schedular
@@ -89,7 +89,7 @@ enable_trace_events()
 disable_trace_events()
 {
     # core setting
-    # echo 0 > /sys/module/msm_rtb/parameters/filter
+    echo 0 > /sys/module/msm_rtb/parameters/filter
     echo 0 > /sys/kernel/debug/tracing/tracing_on
 
     # schedular
