@@ -262,6 +262,15 @@ fi;
 		echo "0" > /sys/fs/selinux/enforce;
 	fi;
 
+	# apply lge triton setting
+	if [ "$lge_triton" == "on" ]; then
+		echo "1" > /sys/devices/system/cpu/triton/enable;
+		echo "16" > /sys/devices/system/cpu/triton/debug;
+	else
+		echo "0" > /sys/devices/system/cpu/triton/enable;
+		echo "0" > /sys/devices/system/cpu/triton/debug;
+	fi;
+
 	# script finish here, so let me know when
 	TIME_NOW=$(date)
 	echo "$TIME_NOW" > /data/boot_log_alu
