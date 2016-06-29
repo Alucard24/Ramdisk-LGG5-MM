@@ -526,7 +526,7 @@
 
 	<settingsPane description="Transmission Control Protocol (TCP) uses a network congestion-avoidance algorithm that includes various aspects of an additive increase|multiplicative decrease (AIMD) scheme, with other schemes such as slow-start to achieve congestion avoidance. The TCP congestion-avoidance algorithm is the primary basis for congestion control in the Internet." name="TCP Congestion control tweaks">
 
-		<spinner description="Set TCP algorithm. (Default: BIC)" name="tcp_congestion_control" action="generic /proc/sys/net/ipv4/tcp_congestion_control">
+		<spinner description="Set TCP algorithm. (Default: CUBIC)" name="tcp_congestion_control" action="generic /proc/sys/net/ipv4/tcp_congestion_control">
 			<spinnerItem name="BIC" value="bic"/> 
 			<spinnerItem name="CUBIC" value="cubic"/>
 			<spinnerItem name="HSTCP" value="highspeed"/>
