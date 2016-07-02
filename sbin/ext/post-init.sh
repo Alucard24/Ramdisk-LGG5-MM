@@ -279,9 +279,17 @@ fi;
 	if [ "$lge_triton" == "on" ]; then
 		echo "1" > /sys/devices/system/cpu/triton/enable;
 		echo "16" > /sys/devices/system/cpu/triton/debug;
+		if [ -e /system/bin/triton ]; then
+			/system/bin/stop triton
+			/system/bin/start triton
+			$BB renice -n -20 -p "$(pgrep -f "/system/bin/triton")";
+		fi;
 	else
 		echo "0" > /sys/devices/system/cpu/triton/enable;
 		echo "0" > /sys/devices/system/cpu/triton/debug;
+		if [ -e /system/bin/triton ]; then
+				/system/bin/stop triton
+		fi;
 	fi;
 
 	# script finish here, so let me know when

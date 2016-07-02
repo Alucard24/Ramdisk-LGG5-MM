@@ -4,6 +4,8 @@
 # $2 - value=
 # Created By Alucard24
 
+BB=/sbin/busybox
+
 if [ "a$2" != "a" ]; then
 	lge_triton=$2;
 
@@ -11,10 +13,18 @@ if [ "a$2" != "a" ]; then
 		on)
 			echo "1" > /sys/devices/system/cpu/triton/enable;
 			echo "16" > /sys/devices/system/cpu/triton/debug;
+			if [ -e /system/bin/triton ]; then
+				/system/bin/stop triton
+				/system/bin/start triton
+				$BB renice -n -20 -p "$(pgrep -f "/system/bin/triton")";
+			fi;
 		;;
 		off)
 			echo "0" > /sys/devices/system/cpu/triton/enable;
 			echo "0" > /sys/devices/system/cpu/triton/debug;
+			if [ -e /system/bin/triton ]; then
+				/system/bin/stop triton
+			fi;
 		;;
 		*)
 			lge_triton=off;
