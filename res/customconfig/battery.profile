@@ -8,7 +8,6 @@ arch_capacity=off
 power_efficient=off
 scaling_governor_cpu01=alucard
 scaling_governor_cpu23=alucard
-lge_triton=off
 up_threshold_01=80
 up_threshold_23=80
 sampling_rate_01=20000
