@@ -13,7 +13,7 @@ service triton /system/bin/triton
 
 #write params for triton
 on property:sys.boot_completed=1
-   start triton
+   #start triton
 #store default values
    write /sys/devices/system/cpu/triton/debug 16
    write /sys/devices/system/cpu/triton/enable 1
