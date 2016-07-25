@@ -1,0 +1,28 @@
+#!/sbin/busybox sh
+
+# $1 - "power_efficient"
+# $2 - value=
+# Created By Alucard24
+
+BB=/sbin/busybox
+
+if [ "a$2" != "a" ]; then
+	power_efficient=$2;
+
+	case "${power_efficient}" in
+		on)
+			echo "1" > /sys/module/workqueue/parameters/power_efficient;
+		;;
+		off)
+			echo "0" > /sys/module/workqueue/parameters/power_efficient;
+		;;
+		sleep)
+			echo "0" > /sys/module/workqueue/parameters/power_efficient;
+		;;
+		*)
+			power_efficient=off;
+		;;
+	esac;
+fi;
+
+echo ${power_efficient};

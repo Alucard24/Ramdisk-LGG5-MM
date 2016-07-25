@@ -116,7 +116,11 @@
 
 		<checkbox description="Use arch dependent cpu capacity functions." name="ARCH_CAPACITY" action="generic01 /sys/kernel/sched/arch_capacity" label="ARCH_CAPACITY"/>
 
-		<checkbox description="Enable or disable Power-efficient work queues will help to reduce power consumption at the cost of slight performance overhead. By enabling this, PE work queues are used for unbound scheduled work to save load on sibling CPU cores and queuing work on CPU 0." name="Power-efficient work queues"  action="generic01 /sys/module/workqueue/parameters/power_efficient" label="Power-efficient work queues"/>
+		<spinner description="Enable or disable Power-efficient work queues will help to reduce power consumption at the cost of slight performance overhead. By enabling this, PE work queues are used for unbound scheduled work to save load on sibling CPU cores and queuing work on CPU 0." name="Power-efficient work queues" action="power_efficient">
+			<spinnerItem name="On" value="on"/>
+			<spinnerItem name="Off" value="off"/>
+			<spinnerItem name="Sleep" value="sleep"/>
+		</spinner>
 
 	</settingsPane>
 
