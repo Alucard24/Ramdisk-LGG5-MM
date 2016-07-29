@@ -1365,16 +1365,13 @@ case "$target" in
         # echo "0:1036800 1:0 2:1036800 3:0" > /sys/module/cpu_boost/parameters/multi_boost_freq
         # Setting b.L scheduler parameters
         echo 0 > /proc/sys/kernel/sched_boost
-        # echo 1 > /proc/sys/kernel/sched_migration_fixup
-        # echo 95 > /proc/sys/kernel/sched_upmigrate
-        # echo 90 > /proc/sys/kernel/sched_downmigrate
-        echo 45 > /proc/sys/kernel/sched_upmigrate
-        echo 45 > /proc/sys/kernel/sched_downmigrate
+        echo 1 > /proc/sys/kernel/sched_migration_fixup
+        echo 95 > /proc/sys/kernel/sched_upmigrate
+        echo 90 > /proc/sys/kernel/sched_downmigrate
         echo 400000 > /proc/sys/kernel/sched_freq_inc_notify
         echo 400000 > /proc/sys/kernel/sched_freq_dec_notify
         echo 3 > /proc/sys/kernel/sched_spill_nr_run
         echo 100 > /proc/sys/kernel/sched_init_task_load
-        echo 9 > /proc/sys/kernel/sched_upmigrate_min_nice
         # Enable bus-dcvs
         for cpubw in /sys/class/devfreq/*qcom,cpubw*
         do
