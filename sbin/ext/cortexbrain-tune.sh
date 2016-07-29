@@ -134,6 +134,17 @@ CPU_GOV_TWEAKS()
 			SYSTEM_GOVERNOR_01=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor);
 			SYSTEM_GOVERNOR_23=$(cat /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor);
 
+			# Force unmask hotplugged cpus
+			echo 1 > /sys/module/msm_thermal/core_control/force_unmask;
+			# disable thermal bcl hotplug to switch governor;
+			echo 0 > /sys/module/msm_thermal/core_control/enabled;
+			echo -n disable > /sys/devices/soc/soc:qcom,bcl/mode;
+			bcl_hotplug_mask=`cat /sys/devices/soc/soc:qcom,bcl/hotplug_mask`;
+			echo 0 > /sys/devices/soc/soc:qcom,bcl/hotplug_mask;
+			bcl_soc_hotplug_mask=`cat /sys/devices/soc/soc:qcom,bcl/hotplug_soc_mask`;
+			echo 0 > /sys/devices/soc/soc:qcom,bcl/hotplug_soc_mask;
+			echo -n enable > /sys/devices/soc/soc:qcom,bcl/mode;
+
 			sampling_rate_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/sampling_rate";
 			if [ ! -e $sampling_rate_tmp_01 ]; then
 				sampling_rate_tmp_01="/dev/null";
@@ -387,6 +398,15 @@ CPU_GOV_TWEAKS()
 			echo "$cpus_up_rate_23" > $cpus_up_rate_tmp_23;
 			echo "$cpus_down_rate_01" > $cpus_down_rate_tmp_01;
 			echo "$cpus_down_rate_23" > $cpus_down_rate_tmp_23;
+
+			# re-enable thermal and BCL hotplug;
+			echo 1 > /sys/module/msm_thermal/core_control/enabled;
+			echo -n disable > /sys/devices/soc/soc:qcom,bcl/mode;
+			echo "$bcl_hotplug_mask" > /sys/devices/soc/soc:qcom,bcl/hotplug_mask;
+			echo "$bcl_soc_hotplug_mask" > /sys/devices/soc/soc:qcom,bcl/hotplug_soc_mask;
+			echo -n enable > /sys/devices/soc/soc:qcom,bcl/mode;
+			# recover offlined_mask in thermal.
+			echo 0 > /sys/module/msm_thermal/core_control/force_unmask;
 		fi;
 
 		log -p i -t "$FILE_NAME" "*** CPU_GOV_TWEAKS: $state ***: enabled";
