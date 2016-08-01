@@ -553,6 +553,21 @@
 			<spinnerItem name="Permissive" value="off"/> 
 		</spinner>
 
+		<spinner description="Google Play Services Battery Drain Workaround. Reboot is needed!" name="GS Enable On Boot" action="generic_cortex /tmp/gpsfixer">
+			<spinnerItem name="Enabled" value="yes"/> 
+			<spinnerItem name="Disabled" value="no"/> 
+		</spinner>
+
+		<spinner description="Kernel Sleepers Tweaks. Reboot is needed!" name="KST Enable On Boot" action="generic_cortex /tmp/ksleeperstweak">
+			<spinnerItem name="Enabled" value="yes"/> 
+			<spinnerItem name="Disabled" value="no"/> 
+		</spinner>
+
+		<spinner description="Disable Logcat. Reboot is needed!" name="DL Disable On Boot" action="generic_cortex /tmp/disablelogcat">
+			<spinnerItem name="Yes" value="yes"/> 
+			<spinnerItem name="No" value="no"/> 
+		</spinner>
+
 	</settingsPane>
 
 	<settingsPane description="Set GPS and NTP settings and options." name="GPS - NTP">
