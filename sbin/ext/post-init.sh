@@ -380,11 +380,11 @@ fi;
 	# http://forum.xda-developers.com/lg-g5/development/h850-genisys-rom-1-0-genisys-theme-1-0-t3421950
 	if [ "$ksleeperstweak" == "on" ]; then
 		$BB echo "NO_AFFINE_WAKEUPS" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_ARCH_POWER" >> /sys/kernel/debug/sched_features;
+		# $BB echo "NO_ARCH_CAPACITY" >> /sys/kernel/debug/sched_features;
 		$BB echo "NO_CACHE_HOT_BUDDY" >> /sys/kernel/debug/sched_features;
 		$BB echo "NO_DOUBLE_TICK" >> /sys/kernel/debug/sched_features;
 		$BB echo "NO_FORCE_SD_OVERLAP" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_GENTLE_FAIR_SLEEPERS" >> /sys/kernel/debug/sched_features;
+		# $BB echo "NO_GENTLE_FAIR_SLEEPERS" >> /sys/kernel/debug/sched_features;
 		$BB echo "NO_HRTICK" >> /sys/kernel/debug/sched_features;
 		$BB echo "NO_LAST_BUDDY" >> /sys/kernel/debug/sched_features;
 		$BB echo "NO_LB_BIAS" >> /sys/kernel/debug/sched_features;
