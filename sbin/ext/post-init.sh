@@ -242,33 +242,12 @@ OPEN_RW;
 # Fix critical perms again after init.d mess
 CRITICAL_PERM_FIX;
 
-if [ "$stweaks_boot_control" == "yes" ]; then
-	$BB sh /sbin/ext/cortexbrain-tune.sh apply_cpu update > /dev/null;
-	# Load Custom Modules
-	# MODULES_LOAD;
-fi;
-
-(
-	sleep 30;
-
-	# get values from profile
-	PROFILE=$(cat /data/.alucard/.active.profile);
-	. /data/.alucard/"$PROFILE".profile;
-
-	# apply selinux enforce setting
-	if [ "$enforce" == "on" ]; then
-		echo "1" > /sys/fs/selinux/enforce;
-	else
-		echo "0" > /sys/fs/selinux/enforce;
-	fi;
-
-	# disable lge triton service
-	if [ -e /system/bin/triton ]; then
-		/system/bin/stop triton
-	fi;
-
-	# Google Services battery drain fixer by BySezerSimsek
-	# http://forum.xda-developers.com/lg-g5/development/h850-genisys-rom-1-0-genisys-theme-1-0-t3421950
+####################################################################################################
+# Google Services battery drain fixer by BySezerSimsek
+# http://forum.xda-developers.com/lg-g5/development/h850-genisys-rom-1-0-genisys-theme-1-0-t3421950
+####################################################################################################
+GOOGLE_SERVICE_BD_FIXER()
+{
 	if [ "$gpsfixer" == "on" ]; then
 		pm disable com.google.android.gms/.ads.settings.AdsSettingsActivity
 		pm disable com.google.android.gms/com.google.android.location.places.ui.aliaseditor.AliasEditorActivity
@@ -375,40 +354,73 @@ fi;
 		pm disable com.google.android.gsf/.checkin.EventLogService
 		pm disable com.google.android.gsf/.update.SystemUpdateService
 	fi;
+}
 
-	# Kernel sleepers by BySezerSimsek
-	# http://forum.xda-developers.com/lg-g5/development/h850-genisys-rom-1-0-genisys-theme-1-0-t3421950
-	if [ "$ksleeperstweak" == "on" ]; then
-		$BB echo "NO_AFFINE_WAKEUPS" >> /sys/kernel/debug/sched_features;
-		# $BB echo "NO_ARCH_CAPACITY" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_CACHE_HOT_BUDDY" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_DOUBLE_TICK" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_FORCE_SD_OVERLAP" >> /sys/kernel/debug/sched_features;
-		# $BB echo "NO_GENTLE_FAIR_SLEEPERS" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_HRTICK" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_LAST_BUDDY" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_LB_BIAS" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_LB_MIN" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_NEW_FAIR_SLEEPERS" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_NEXT_BUDDY" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_NONTASK_POWER" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_NORMALIZED_SLEEPERS" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_OWNER_SPIN" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_RT_RUNTIME_SHARE" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_START_DEBIT" >> /sys/kernel/debug/sched_features;
-		$BB echo "NO_TTWU_QUEUE" >> /sys/kernel/debug/sched_features;
+if [ "$stweaks_boot_control" == "yes" ]; then
+	# Apply cpu governors and hotplugs settings
+	$BB sh /sbin/ext/cortexbrain-tune.sh apply_cpu update > /dev/null;
+
+	# Load Custom Modules
+	# MODULES_LOAD;
+
+	# Google Services battery drain fixer by BySezerSimsek
+	GOOGLE_SERVICE_BD_FIXER;
+fi;
+
+(
+	sleep 30;
+
+	# get values from profile
+	PROFILE=$(cat /data/.alucard/.active.profile);
+	. /data/.alucard/"$PROFILE".profile;
+
+	# apply selinux enforce setting
+	if [ "$stweaks_boot_control" == "yes" ]; then
+		if [ "$enforce" == "on" ]; then
+			echo "1" > /sys/fs/selinux/enforce;
+		else
+			echo "0" > /sys/fs/selinux/enforce;
+		fi;
+
+		# Kernel sleepers by BySezerSimsek
+		# http://forum.xda-developers.com/lg-g5/development/h850-genisys-rom-1-0-genisys-theme-1-0-t3421950
+		if [ "$ksleeperstweak" == "on" ]; then
+			$BB echo "NO_AFFINE_WAKEUPS" >> /sys/kernel/debug/sched_features;
+			# $BB echo "NO_ARCH_CAPACITY" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_CACHE_HOT_BUDDY" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_DOUBLE_TICK" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_FORCE_SD_OVERLAP" >> /sys/kernel/debug/sched_features;
+			# $BB echo "NO_GENTLE_FAIR_SLEEPERS" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_HRTICK" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_LAST_BUDDY" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_LB_BIAS" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_LB_MIN" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_NEW_FAIR_SLEEPERS" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_NEXT_BUDDY" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_NONTASK_POWER" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_NORMALIZED_SLEEPERS" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_OWNER_SPIN" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_RT_RUNTIME_SHARE" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_START_DEBIT" >> /sys/kernel/debug/sched_features;
+			$BB echo "NO_TTWU_QUEUE" >> /sys/kernel/debug/sched_features;
+		fi;
+
+		# Disable logcat by BySezerSimsek
+		# http://forum.xda-developers.com/lg-g5/development/h850-genisys-rom-1-0-genisys-theme-1-0-t3421950
+		if [ "$disablelogcat" == "on" ]; then
+			setprop logcat.live disable
+			$BB rm -f /dev/log/main
+			setprop debugtool.anrhistory 0
+			setprop profiler.debugmonitor false
+			setprop profiler.launch false
+			setprop profiler.hung.dumpdobugreport false
+			setprop persist.android.strictmode 0
+		fi;
 	fi;
 
-	# Disable logcat by BySezerSimsek
-	# http://forum.xda-developers.com/lg-g5/development/h850-genisys-rom-1-0-genisys-theme-1-0-t3421950
-	if [ "$disablelogcat" == "on" ]; then
-		setprop logcat.live disable
-		$BB rm -f /dev/log/main
-		setprop debugtool.anrhistory 0
-		setprop profiler.debugmonitor false
-		setprop profiler.launch false
-		setprop profiler.hung.dumpdobugreport false
-		setprop persist.android.strictmode 0
+	# disable lge triton service
+	if [ -e /system/bin/triton ]; then
+		/system/bin/stop triton
 	fi;
 
 	# script finish here, so let me know when
