@@ -558,11 +558,6 @@
 			<spinnerItem name="Disabled" value="off"/> 
 		</spinner>
 
-		<spinner description="Kernel Sleepers Tweaks. Reboot is needed!" name="KST Enable On Boot" action="generic_cortex /tmp/ksleeperstweak">
-			<spinnerItem name="Enabled" value="on"/> 
-			<spinnerItem name="Disabled" value="off"/> 
-		</spinner>
-
 		<spinner description="Disable Logcat. Reboot is needed!" name="DL Disable On Boot" action="generic_cortex /tmp/disablelogcat">
 			<spinnerItem name="Yes" value="on"/> 
 			<spinnerItem name="No" value="off"/> 

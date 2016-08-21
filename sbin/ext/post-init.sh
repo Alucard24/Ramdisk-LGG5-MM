@@ -390,29 +390,6 @@ fi;
 			echo "0" > /sys/fs/selinux/enforce;
 		fi;
 
-		# Kernel sleepers by BySezerSimsek
-		# http://forum.xda-developers.com/lg-g5/development/h850-genisys-rom-1-0-genisys-theme-1-0-t3421950
-		if [ "$ksleeperstweak" == "on" ]; then
-			$BB echo "NO_AFFINE_WAKEUPS" >> /sys/kernel/debug/sched_features;
-			# $BB echo "NO_ARCH_CAPACITY" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_CACHE_HOT_BUDDY" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_DOUBLE_TICK" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_FORCE_SD_OVERLAP" >> /sys/kernel/debug/sched_features;
-			# $BB echo "NO_GENTLE_FAIR_SLEEPERS" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_HRTICK" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_LAST_BUDDY" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_LB_BIAS" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_LB_MIN" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_NEW_FAIR_SLEEPERS" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_NEXT_BUDDY" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_NONTASK_POWER" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_NORMALIZED_SLEEPERS" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_OWNER_SPIN" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_RT_RUNTIME_SHARE" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_START_DEBIT" >> /sys/kernel/debug/sched_features;
-			$BB echo "NO_TTWU_QUEUE" >> /sys/kernel/debug/sched_features;
-		fi;
-
 		# Disable logcat by BySezerSimsek
 		# http://forum.xda-developers.com/lg-g5/development/h850-genisys-rom-1-0-genisys-theme-1-0-t3421950
 		if [ "$disablelogcat" == "on" ]; then

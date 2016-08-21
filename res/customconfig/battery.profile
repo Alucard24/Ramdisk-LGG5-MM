@@ -70,7 +70,6 @@ dirty_ratio=20
 tcp_congestion_control=cubic
 enforce=off
 gpsfixer=off
-ksleeperstweak=off
 disablelogcat=off
 init_d=off
 cortexbrain_background_process=1
