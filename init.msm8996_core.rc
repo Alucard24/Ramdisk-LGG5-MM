@@ -45,6 +45,9 @@ on fs
     # Executing tune2fs to reserve some region in /data.(40MB)
     exec /system/bin/tune2fs -u system -r 10240 /dev/block/bootdevice/by-name/userdata
 
+    # LGE_CHANGE for downgrade from NOS
+    chown media media /persist-lg/audio/full_mixer_paths.xml
+
 # LGE_CHANGE_START
 on post-fs
     # execute sreadahead daemon to reduce boot-time
