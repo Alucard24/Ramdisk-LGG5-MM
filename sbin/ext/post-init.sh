@@ -360,14 +360,7 @@ GOOGLE_SERVICE_BD_FIXER()
 	fi;
 }
 
-# get values from profile
-PROFILE=$(cat /data/.alucard/.active.profile);
-. /data/.alucard/"$PROFILE".profile;
-
 if [ "$stweaks_boot_control" == "yes" ]; then
-	# Apply cpu governors and hotplugs settings
-	$BB sh /sbin/ext/cortexbrain-tune.sh apply_cpu update > /dev/null;
-
 	# Load Custom Modules
 	# MODULES_LOAD;
 
@@ -401,6 +394,9 @@ fi;
 			setprop profiler.hung.dumpdobugreport false
 			setprop persist.android.strictmode 0
 		fi;
+
+		# Apply cpu governors and hotplugs settings
+		$BB sh /sbin/ext/cortexbrain-tune.sh apply_cpu update > /dev/null;
 	fi;
 
 	# disable lge triton service
