@@ -397,6 +397,9 @@ fi;
 
 		# Apply cpu governors and hotplugs settings
 		$BB sh /sbin/ext/cortexbrain-tune.sh apply_cpu update > /dev/null;
+
+		# Apply sched settings
+		$BB sh /sbin/ext/cortexbrain-tune.sh apply_sched update > /dev/null;
 	fi;
 
 	# disable lge triton service
