@@ -397,7 +397,7 @@
 
 		<seekBar description="A task whose nice value is greater than this tunable value will never be considered as a big task (it will not be allowed to run on a high-performance CPU). (Default: 15)" name="sched_upmigrate_min_nice" action="generic_cortex /tmp/sched_upmigrate_min_nice" unit="int" min="1" reversed="false" step="1" max="30"/>
 
-		<seekBar description="This tunable is a percentage. If a task consumes more than this much of a CPU, the CPU is considered too small for the task and the scheduler will try to find a bigger CPU to place the task on. (Default: 90%)" name="sched_downmigrate" action="generic_cortex /tmp/sched_downmigrate" unit="%" min="10" reversed="false" step="1" max="100"/>
+		<seekBar description="This tunable is a percentage. It exists to control hysteresis. Lets say a task migrated to a high-performance cpu when it crossed 95% demand on a power-efficient cpu. We don't let it come back to a power-efficient cpu until its demand in reference to the power-efficient cpu drops less than 90%. (Default: 90%)" name="sched_downmigrate" action="generic_cortex /tmp/sched_downmigrate" unit="%" min="10" reversed="false" step="1" max="100"/>
 
 		<seekBar description="The intent of this tunable is similar to sched_spill_load, except it applies to nr_running count of a cpu. A non-small task can spill over to a higher-performance cpu when the most power-efficient cpu where it can normally fit has more tasks than sched_spill_nr_run. (Default: 3)" name="sched_spill_nr_run" action="generic_cortex /tmp/sched_spill_nr_run" unit="int" min="1" reversed="false" step="1" max="15"/>
 
