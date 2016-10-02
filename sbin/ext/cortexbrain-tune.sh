@@ -154,6 +154,15 @@ CPU_GOV_TWEAKS()
 				sampling_rate_tmp_23="/dev/null";
 			fi;
 
+			timer_rate_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/timer_rate";
+			if [ ! -e $timer_rate_tmp_01 ]; then
+				timer_rate_tmp_01="/dev/null";
+			fi;
+			timer_rate_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/timer_rate";
+			if [ ! -e $timer_rate_tmp_23 ]; then
+				timer_rate_tmp_23="/dev/null";
+			fi;
+
 			up_threshold_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/up_threshold";
 			if [ ! -e $up_threshold_tmp_01 ]; then
 				up_threshold_tmp_01="/dev/null";
@@ -354,6 +363,8 @@ CPU_GOV_TWEAKS()
 
 			echo "$sampling_rate_01" > $sampling_rate_tmp_01;
 			echo "$sampling_rate_23" > $sampling_rate_tmp_23;
+			echo "$timer_rate_01" > $timer_rate_tmp_01;
+			echo "$timer_rate_23" > $timer_rate_tmp_23;
 			echo "$up_threshold_01" > $up_threshold_tmp_01;
 			echo "$up_threshold_23" > $up_threshold_tmp_23;
 			echo "$inc_cpu_load_at_min_freq_01" > $inc_cpu_load_at_min_freq_tmp_01;
