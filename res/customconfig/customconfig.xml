@@ -235,13 +235,13 @@
 
 		<seekBar description="This threshold is used as up threshold while sampling at frequencies less than freq_for_responsiveness. Above that, normal inc_cpu_load is used. This gives us an option to make scaling aggressive/relaxed until a frequency and normal for higher frequencies. (CPU2 or CPU3 only for Nightmare, Alucard). (Default: 60%)" name="inc_cpu_load_at_min_freq_23" action="generic_cortex /tmp/inc_cpu_load_at_min_freq_23" unit="%" min="1" reversed="false" step="1" max="100"/>
 
-		<seekBar description="The frequency at which governor scales CPU(CPU0 or CPU1) up. Load big or equal inc_cpu_load: cpu scaled up. (Only for Nightmare, Alucard). (Default: 70%)" name="inc_cpu_load_01" action="generic_cortex /tmp/inc_cpu_load_01" unit="%" min="10" reversed="false" step="1" max="100"/>
+		<seekBar description="The frequency at which governor scales CPU(CPU0 or CPU1) up. Load big or equal inc_cpu_load: cpu scaled up. (Only for Nightmare, Alucard). (Default: 80%)" name="inc_cpu_load_01" action="generic_cortex /tmp/inc_cpu_load_01" unit="%" min="10" reversed="false" step="1" max="100"/>
 
-		<seekBar description="The frequency at which governor scales CPU(CPU2 or CPU3) up. Load big or equal inc_cpu_load: cpu scaled up. (Only for Nightmare, Alucard). (Default: 70%)" name="inc_cpu_load_23" action="generic_cortex /tmp/inc_cpu_load_23" unit="%" min="10" reversed="false" step="1" max="100"/>
+		<seekBar description="The frequency at which governor scales CPU(CPU2 or CPU3) up. Load big or equal inc_cpu_load: cpu scaled up. (Only for Nightmare, Alucard). (Default: 80%)" name="inc_cpu_load_23" action="generic_cortex /tmp/inc_cpu_load_23" unit="%" min="10" reversed="false" step="1" max="100"/>
 
-		<seekBar description="This threshold is used as down threshold while sampling at frequencies less than freq_responsiveness. Above that, normal dec_cpu_load is used. This gives us an option to make scaling aggressive/relaxed until a frequency and normal for higher frequencies. (CPU0 or CPU1 only for Alucard). (Default: 50%)" name="dec_cpu_load_at_min_freq_01" action="generic_cortex /tmp/dec_cpu_load_at_min_freq_01" unit="%" min="1" reversed="false" step="1" max="100"/>
+		<seekBar description="This threshold is used as down threshold while sampling at frequencies less than freq_responsiveness. Above that, normal dec_cpu_load is used. This gives us an option to make scaling aggressive/relaxed until a frequency and normal for higher frequencies. (CPU0 or CPU1 only for Alucard). (Default: 60%)" name="dec_cpu_load_at_min_freq_01" action="generic_cortex /tmp/dec_cpu_load_at_min_freq_01" unit="%" min="1" reversed="false" step="1" max="100"/>
 
-		<seekBar description="This threshold is used as down threshold while sampling at frequencies less than freq_responsiveness. Above that, normal dec_cpu_load is used. This gives us an option to make scaling aggressive/relaxed until a frequency and normal for higher frequencies. (CPU2 or CPU3 only for Alucard). (Default: 50%)" name="dec_cpu_load_at_min_freq_23" action="generic_cortex /tmp/dec_cpu_load_at_min_freq_23" unit="%" min="1" reversed="false" step="1" max="100"/>
+		<seekBar description="This threshold is used as down threshold while sampling at frequencies less than freq_responsiveness. Above that, normal dec_cpu_load is used. This gives us an option to make scaling aggressive/relaxed until a frequency and normal for higher frequencies. (CPU2 or CPU3 only for Alucard). (Default: 60%)" name="dec_cpu_load_at_min_freq_23" action="generic_cortex /tmp/dec_cpu_load_at_min_freq_23" unit="%" min="1" reversed="false" step="1" max="100"/>
 
 		<seekBar description="The frequency at which governor scales CPU(CPU0 or CPU1) down. Load less than dec_cpu_load: cpu scaled down. (Only for Nightmare, Alucard). (Default: 60%)" name="dec_cpu_load_01" action="generic_cortex /tmp/dec_cpu_load_01" unit="%" min="10" reversed="false" step="1" max="100"/>
 
@@ -294,7 +294,7 @@
 			<spinnerItem name="307.200 kHz" value="307200"/> 
 		</spinner>
 
-		<spinner description="Until freq_responsiveness, Up Threshold considered for sampling load is inc_cpu_load_at_min_freq. Also during the part where CPU(CPU0 or CPU1) is at maximum load frequency, governor need to find the optimal frequency as the next frequency - which should not trigger up_threshold in the next sampling. When such a frequency_next is found to be a) less than freq_responsiveness b) will not trigger down_threshold in the next sample, then the optimal frequency is set to freq_responsiveness. (Only for Alucard) (Default: 1.036.800 kHz)" name="freq_responsiveness_01" action="generic_cortex /tmp/freq_responsiveness_01">
+		<spinner description="Until freq_responsiveness, Up Threshold considered for sampling load is inc_cpu_load_at_min_freq. Also during the part where CPU(CPU0 or CPU1) is at maximum load frequency, governor need to find the optimal frequency as the next frequency - which should not trigger up_threshold in the next sampling. When such a frequency_next is found to be a) less than freq_responsiveness b) will not trigger down_threshold in the next sample, then the optimal frequency is set to freq_responsiveness. (Only for Alucard) (Default: 1.113.600 kHz)" name="freq_responsiveness_01" action="generic_cortex /tmp/freq_responsiveness_01">
 			<spinnerItem name="1.593.600 kHz" value="1593600"/> 
 			<spinnerItem name="1.478.400 kHz" value="1478400"/> 
 			<spinnerItem name="1.401.600 kHz" value="1401600"/> 
@@ -345,17 +345,17 @@
 
 		<seekBar description="Governor should increase CPU2 and CPU3 frequency by n step each time CPU load reaches inc_cpu_load_at_min_freq. (Only for Alucard) (Default: 2)" name="pump_inc_step_at_min_freq_23" action="generic_cortex /tmp/pump_inc_step_at_min_freq_23" unit="step" min="1" reversed="false" step="1" max="5"/>
 
-		<seekBar description="Governor should increase CPU0 and CPU1 frequency by n step each time CPU load reaches inc_cpu_load. (Only for Alucard) (Default: 2)" name="pump_inc_step_01" action="generic_cortex /tmp/pump_inc_step_01" unit="step" min="1" reversed="false" step="1" max="5"/>
+		<seekBar description="Governor should increase CPU0 and CPU1 frequency by n step each time CPU load reaches inc_cpu_load. (Only for Alucard) (Default: 1)" name="pump_inc_step_01" action="generic_cortex /tmp/pump_inc_step_01" unit="step" min="1" reversed="false" step="1" max="5"/>
 
-		<seekBar description="Governor should increase CPU2 and CPU3 frequency by n step each time CPU load reaches inc_cpu_load. (Only for Alucard) (Default: 2)" name="pump_inc_step_23" action="generic_cortex /tmp/pump_inc_step_23" unit="step" min="1" reversed="false" step="1" max="5"/>
+		<seekBar description="Governor should increase CPU2 and CPU3 frequency by n step each time CPU load reaches inc_cpu_load. (Only for Alucard) (Default: 1)" name="pump_inc_step_23" action="generic_cortex /tmp/pump_inc_step_23" unit="step" min="1" reversed="false" step="1" max="5"/>
 
-		<seekBar description="Governor should decrease CPU0 and CPU1 frequency by n step each time CPU load is below inc_cpu_load_at_min_freq. (Only for Alucard) (Default: 3)" name="pump_dec_step_at_min_freq_01" action="generic_cortex /tmp/pump_dec_step_at_min_freq_01" unit="step" min="1" reversed="false" step="1" max="5"/>
+		<seekBar description="Governor should decrease CPU0 and CPU1 frequency by n step each time CPU load is below inc_cpu_load_at_min_freq. (Only for Alucard) (Default: 1)" name="pump_dec_step_at_min_freq_01" action="generic_cortex /tmp/pump_dec_step_at_min_freq_01" unit="step" min="1" reversed="false" step="1" max="5"/>
 
-		<seekBar description="Governor should decrease CPU2 and CPU3 frequency by n step each time CPU load is below inc_cpu_load_at_min_freq. (Only for Alucard) (Default: 3)" name="pump_dec_step_at_min_freq_23" action="generic_cortex /tmp/pump_dec_step_at_min_freq_23" unit="step" min="1" reversed="false" step="1" max="5"/>
+		<seekBar description="Governor should decrease CPU2 and CPU3 frequency by n step each time CPU load is below inc_cpu_load_at_min_freq. (Only for Alucard) (Default: 1)" name="pump_dec_step_at_min_freq_23" action="generic_cortex /tmp/pump_dec_step_at_min_freq_23" unit="step" min="1" reversed="false" step="1" max="5"/>
 
-		<seekBar description="Governor should decrease CPU0 and CPU1 frequency by n step each time CPU load reaches dec_cpu_load. (Only for Alucard) (Default: 3)" name="pump_dec_step_01" action="generic_cortex /tmp/pump_dec_step_01" unit="step" min="1" reversed="false" step="1" max="5"/>
+		<seekBar description="Governor should decrease CPU0 and CPU1 frequency by n step each time CPU load reaches dec_cpu_load. (Only for Alucard) (Default: 2)" name="pump_dec_step_01" action="generic_cortex /tmp/pump_dec_step_01" unit="step" min="1" reversed="false" step="1" max="5"/>
 
-		<seekBar description="Governor should decrease CPU2 and CPU3 frequency by n step each time CPU load reaches dec_cpu_load. (Only for Alucard) (Default: 3)" name="pump_dec_step_23" action="generic_cortex /tmp/pump_dec_step_23" unit="step" min="1" reversed="false" step="1" max="5"/>
+		<seekBar description="Governor should decrease CPU2 and CPU3 frequency by n step each time CPU load reaches dec_cpu_load. (Only for Alucard) (Default: 2)" name="pump_dec_step_23" action="generic_cortex /tmp/pump_dec_step_23" unit="step" min="1" reversed="false" step="1" max="5"/>
 
 		<seekBar description="Defines how much as a percentage of maximum frequency, governor should increase CPU(CPU0 or CPU1) frequency each time CPU load reaches inc_cpu_load_at_min_freq. (Only for nightmare). (Default: 30%)" name="freq_step_at_min_freq_01" action="generic_cortex /tmp/freq_step_at_min_freq_01" unit="%" min="5" reversed="false" step="1" max="100"/>
 
