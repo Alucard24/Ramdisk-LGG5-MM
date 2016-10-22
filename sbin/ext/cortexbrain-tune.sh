@@ -431,60 +431,6 @@ if [ "$apply_cpu" == "update" ]; then
 	CPU_GOV_TWEAKS "tune";
 fi;
 
-# ==============================================================
-# SCHED-TWEAKS
-# ==============================================================
-
-SCHED_TWEAKS()
-{
-	local state="$1";
-
-	if [ "$cortexbrain_cpu" == "on" ]; then		
-		# tune-settings
-		if [ "$state" == "tune" ]; then
-			sched_upmigrate_tmp="/proc/sys/kernel/sched_upmigrate";
-			if [ ! -e $sched_upmigrate_tmp ]; then
-				sched_upmigrate_tmp="/dev/null";
-			fi;
-
-			sched_upmigrate_min_nice_tmp="/proc/sys/kernel/sched_upmigrate_min_nice";
-			if [ ! -e $sched_upmigrate_min_nice_tmp ]; then
-				sched_upmigrate_min_nice_tmp="/dev/null";
-			fi;
-
-			sched_downmigrate_tmp="/proc/sys/kernel/sched_downmigrate";
-			if [ ! -e $sched_downmigrate_tmp ]; then
-				sched_downmigrate_tmp="/dev/null";
-			fi;
-
-			sched_spill_nr_run_tmp="/proc/sys/kernel/sched_spill_nr_run";
-			if [ ! -e $sched_spill_nr_run_tmp ]; then
-				sched_spill_nr_run_tmp="/dev/null";
-			fi;
-
-			DOWNMIGRATE_VALUE=$(cat /proc/sys/kernel/sched_downmigrate);
-			if [ "$sched_upmigrate" -le "$DOWNMIGRATE_VALUE" ]; then
-				echo "$sched_downmigrate" > $sched_downmigrate_tmp;
-				echo "$sched_upmigrate" > $sched_upmigrate_tmp;
-			else
-				echo "$sched_upmigrate" > $sched_upmigrate_tmp;
-				echo "$sched_downmigrate" > $sched_downmigrate_tmp;
-			fi;
-			echo "$sched_upmigrate_min_nice" > $sched_upmigrate_min_nice_tmp;
-			echo "$sched_spill_nr_run" > $sched_spill_nr_run_tmp;
-		fi;
-
-		log -p i -t "$FILE_NAME" "*** CPU_GOV_TWEAKS: $state ***: enabled";
-	else
-		return 0;
-	fi;
-}
-# this needed for sched tweaks apply from STweaks in real time
-apply_sched="$2";
-if [ "$apply_sched" == "update" ]; then
-	SCHED_TWEAKS "tune";
-fi;
-
 WORKQUEUE_CONTROL()
 {
 	local state="$1";

@@ -393,24 +393,6 @@
 
 </settingsTab>
 
-<settingsTab name="SCHED-TUNING">
-
-	<settingsPane description="Set advanced sched settings. These settings are active only if the screen is on." name="Sched Parameters tuning">
-
-		<seekBar description="This value is a percentage. If a task consumes more than this much of a particular CPU, that CPU will be considered too small for the task. The task will thus be seen as a big task on the cpu and will reflect in nr_big_tasks statistics maintained for that cpu. Note that certain tasks (whose nice value exceeds sched_upmigrate_min_nice value or those that belong to a cgroup whose upmigrate_discourage flag is set) will never be classified as big tasks despite their high demand. (Default: 95%)" name="sched_upmigrate" action="generic_cortex /tmp/sched_upmigrate" unit="%" min="10" reversed="false" step="1" max="100"/>
-
-		<seekBar description="A task whose nice value is greater than this tunable value will never be considered as a big task (it will not be allowed to run on a high-performance CPU). (Default: 15)" name="sched_upmigrate_min_nice" action="generic_cortex /tmp/sched_upmigrate_min_nice" unit="int" min="1" reversed="false" step="1" max="30"/>
-
-		<seekBar description="This tunable is a percentage. If a task consumes more than this much of a CPU, the CPU is considered too small for the task and the scheduler will try to find a bigger CPU to place the task on. (Default: 90%)" name="sched_downmigrate" action="generic_cortex /tmp/sched_downmigrate" unit="%" min="10" reversed="false" step="1" max="100"/>
-
-		<seekBar description="The intent of this tunable is similar to sched_spill_load, except it applies to nr_running count of a cpu. A non-small task can spill over to a higher-performance cpu when the most power-efficient cpu where it can normally fit has more tasks than sched_spill_nr_run. (Default: 3)" name="sched_spill_nr_run" action="generic_cortex /tmp/sched_spill_nr_run" unit="int" min="1" reversed="false" step="1" max="15"/>
-
-		<button description="Use this button to push all new changes to the sched in real time!" name="SCHED TUNING" action="push-actions/sched_tuning_update" label="Apply settings to SCHED"/>
-
-	</settingsPane>
-
-</settingsTab>
-
 <settingsTab name="GPU CORE">
 
 	<settingsPane description="Here you can select the GPU Governor, set Min and Max GPU frequency." name="GPU Governors and settings">
