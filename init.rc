@@ -38,7 +38,7 @@ on init
     mount cgroup none /acct cpuacct
     mkdir /acct/uid
 
-	# Create energy-aware scheduler tuning nodes
+    # Create energy-aware scheduler tuning nodes
     mkdir /dev/stune
     mount cgroup none /dev/stune schedtune
     mkdir /dev/stune/foreground
@@ -678,7 +678,7 @@ service vold /system/bin/vold \
     socket vold stream 0660 root mount
     socket cryptd stream 0660 root mount
     ioprio be 2
-	writepid /dev/cpuset/foreground/tasks
+    writepid /dev/cpuset/foreground/tasks
 
 service netd /system/bin/netd
     class main
@@ -729,7 +729,7 @@ service drm /system/bin/drmserver
 service media /system/bin/mediaserver
     class main
     user media
-	writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
+    writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
 
 #[lg-drm@lge.com] Add divxdrm group permission for divx.
 #[G2_Player][kitak.moon@lge.com] Add sdcard_r permission for SKT hoppin service on KK
@@ -756,7 +756,7 @@ service bootanim /system/bin/bootanimation
     group graphics audio system
     disabled
     oneshot
-	writepid /dev/stune/top-app/tasks
+    writepid /dev/stune/top-app/tasks
 
 service gatekeeperd /system/bin/gatekeeperd /data/misc/gatekeeper
     class late_start
