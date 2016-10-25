@@ -119,7 +119,7 @@ on init
     write /proc/sys/kernel/sched_tunable_scaling 0
     write /proc/sys/kernel/sched_latency_ns 10000000
     write /proc/sys/kernel/sched_wakeup_granularity_ns 2000000
-    write /proc/sys/kernel/sched_compat_yield 1
+    # write /proc/sys/kernel/sched_compat_yield 1
     write /proc/sys/kernel/sched_child_runs_first 0
 
     write /proc/sys/kernel/randomize_va_space 2
@@ -147,17 +147,20 @@ on init
     chown system system /dev/cpuctl
     chown system system /dev/cpuctl/tasks
     chmod 0666 /dev/cpuctl/tasks
-    write /dev/cpuctl/cpu.shares 1024
-    write /dev/cpuctl/cpu.rt_runtime_us 800000
+    # write /dev/cpuctl/cpu.shares 1024
+    # write /dev/cpuctl/cpu.rt_runtime_us 800000
     write /dev/cpuctl/cpu.rt_period_us 1000000
+    write /dev/cpuctl/cpu.rt_runtime_us 950000
 
     mkdir /dev/cpuctl/bg_non_interactive
     chown system system /dev/cpuctl/bg_non_interactive/tasks
     chmod 0666 /dev/cpuctl/bg_non_interactive/tasks
     # 5.0 %
     write /dev/cpuctl/bg_non_interactive/cpu.shares 52
-    write /dev/cpuctl/bg_non_interactive/cpu.rt_runtime_us 700000
+    # write /dev/cpuctl/bg_non_interactive/cpu.rt_runtime_us 700000
     write /dev/cpuctl/bg_non_interactive/cpu.rt_period_us 1000000
+    # active FIFO threads will never be in BG
+    write /dev/cpuctl/bg_non_interactive/cpu.rt_runtime_us 10000
 
     # sets up initial cpusets for ActivityManager
     mkdir /dev/cpuset
