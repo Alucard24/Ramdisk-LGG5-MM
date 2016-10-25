@@ -38,6 +38,25 @@ on init
     mount cgroup none /acct cpuacct
     mkdir /acct/uid
 
+	# Create energy-aware scheduler tuning nodes
+    mkdir /dev/stune
+    mount cgroup none /dev/stune schedtune
+    mkdir /dev/stune/foreground
+    mkdir /dev/stune/background
+    mkdir /dev/stune/top-app
+    chown system system /dev/stune
+    chown system system /dev/stune/foreground
+    chown system system /dev/stune/background
+    chown system system /dev/stune/top-app
+    chown system system /dev/stune/tasks
+    chown system system /dev/stune/foreground/tasks
+    chown system system /dev/stune/background/tasks
+    chown system system /dev/stune/top-app/tasks
+    chmod 0664 /dev/stune/tasks
+    chmod 0664 /dev/stune/foreground/tasks
+    chmod 0664 /dev/stune/background/tasks
+    chmod 0664 /dev/stune/top-app/tasks
+
     # Create cgroup mount point for memory
     mount tmpfs none /sys/fs/cgroup mode=0750,uid=0,gid=1000
     mkdir /sys/fs/cgroup/memory 0750 root system
@@ -163,18 +182,32 @@ on init
     write /dev/cpuset/system-background/cpus 0
     write /dev/cpuset/system-background/mems 0
 
+    mkdir /dev/cpuset/top-app
+    write /dev/cpuset/top-app/cpus 0
+    write /dev/cpuset/top-app/mems 0
+
     # change permissions for all cpusets we'll touch at runtime
     chown system system /dev/cpuset
     chown system system /dev/cpuset/foreground
     chown system system /dev/cpuset/foreground/boost
     chown system system /dev/cpuset/background
+    chown system system /dev/cpuset/system-background
+    chown system system /dev/cpuset/top-app
     chown system system /dev/cpuset/tasks
     chown system system /dev/cpuset/foreground/tasks
     chown system system /dev/cpuset/foreground/boost/tasks
     chown system system /dev/cpuset/background/tasks
+    chown system system /dev/cpuset/system-background/tasks
+    chown system system /dev/cpuset/top-app/tasks
+
+    # set system-background to 0775 so SurfaceFlinger can touch it
+    chmod 0775 /dev/cpuset/system-background
+
     chmod 0664 /dev/cpuset/foreground/tasks
     chmod 0664 /dev/cpuset/foreground/boost/tasks
     chmod 0664 /dev/cpuset/background/tasks
+    chmod 0664 /dev/cpuset/system-background/tasks
+    chmod 0664 /dev/cpuset/top-app/tasks
     chmod 0664 /dev/cpuset/tasks
 
 
@@ -589,8 +622,8 @@ service logd /system/bin/logd
 
 service logd-reinit /system/bin/logd --reinit
     oneshot
-    writepid /dev/cpuset/system-background/tasks
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 service healthd /sbin/healthd
     class core
@@ -636,6 +669,7 @@ service servicemanager /system/bin/servicemanager
     onrestart restart media
     onrestart restart surfaceflinger
     onrestart restart drm
+    writepid /dev/cpuset/system-background/tasks
 
 service vold /system/bin/vold \
         --blkid_context=u:r:blkid:s0 --blkid_untrusted_context=u:r:blkid_untrusted:s0 \
@@ -644,6 +678,7 @@ service vold /system/bin/vold \
     socket vold stream 0660 root mount
     socket cryptd stream 0660 root mount
     ioprio be 2
+	writepid /dev/cpuset/foreground/tasks
 
 service netd /system/bin/netd
     class main
@@ -680,7 +715,7 @@ service surfaceflinger /system/bin/surfaceflinger
     user system
     group graphics drmrpc
     onrestart restart zygote
-    writepid /dev/cpuset/system-background/tasks
+    writepid /dev/stune/foreground/tasks
 
 service drm /system/bin/drmserver
     class main
@@ -689,10 +724,12 @@ service drm /system/bin/drmserver
 #[lg-drm@lge.com] Add net_raw group permission(QCT ATD method) for Widevine DRM
     #group drm system inet drmrpc
     group drm system inet drmrpc sdcard_r sdcard_rw net_raw
+    writepid /dev/cpuset/foreground/tasks
 
 service media /system/bin/mediaserver
     class main
     user media
+	writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
 
 #[lg-drm@lge.com] Add divxdrm group permission for divx.
 #[G2_Player][kitak.moon@lge.com] Add sdcard_r permission for SKT hoppin service on KK
@@ -719,10 +756,12 @@ service bootanim /system/bin/bootanimation
     group graphics audio system
     disabled
     oneshot
+	writepid /dev/stune/top-app/tasks
 
 service gatekeeperd /system/bin/gatekeeperd /data/misc/gatekeeper
     class late_start
     user system
+    writepid /dev/cpuset/system-background/tasks
 
 service installd /system/bin/installd
     class main
@@ -752,6 +791,7 @@ service keystore /system/bin/keystore /data/misc/keystore
     class main
     user keystore
     group keystore drmrpc system
+    writepid /dev/cpuset/foreground/tasks
 
 service dumpstate /system/bin/dumpstate -s
     class main

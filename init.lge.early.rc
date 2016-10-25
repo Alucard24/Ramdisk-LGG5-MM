@@ -18,6 +18,7 @@ service lgdrm /system/bin/lgdrmserver
     class main
     user lgdrm
     group lgdrm_acc net_raw
+    writepid /dev/cpuset/foreground/tasks
 
 # restart when servicemanager is restarted
 on property:init.svc.servicemanager=restarting
