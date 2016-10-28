@@ -65,7 +65,6 @@ input_boost_ms=40
 min_input_interval=150
 intsd_read_ahead_kb=1024
 internal_iosched=cfq
-enable_adaptive_lmk=off
 lowmem_reserve=default
 dirty_background_ratio=5
 dirty_ratio=20

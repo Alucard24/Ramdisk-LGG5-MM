@@ -511,8 +511,6 @@
 
 	<settingsPane description="Tune memory and OOM (low mem management) settings managed by Kernel." name="Memory Tuning">
 
-		<checkbox description="Adaptive LMK help to free RAM more faster when low RAM condition exist and vmpressure is in range of 85-94, apps cleaned from RAM to allow smooth ROM operation and faster load of on screen APP. Disabled by default." name="Adaptive LMK" action="generic01 /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk" label="Adaptive LMK"/>
-
 		<spinner description="Here you can set the low memory reserve ratio, higher ratio give you more free RAM if you see that your free RAM is always loaded and device LAG, but it also uses more battery to gain more free RAM with loaded system. use relaxed ONLY if your free RAM is above 650MB always! if less than 280MB use recommended or high pressure." name="Low Memory Reserve" action="lowmem_reserve">
 			<spinnerItem name="Relaxed" value="relaxed"/>
 			<spinnerItem name="Default" value="default"/>
