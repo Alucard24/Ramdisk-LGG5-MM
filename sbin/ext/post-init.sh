@@ -5,6 +5,9 @@
 BB=/sbin/busybox
 
 # protect init from oom
+if [ -f /su/bin/su ]; then
+	su -c echo "-1000" > /proc/1/oom_score_adj;
+fi;
 if [ -f /system/xbin/su ]; then
 	su -c echo "-1000" > /proc/1/oom_score_adj;
 fi;
@@ -73,8 +76,11 @@ CRITICAL_PERM_FIX()
 	$BB chmod -R 775 /res/;
 	$BB chmod -R 06755 /sbin/ext/;
 	$BB chmod 06755 /sbin/busybox;
-	#$BB chmod 06755 /system/xbin/busybox;
-	$BB chmod 0555 /system/xbin/busybox;
+	if [ -e /su/xbin/busybox ]; then
+		$BB chmod 06755 /su/xbin/busybox;
+	else
+		$BB chmod 06755 /system/xbin/busybox;
+	fi;
 }
 CRITICAL_PERM_FIX;
 

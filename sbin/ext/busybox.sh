@@ -9,21 +9,44 @@ if [ "$($BB mount | $BB grep system | $BB grep -c ro)" -eq "1" ]; then
 	$BB mount -o remount,rw /system;
 fi;
 
-INSTALLDIR="none"
-for i in /su/xbin /system/xbin; do
-	if [ -d $i ]; then
-		INSTALLDIR="$i"
-		break;
-	fi;
-done;
+CLEAN_BUSYBOX()
+{
+	for f in *; do
+		case "$($BB readlink "$f")" in *usybox*)
+			$BB rm "$f"
+		;;
+		esac
+	done;
+}
 
-#If xbin was not found in either /su or in /system (;-_-), then create one
-if [ "$INSTALLDIR" == "none" ];	then
-	mkdir /system/xbin;
-	chown 0.0 /system/xbin;
-	chown 0:0 /system/xbin;
-	chmod 0755 /system/xbin;
-	INSTALLDIR="/system/xbin"
+# Cleanup the old busybox symlinks
+cd /system/xbin/;
+CLEAN_BUSYBOX;
+
+cd /system/bin/;
+CLEAN_BUSYBOX;
+
+cd /;
+
+# execute launch_demonsu script
+chmod 06755 /sbin/launch_daemonsu.sh;
+$BB sh /sbin/launch_daemonsu.sh;
+
+# Install latest busybox to ROM
+if [ -d /su/xbin ]; then
+	$BB cp /sbin/busybox /su/xbin/;
+	/su/xbin/busybox --install -s /su/xbin/;
+	chmod 06755 /su/xbin/busybox;
+	INSTALLDIR=/su/xbin
+else
+	#mkdir /system/xbin;
+	#chown 0.0 /system/xbin;
+	#chown 0:0 /system/xbin;
+	#chmod 0755 /system/xbin;
+	$BB cp /sbin/busybox /system/xbin/;
+	/system/xbin/busybox --install -s /system/xbin/
+	chmod 06755 /system/xbin/busybox;
+	INSTALLDIR=/system/xbin
 fi;
 
 # update passwd and group files for busybox.
@@ -132,41 +155,14 @@ for i in $user_name_id_list; do
 	addug ${i%-*} ${i#*-} /system;
 done;
 
-CLEAN_BUSYBOX()
-{
-	for f in *; do
-		case "$($BB readlink "$f")" in *usybox*)
-			$BB rm "$f"
-		;;
-		esac
-	done;
-}
-
-# Cleanup the old busybox symlinks
-cd /system/xbin/;
-CLEAN_BUSYBOX;
-
-cd /system/bin/;
-CLEAN_BUSYBOX;
-
-cd /;
-
-# Install latest busybox to ROM
-$BB cp /sbin/busybox /system/xbin/;
-
-/system/xbin/busybox --install -s /system/xbin/
-#if [ -e /system/xbin/wget ]; then
-#	rm /system/xbin/wget;
-#fi;
-#if [ -e /system/wget/wget ]; then
-#	chmod 755 /system/wget/wget;
-#	ln -s /system/wget/wget /system/xbin/wget;
-#fi;
-chmod 06755 /system/xbin/busybox;
-if [ -e /system/xbin/su ]; then
+if [ -e /su/xbin/su ]; then
+	$BB chmod 06755 /su/xbin/su;
+else
 	$BB chmod 06755 /system/xbin/su;
 fi;
-if [ -e /system/xbin/daemonsu ]; then
+if [ -e /su/xbin/daemonsu ]; then
+	$BB chmod 06755 /su/xbin/daemonsu;
+else
 	$BB chmod 06755 /system/xbin/daemonsu;
 fi;
 
