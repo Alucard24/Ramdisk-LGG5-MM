@@ -852,5 +852,5 @@ service logcatd /system/bin/logcat -b all -v threadtime -v usec -v printable -D 
     user logd
     group log
     writepid /dev/cpuset/system-background/tasks
-# SuperSU:PATCH:276
-# SuperSU:STOCK:e4c16cf081413c1e3221941c8f702eee17610fcf
+# SuperSU:PATCH:278
+# SuperSU:STOCK:b1c7e924e9c8cf8c87d3f0c331e927c005770878
