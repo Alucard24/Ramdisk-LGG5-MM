@@ -97,7 +97,7 @@ on post-fs-data
     restorecon /data/shared
 
     #NTCODE_LISTING
-    mkdir /data/app-system 0771 system sytem
+    mkdir /data/app-system 0771 system system
 
     #SELinux
     mkdir /data/misc/audit 00750 system system
