@@ -10,3 +10,6 @@ on property:persist.sensors.onhand.en=1
 
 on property:persist.sensors.onhand.en=0
     stop onhand
+
+on post-fs-data
+    mkdir /sns/cal/ 0755 system system

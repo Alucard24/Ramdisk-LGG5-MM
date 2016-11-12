@@ -244,14 +244,17 @@
 
 # LGE_BROADCAST_TDMB
 /dev/broadcast0           0660   media     media
-/dev/block/bootdevice/by-name/persistent        0600    system  system
+
+#FRP
+/dev/block/platform/soc/624000.ufshc/by-name/persistent        0600    system  system
 
 # LGE_BROADCAST_ISDBT_JAPAN
 /dev/broadcast_*          0660   system      system
 
 # Mobicore
 /dev/mobicore             0600   system     system
+/dev/mobicore-user        0666   system     system
+
 # LGE_CHANGE_S, [NFC][sungwook.ahn@lge.com], 2015-04-03, NFC Bring up
 /dev/cxd224x-i2c         0660   nfc        nfc
 # LGE_CHANGE_E, [NFC][sungwook.ahn@lge.com], 2015-04-03, NFC Bring up
-/dev/mobicore-user        0666   system     system

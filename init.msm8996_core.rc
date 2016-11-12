@@ -3,8 +3,42 @@
 # to override this file (device specific .rc)
 import /init.${ro.hardware}_core.rc
 
+# LGE logger service rc
+import /init.lge.log.rc
+
 # LGE FM Radio rc
 import /init.lge.fm.rc
+
+# ramoops backup function service
+service ramoops_backup /system/bin/sh /system/etc/ramoops_backup.sh
+    class main
+    disabled
+    oneshot
+
+# enable & disable crash handler, rtb & trace event through property
+service service-crash /system/bin/sh /init.msm8996.crash.sh
+    class main
+    disabled
+    oneshot
+
+on property:persist.service.crash.enable=1
+    restart service-crash
+
+on property:persist.service.crash.enable=0
+    restart service-crash
+
+on property:persist.service.e76wa.enable=*
+    restart service-crash
+
+# time_in_state
+service time_in_state /system/bin/sh /init.time_in_state.sh
+    class main
+    disabled
+    oneshot
+
+on property:init.svc.bootanim=stopped
+    start time_in_state
+    start ramoops_backup
 
 # LGE ATD service rc
 import /init.lge.atd.rc
@@ -45,23 +79,49 @@ on fs
     # Executing tune2fs to reserve some region in /data.(40MB)
     exec /system/bin/tune2fs -u system -r 10240 /dev/block/bootdevice/by-name/userdata
 
-    # LGE_CHANGE for downgrade from NOS
-    chown media media /persist-lg/audio/full_mixer_paths.xml
+    chown audioserver audio /persist-lg/audio/full_mixer_paths.xml
 
 # LGE_CHANGE_START
 on post-fs
     # execute sreadahead daemon to reduce boot-time
     start sreadahead
 # LGE_CHANGE_END
+    # LGE - booting time reduction
+    # 1. removing 'restorecon_recursive /sys/kernel/debug' on post-fs in system/core/rootdir/init.rc
+    # 2. adding 'restorecon_recursive /sys/kernel/debug' on boot_completed in system/core/rootdir/init.rc
+    # 3. execute build and download
+    # 4. adding following debugfs nodes which are found from audit denied kernel boot log
+    restorecon_recursive /sys/kernel/debug/sreadahead
+    restorecon /sys/kernel/debug/clk/debug_suspend
+    restorecon_recursive /sys/kernel/debug/rmt_storage
+    restorecon /sys/kernel/debug/tracing
+    restorecon /sys/kernel/debug/tracing/tracing_on
+    restorecon /sys/kernel/debug/tracing/buffer_size_kb
+    restorecon /sys/kernel/debug/tracing/free_buffer
+    restorecon /sys/kernel/debug/tracing/trace_marker
+    restorecon /sys/kernel/debug/probe_time
+    restorecon /sys/kernel/debug/scm_errata/kryo_e76
+    restorecon_recursive /sys/kernel/debug/tracing/events/sched
+    restorecon_recursive /sys/kernel/debug/tracing/events/workqueue
+    restorecon_recursive /sys/kernel/debug/tracing/events/mdss
+    restorecon_recursive /sys/kernel/debug/tracing/events/msm_vidc
+    restorecon_recursive /sys/kernel/debug/tracing/events/power/
+    restorecon_recursive /sys/kernel/debug/tracing/events/regulator
+    restorecon_recursive /sys/kernel/debug/tracing/events/msm_low_power
+    restorecon_recursive /sys/kernel/debug/tracing/events/thermal
+    restorecon_recursive /sys/kernel/debug/tracing/events/irq
+    restorecon_recursive /sys/kernel/debug/tracing/events/rcu
+    restorecon_recursive /sys/kernel/debug/tracing/trace_marker/
+    restorecon_recursive /sys/kernel/debug/fg_memif
+    restorecon_recursive /sys/kernel/debug/spmi/spmi-0
+    restorecon_recursive /sys/kernel/debug/msm_core
 
 on post-fs-data
     chown system system /mpt
     chmod 0775 /mpt
-
-# sensor - make directory for sns.reg used by sensordaemon
-    mkdir /sns/cal/ 0755 system system
-
     mkdir /data/ramoops 0750 root log
+
+    mkdir /data/factory 0775 system system
 
 # LGE_CHANGE_START, execute sreadahead daemon to reduce boot-time
 service sreadahead /sbin/treadahead
@@ -78,33 +138,22 @@ service sreadahead-check /sbin/sreadahead_check
     seclabel u:r:sreadahead-check:s0
 # LGE_CHANGE_END
 
-# ramoops backup function service
-service ramoops_backup /system/bin/sh /system/etc/ramoops_backup.sh
-    class main
+#LGE_CHANGE_S, Advanced MOCA, huny.lee@lge.com
+service moca_service /system/bin/advanced_moca -s
+    class late_start
+    user root
+    group system sdcard_r sdcard_rw radio
     disabled
     oneshot
+    socket Full.MOCA.port stream 660 system system
 
-# enable & disable crash handler, rtb & trace event through property
-service service-crash /system/bin/sh /init.msm8996.crash.sh
-    class main
-    disabled
-    oneshot
+on property:persist.service.moca.enable=1
+    start moca_service
 
-on property:persist.service.crash.enable=1
-    restart service-crash
+on property:persist.service.moca.enable=0
+    stop moca_service
+#LGE_CHANGE_E, Advanced MOCA, huny.lee@lge.com
 
-on property:persist.service.crash.enable=0
-    restart service-crash
-
-on property:persist.service.e76wa.enable=*
-    restart service-crash
-
-# time_in_state
-service time_in_state /system/bin/sh /init.time_in_state.sh
-    class main
-    disabled
-    oneshot
-
-on property:init.svc.bootanim=stopped
-    start time_in_state
-    start ramoops_backup
+# LGE - booting time reduction
+on property:sys.boot_completed=1
+    restorecon_recursive /sys/kernel/debug

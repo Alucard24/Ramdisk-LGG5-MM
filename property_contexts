@@ -1,4 +1,4 @@
-#line 1 "external/sepolicy/property_contexts"
+#line 1 "system/sepolicy/property_contexts"
 ##########################
 # property service keys
 #
@@ -12,13 +12,15 @@ net.cdma                u:object_r:net_radio_prop:s0
 net.dns                 u:object_r:net_radio_prop:s0
 sys.usb.config          u:object_r:system_radio_prop:s0
 ril.                    u:object_r:radio_prop:s0
+ro.ril.                 u:object_r:radio_prop:s0
 gsm.                    u:object_r:radio_prop:s0
 persist.radio           u:object_r:radio_prop:s0
 
 net.                    u:object_r:system_prop:s0
 dev.                    u:object_r:system_prop:s0
-runtime.                u:object_r:system_prop:s0
+ro.runtime.             u:object_r:system_prop:s0
 hw.                     u:object_r:system_prop:s0
+ro.hw.                  u:object_r:system_prop:s0
 sys.                    u:object_r:system_prop:s0
 sys.powerctl            u:object_r:powerctl_prop:s0
 sys.usb.ffs.            u:object_r:ffs_prop:s0
@@ -30,16 +32,31 @@ bluetooth.              u:object_r:bluetooth_prop:s0
 
 debug.                  u:object_r:debug_prop:s0
 debug.db.               u:object_r:debuggerd_prop:s0
-log.                    u:object_r:shell_prop:s0
+dumpstate.              u:object_r:dumpstate_prop:s0
+log.                    u:object_r:log_prop:s0
+log.tag                 u:object_r:log_tag_prop:s0
+log.tag.WifiHAL         u:object_r:wifi_log_prop:s0
+security.perf_harden    u:object_r:shell_prop:s0
 service.adb.root        u:object_r:shell_prop:s0
 service.adb.tcp.port    u:object_r:shell_prop:s0
 
 persist.audio.          u:object_r:audio_prop:s0
+persist.debug.          u:object_r:persist_debug_prop:s0
 persist.logd.           u:object_r:logd_prop:s0
+persist.logd.security   u:object_r:device_logging_prop:s0
+persist.log.tag         u:object_r:log_tag_prop:s0
+persist.mmc.            u:object_r:mmc_prop:s0
 persist.sys.            u:object_r:system_prop:s0
+persist.sys.safemode    u:object_r:safemode_prop:s0
+ro.sys.safemode         u:object_r:safemode_prop:s0
+persist.sys.audit_safemode      u:object_r:safemode_prop:s0
 persist.service.        u:object_r:system_prop:s0
 persist.service.bdroid. u:object_r:bluetooth_prop:s0
 persist.security.       u:object_r:system_prop:s0
+
+# Boolean property set by system server upon boot indicating
+# if device owner is provisioned.
+ro.device_owner         u:object_r:device_logging_prop:s0
 
 # selinux non-persistent properties
 selinux.restorecon_recursive   u:object_r:restorecon_prop:s0
@@ -50,11 +67,11 @@ selinux.                       u:object_r:security_prop:s0
 
 # data partition encryption properties
 vold.                   u:object_r:vold_prop:s0
-crypto.                 u:object_r:vold_prop:s0
+ro.crypto.              u:object_r:vold_prop:s0
 
 # ro.build.fingerprint is either set in /system/build.prop, or is
 # set at runtime by system_server.
-build.fingerprint       u:object_r:fingerprint_prop:s0
+ro.build.fingerprint    u:object_r:fingerprint_prop:s0
 
 # ctl properties
 ctl.bootanim            u:object_r:ctl_bootanim_prop:s0
@@ -63,7 +80,6 @@ ctl.fuse_               u:object_r:ctl_fuse_prop:s0
 ctl.mdnsd               u:object_r:ctl_mdnsd_prop:s0
 ctl.ril-daemon          u:object_r:ctl_rildaemon_prop:s0
 ctl.bugreport           u:object_r:ctl_bugreport_prop:s0
-ctl.dhcpcd_bt-pan       u:object_r:ctl_dhcp_pan_prop:s0
 ctl.console             u:object_r:ctl_console_prop:s0
 ctl.                    u:object_r:ctl_default_prop:s0
 
@@ -74,8 +90,14 @@ nfc.                    u:object_r:nfc_prop:s0
 # They are only distinguished here for setting by qemu-props on the
 # emulator/goldfish.
 config.                 u:object_r:config_prop:s0
+ro.config.              u:object_r:config_prop:s0
 dalvik.                 u:object_r:dalvik_prop:s0
+ro.dalvik.              u:object_r:dalvik_prop:s0
+#line 1 "out-h1_lgu_kr/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
 #line 1 "device/lge/common/sepolicy/property_contexts"
+
+###
 wifiminid.anytime_connect	u:object_r:minios_prop:s0
 wifiminid.anytime_pw		u:object_r:minios_prop:s0
 wifiminid.anytime_ssid		u:object_r:minios_prop:s0
@@ -92,6 +114,8 @@ aat.fail.item             u:object_r:minios_prop:s0
 aat.first.enter           u:object_r:minios_prop:s0
 aat.test.status           u:object_r:minios_prop:s0
 persist.camera.eeprom_aat u:object_r:minios_prop:s0
+persist.sys.thermald_miti_off  u:object_r:thermald_prop:s0
+persist.sys.thermald_miti_off2  u:object_r:thermald_prop:s0
 adc.n11.                  u:object_r:adc_n11_prop:s0
 boot.laf                   u:object_r:minios_prop:s0
 build.version.base_os     u:object_r:build_version_base_os_prop:s0
@@ -135,7 +159,6 @@ ctl.aat_service        u:object_r:minios_prop:s0
 ctl.bdaddr_loader      u:object_r:bluedroid_prop:s0
 ctl.ble_sniff_scan     u:object_r:ble_sniff_prop:s0
 ctl.ckerrorreporter    u:object_r:ckerror_reporter_prop:s0
-ctl.vm_bms             u:object_r:vm_bms_prop:s0
 ctl.ddual_main         u:object_r:minios_prop:s0
 ctl.dhcpcd_wlan0       u:object_r:minios_prop:s0
 ctl.display_server     u:object_r:minios_prop:s0
@@ -143,36 +166,52 @@ ctl.ctl.dsqn           u:object_r:dsqn_prop:s0
 ctl.encrypt            u:object_r:encrypt_prop:s0
 ctl.energy-awareness   u:object_r:ctl_energy_awareness_prop:s0
 ctl.fm_dl              u:object_r:minios_prop:s0
+ctl.laf_wifid          u:object_r:minios_prop:s0
 ctl.latd               u:object_r:minios_prop:s0
 ctl.p2p_supplicant     u:object_r:minios_prop:s0
 ctl.Mfts_led_disp      u:object_r:minios_prop:s0
 ctl.Mfts_main          u:object_r:minios_prop:s0
 ctl.Mfts_touch_auto    u:object_r:minios_prop:s0
 ctl.Mfts_touch_draw    u:object_r:minios_prop:s0
+ctl.mausb_bind         u:object_r:minios_prop:s0
+ctl.mausb_unbind       u:object_r:minios_prop:s0
+ctl.mausbd             u:object_r:minios_prop:s0
 ctl.mfts_service       u:object_r:minios_prop:s0
 ctl.minios3_ble        u:object_r:minios_prop:s0
 ctl.minios3_genesis    u:object_r:minios_prop:s0
+ctl.minios_init        u:object_r:minios_prop:s0
 ctl.minios_qrdisp:aat_result   u:object_r:minios_prop:s0
-ctl.minios_svc         u:object_r:minios_prop:s0
+ctl.minios_ril         u:object_r:minios_prop:s0
 ctl.mount_encrypt      u:object_r:encrypt_prop:s0
 ctl.netd               u:object_r:minios_prop:s0
 ctl.pre_gps_test       u:object_r:minios_prop:s0
 ctl.surfaceflinger     u:object_r:minios_prop:s0
 ctl.thermald           u:object_r:minios_prop:s0
-ctl.VR_Main            u:object_r:minios_prop:s0
-ctl.VR_M_Sensor        u:object_r:minios_prop:s0
-ctl.VR_Proximity       u:object_r:minios_prop:s0
-ctl.VR_Key             u:object_r:minios_prop:s0
-ctl.VR_Mp3             u:object_r:minios_prop:s0
-ctl.VR_Lcd             u:object_r:minios_prop:s0
+ctl.upnp-server        u:object_r:minios_prop:s0
 ctl.w_mid              u:object_r:minios_prop:s0
 ctl.zygote             u:object_r:minios_prop:s0
 ctl.zygote_secondary   u:object_r:minios_prop:s0
 hwui.texture_cache_size    u:object_r:texture_cache_size_prop:s0
+media.vpp.default.config   u:object_r:hqv_mode_prop:s0
 netd.fstman.start      u:object_r:fstman_prop:s0
-persist.seempd.        u:object_r:qssp_prop:s0
 persist.sniff.retrans  u:object_r:minios_prop:s0
+pre.selfde.status      u:object_r:minios_prop:s0
 rild.modem_restart     u:object_r:rild_modemrestart_prop:s0
+ro.com.google.clientidbase      u:object_r:clientidbase_prop:s0
+ro.com.google.clientidbase.     u:object_r:clientidbase_prop:s0
+ro.laf.bootstart            u:object_r:minios_prop:s0
+ro.lge.supportvolte         u:object_r:support_volte_prop:s0
+ro.lge.supportvt            u:object_r:support_volte_prop:s0
+ro.lge.supportVolteCW       u:object_r:support_volte_prop:s0
+ro.min_freq_0 			u:object_r:min_freq_prop:s0
+ro.min_freq_1 			u:object_r:min_freq_prop:s0
+ro.min_freq_2 			u:object_r:min_freq_prop:s0
+ro.min_freq_3 			u:object_r:min_freq_prop:s0
+ro.min_freq_4 			u:object_r:min_freq_prop:s0
+ro.minios.bootstart     u:object_r:minios_prop:s0
+ro.minios.bootcomplete  u:object_r:minios_prop:s0
+ro.minios.enable        u:object_r:minios_prop:s0
+ro.zram.already_started u:object_r:config_zram_prop:s0
 vzw.os.rooted          u:object_r:vzw_rooted_prop:s0
 w_mid.force_terminate  u:object_r:minios_prop:s0
 w_mid.status           u:object_r:minios_prop:s0
@@ -194,12 +233,15 @@ service.btui.             u:object_r:bluetooth_prop:s0
 # properties for radio
 net.ims.operator u:object_r:net_radio_prop:s0
 net.ims.country  u:object_r:net_radio_prop:s0
+persist.lge.prop_copy.done     u:object_r:net_radio_prop:s0
+ro.cdma.home.operator.alpha    u:object_r:net_radio_prop:s0
 ###
 
 # dumprepoter_prop
 ctl.Aat_result         u:object_r:minios_prop:s0
 ctl.charger_monitor    u:object_r:ctl_charger_monitor_prop:s0
 ctl.digicl    u:object_r:ctl_digicl_prop:s0
+ctl.logdumpd           u:object_r:ctl_logdumpd_prop:s0
 ctl.dumpreporter          u:object_r:ctl_dumpreporter_prop:s0
 ctl.decryptwipe           u:object_r:ctl_decryptwipe_prop:s0
 ctl.ipsecclient                 u:object_r:ctl_ipsec_prop:s0
@@ -252,7 +294,6 @@ iq.cadet.ip             u:object_r:iq_cadet_ip_prop:s0
 iq.cadet.listenport       u:object_r:iq_cadet_listenport_prop:s0
 iq.logging.enabled        u:object_r:iq_logging_prop:s0
 laf.mid                u:object_r:minios_prop:s0
-lfullseg.mode.             u:object_r:lfullseg_mode_prop:s0
 lg.data.                  u:object_r:radio_prop:s0
 lg.data.emergencystate    u:object_r:emergencystate_prop:s0
 lge.battery_thermal.interval    u:object_r:minios_prop:s0
@@ -289,12 +330,13 @@ persist.camera.snapshot.number   u:object_r:camera_snapshot_prop:s0
 persist.camera.tcc_aat           u:object_r:qualcomm_camera_prop:s0
 persist.configurationver         u:object_r:fota_prop:s0
 persist.data.eut.         u:object_r:persist_eut_prop:s0
-persist.data.lgetest.0    u:object_r:persist_data_lgetest_prop:s0
 persist.data.iwlan.enable        u:object_r:persist_iwlan_prop:s0
+persist.data.lgetest.0    u:object_r:persist_data_lgetest_prop:s0
 persist.data.ois.         u:object_r:persist_data_ois_prop:s0
 persist.data.sbp.update         u:object_r:update_prop:s0
 persist.data.sensor              u:object_r:sensor_name_prop:s0
 persist.data.sensor_name  u:object_r:sensor_name_prop:s0
+persist.data.opdeletion   u:object_r:update_prop:s0
 persist.data.tethering_oc       u:object_r:system_prop:s0
 persist.data_disable_bypaypopup u:object_r:radio_prop:s0
 persist.data_netmgrd_mtu  u:object_r:net_radio_prop:s0
@@ -325,8 +367,8 @@ persist.lge.postinstallstart u:object_r:postinstallstart_prop:s0
 persist.lge.postfirstboot    u:object_r:postinstallfirst_prop:s0
 persist.lge.saat.build.date      u:object_r:minios_prop:s0
 persist.lge.saat.build.num       u:object_r:minios_prop:s0
+persist.lge.supportvowifi        u:object_r:support_volte_prop:s0
 persist.lge.use.fmradio          u:object_r:fm_radio_prop:s0
-persist.log.tag    u:object_r:persist_log_tag_prop:s0
 persist.mape.server              u:object_r:mptcp_prop:s0
 persist.mfts.running             u:object_r:minios_prop:s0
 persist.mms.pre-install         u:object_r:mms_prop:s0
@@ -336,7 +378,9 @@ persist.qcril.datacall_timeout   u:object_r:datacall_prop:s0
 persist.sensors.                u:object_r:persist_sensors_prop:s0
 persist.sensors.onhand.en       u:object_r:sensors_onhand_prop:s0
 persist.service.avrcp.          u:object_r:avrcp_prop:s0
+persist.service.events.enable    u:object_r:persist_service_events_enable_prop:s0
 persist.service.hf.call.status  u:object_r:hf_call_status_prop:s0
+persist.service.kernel.enable    u:object_r:persist_service_kernel_enable_prop:s0
 persist.service.main.enable    u:object_r:persist_service_main_enable_prop:s0
 persist.service.odm_log.enable  u:object_r:lg_odm_prop:s0
 persist.service.radio.enable    u:object_r:persist_service_radio_enable_prop:s0
@@ -355,11 +399,13 @@ pre.gps.running                 u:object_r:minios_prop:s0
 pre.gps.value                    u:object_r:pre_gps_value_prop:s0
 pre.qr.display            u:object_r:pre_qr_display_prop:s0
 qrcode.img.size           u:object_r:minios_prop:s0
+radio.noril                      u:object_r:radio_noril_prop:s0
 sbp.bootanim              u:object_r:system_prop:s0
 sbp.lge.opname            u:object_r:system_prop:s0
 sbp.oppartition.          u:object_r:update_prop:s0
 selfd.                    u:object_r:selfd_prop:s0
 service.adb.     u:object_r:adb_prop:s0
+service.art.running     u:object_r:art_prop:s0
 service.mex.play                 u:object_r:system_lge_prop:s0
 service.mex.progress             u:object_r:system_lge_prop:s0
 service.mex.wav                  u:object_r:system_lge_prop:s0
@@ -400,12 +446,23 @@ wlan.monitor.status             u:object_r:wifi_prop:s0
 
 # mdfpp prop
 persist.service.ccaudit.enable  u:object_r:mdfpp_prop:s0
-sys.bc.selftest.status       u:object_r:mdfpp_prop:s0
-sys.openssl.selftest.status  u:object_r:mdfpp_prop:s0
+ro.sys.openssl.selftest.status  u:object_r:mdfpp_prop:s0
+ro.sys.sec.version.info         u:object_r:mdfpp_prop:s0
+sys.bc.selftest.status          u:object_r:mdfpp_prop:s0
+sys.openssl.selftest.status     u:object_r:mdfpp_prop:s0
+
+# LGMDM [lge-mdm-dev@lge.com]
+sys.lge.lgmdm_version   u:object_r:system_prop:s0
+sys.lge.lgmdm_expr      u:object_r:system_prop:s0
+# LGMDM
+
+# fullseg
+lfullseg.mode.    u:object_r:fullseg_mode_prop:s0
+jfullseg.mode.    u:object_r:fullseg_mode_prop:s0
+
+#line 1 "out-h1_lgu_kr/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
 #line 1 "device/lge/common/sepolicy/qcom/property_contexts"
-# thermald prop
-persist.sys.thermald_miti_off  u:object_r:thermald_prop:s0
-###
 
 # bluetooth prop
 qualcomm.bt.                     u:object_r:bluetooth_prop:s0
@@ -418,13 +475,16 @@ usb_uicc.enabled                 u:object_r:uicc_prop:s0
 
 # Etc qcom property
 ctl.dpmd                         u:object_r:ctl_dpmd_prop:s0
+ctl.msm_irqbal_lb                u:object_r:ctl_irqbal_lb_prop:s0
 ctl.sdcard                       u:object_r:ctl_fuse_prop:s0
 ctl.RIDL                         u:object_r:ctl_ridl_prop:s0
 mobicore.tbase.loaded            u:object_r:mobicore_prop:s0
 persist.lge.att.remove           u:object_r:wfd_prop:s0
 qc.sdk.us.digitalpen             u:object_r:qualcomm_digitalpen_prop:s0
 qualcomm.perf.                   u:object_r:qualcomm_pref_prop:s0
-radio.noril                      u:object_r:radio_noril_prop:s0
+ro.dbg.coresight.cfg_file        u:object_r:coresight_prop:s0
+ro.qc.sdk.us.proximity           u:object_r:qc_sdk_prop:s0
+ro.soc_info                      u:object_r:soc_info_prop:s0
 wifi.lge.offloading.ongoing      u:object_r:offloading_ongoing_prop:s0
 ###
 
@@ -436,8 +496,57 @@ persist.camera.zsl.queuedepth    u:object_r:camera_prop:s0
 persist.data.front.minfps u:object_r:camera_prop:s0
 persist.data.rear.minfps  u:object_r:camera_prop:s0
 persist.camera.use_ais u:object_r:camera_prop:s0
+sys.camera.hw_test_result u:object_r:camera_prop:s0
+sys.camera.pd_test.result u:object_r:camera_prop:s0
 ###
+
+# ipsecd prop
+net.handover.flag          u:object_r:ipsecd_prop:s0
+net.iwlan.                 u:object_r:ipsecd_prop:s0
+net.wo.debug.dpd           u:object_r:ipsecd_prop:s0
+net.wo.epdg.               u:object_r:ipsecd_prop:s0
+net.wo.epdg0.              u:object_r:ipsecd_prop:s0
+net.wo.epdg1.              u:object_r:ipsecd_prop:s0
+net.wo.epdg2.              u:object_r:ipsecd_prop:s0
+net.wo.epdg3.              u:object_r:ipsecd_prop:s0
+net.wo.epdg4.              u:object_r:ipsecd_prop:s0
+net.wo.epdg5.              u:object_r:ipsecd_prop:s0
+net.wo.epdg6.              u:object_r:ipsecd_prop:s0
+net.wo.epdg7.              u:object_r:ipsecd_prop:s0
+net.wo.epdg8.              u:object_r:ipsecd_prop:s0
+net.wo.epdg9.              u:object_r:ipsecd_prop:s0
+net.wo.statuscode          u:object_r:ipsecd_prop:s0
+persist.lg.data.iwlan.priv_iid     u:object_r:ipsecd_prop:s0
+persist.lg.data.swandbglv  u:object_r:ipsecd_prop:s0
+persist.net.wo.            u:object_r:ipsecd_prop:s0
+###
+#line 1 "out-h1_lgu_kr/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
 #line 1 "device/qcom/sepolicy/common/property_contexts"
+# Copyright (c) 2015-2016 Dolby Laboratories, Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 wc_transport.              u:object_r:bluetooth_prop:s0
 sys.usb_uicc.              u:object_r:uicc_prop:s0
 dolby.audio.               u:object_r:audio_prop:s0
@@ -445,27 +554,26 @@ persist.bluetooth.         u:object_r:bluetooth_prop:s0
 sys.ims.                   u:object_r:qcom_ims_prop:s0
 hw.fm.                     u:object_r:fm_prop:s0
 sys.usf.                   u:object_r:usf_prop:s0
-qc.sdk.us.                 u:object_r:usf_prop:s0
+ro.qc.sdk.us.                 u:object_r:usf_prop:s0
 radio.atfwd.               u:object_r:radio_prop:s0
 ctl.qmuxd                  u:object_r:ctl_qmuxd_prop:s0
 ctl.netmgrd                u:object_r:ctl_netmgrd_prop:s0
 ctl.port-bridge            u:object_r:ctl_port-bridge_prop:s0
-min_freq_0                 u:object_r:freq_prop:s0
-min_freq_4                 u:object_r:freq_prop:s0
 ctl.perfd                  u:object_r:perfd_prop:s0
+ctl.gamed                  u:object_r:gamed_prop:s0
 ctl.iop                    u:object_r:perfd_prop:s0
-qualcomm.bluetooth.        u:object_r:bluetooth_prop:s0
+ctl.vm_bms                 u:object_r:vm_bms_prop:s0
+ro.qualcomm.bluetooth.        u:object_r:bluetooth_prop:s0
 ctl.ipacm                  u:object_r:ipacm_prop:s0
 ctl.ipacm-diag             u:object_r:ipacm-diag_prop:s0
 ctl.qti                    u:object_r:qti_prop:s0
 ctl.sensors                u:object_r:sensors_prop:s0
 ctl.msm_irqbalance         u:object_r:msm_irqbalance_prop:s0
-ctl.msm_irqbal_lb          u:object_r:msm_irqbalance_prop:s0
 camera.                    u:object_r:camera_prop:s0
 persist.camera.            u:object_r:camera_prop:s0
-sf.lcd_density             u:object_r:sf_lcd_density_prop:s0
-opengles.version           u:object_r:opengles_prop:s0
-qualcomm.bt.hci_transport  u:object_r:bluetooth_prop:s0
+ro.sf.lcd_density             u:object_r:sf_lcd_density_prop:s0
+ro.opengles.version           u:object_r:opengles_prop:s0
+ro.qualcomm.bt.hci_transport  u:object_r:bluetooth_prop:s0
 ctl.mdm_helper             u:object_r:mdm_helper_prop:s0
 ctl.mpdecision             u:object_r:mpdecision_prop:s0
 qualcomm.perf.cores_online u:object_r:mpdecision_prop:s0
@@ -473,13 +581,56 @@ netd.fstman.               u:object_r:netd_prop:s0
 location.                  u:object_r:location_prop:s0
 qc.izat.                   u:object_r:location_prop:s0
 persist.rmnet.mux          u:object_r:rmnet_mux_prop:s0
+sys.usb.controller         u:object_r:sys_usb_controller_prop:s0
+sys.usb.configfs           u:object_r:sys_usb_configfs_prop:s0
 qemu.hw.mainkeys           u:object_r:qemu_hw_mainkeys_prop:s0
-dbg.coresight.cfg_file     u:object_r:coresight_prop:s0
 ctl.hbtp                   u:object_r:ctl_hbtp_prop:s0
 sys.audio.init             u:object_r:audio_prop:s0
-alarm_boot                 u:object_r:alarm_boot_prop:s0
+ro.alarm_boot                 u:object_r:alarm_boot_prop:s0
 debug.sf.nobootanimation   u:object_r:boot_animation_prop:s0
 debug.gralloc.             u:object_r:debug_gralloc_prop:s0
+persist.net.doxlat         u:object_r:xlat_prop:s0
 # DOLBY_START
 dolby.                     u:object_r:dolby_prop:s0
 # DOLBY_END
+wifi.ftmd.                 u:object_r:wififtmd_prop:s0
+ro.bluetooth.              u:object_r:bluetooth_prop:s0
+# WIGIG
+persist.fst.               u:object_r:fst_prop:s0
+ro.alarm_handled           u:object_r:alarm_handled_prop:s0
+ro.alarm_instance          u:object_r:alarm_instance_prop:s0
+#HWUI Property
+ro.hwui.texture_cache_size u:object_r:hwui_prop:s0
+#line 1 "out-h1_lgu_kr/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
+#line 1 "device/qcom/sepolicy/msm8996/property_contexts"
+# Copyright (c) 2016, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of The Linux Foundation nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+ctl.qvrd                   u:object_r:ctl_qvrd_prop:s0
+#line 1 "out-h1_lgu_kr/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+

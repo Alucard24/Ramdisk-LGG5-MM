@@ -29,7 +29,7 @@
 service lg_dm_router1 /system/bin/lg_dm_router 1
     class late_start
     user system
-    group system sdcard_r sdcard_rw media_rw net_raw net_admin inet qcom_diag
+    group system sdcard_r sdcard_rw media_rw net_raw net_admin inet qcom_diag readproc
     disabled
     oneshot
 

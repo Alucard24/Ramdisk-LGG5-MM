@@ -1,0 +1,33 @@
+# This init.rc file is for Kinibi310
+# lge-secureboot@lge.com
+
+# For t-base
+service mobicore /system/bin/mcDriverDaemon
+    setenv MC_AUTH_TOKEN_PATH /persist-lg/mcRegistry
+    class core
+    user system
+    group system
+    disabled
+
+service tbaseLoader /system/bin/tbaseLoader tbase
+    user system
+    group system
+    class core
+    oneshot
+    disabled
+
+on property:sys.listeners.registered=true
+    start tbaseLoader
+
+on property:mobicore.tbase.loaded=1
+    start mobicore
+
+on post-fs-data && property:ro.boot.laf=MID
+    mkdir /data/misc/mcRegistry 0775 system system
+    mkdir /data/misc/mcRegistry/TbStorage 0700 system system
+
+on property:vold.decrypt=trigger_restart_framework
+    mkdir /data/misc/mcRegistry 0775 system system
+    mkdir /data/misc/mcRegistry/TbStorage 0700 system system
+
+# t-base END

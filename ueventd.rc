@@ -1,6 +1,13 @@
 subsystem adf
 	devname uevent_devname
 
+# ueventd can only set permissions on device nodes and their associated
+# sysfs attributes, not on arbitrary paths.
+#
+# format for /dev rules: devname mode uid gid
+# format for /sys rules: nodename attr mode uid gid
+# shortcut: "mtd@NN" expands to "/dev/mtd/mtdNN"
+
 /dev/null                 0666   root       root
 /dev/zero                 0666   root       root
 /dev/full                 0666   root       root
@@ -18,7 +25,7 @@ subsystem adf
 /dev/log/*                0666   root       log
 /dev/pmsg0                0222   root       log
 
-# the msm hw3d client device node is world writable/readable
+# the msm hw3d client device node is world writable/readable.
 /dev/msm_hw3dc            0666   root       root
 
 # the DIAG device node is not world writable/readable.
@@ -41,7 +48,7 @@ subsystem adf
 /dev/alarm                0664   system     radio
 /dev/rtc0                 0640   system     system
 /dev/tty0                 0660   root       system
-/dev/graphics/*           0660   system     graphics
+/dev/graphics/*           0660   root       graphics
 /dev/msm_hw3dm            0660   system     graphics
 /dev/input/*              0660   root       input
 /dev/eac                  0660   root       audio
@@ -86,7 +93,6 @@ subsystem adf
 /dev/mtp_usb              0660   root       mtp
 /dev/usb_accessory        0660   root       usb
 /dev/tun                  0660   system     vpn
-/dev/block/bootdevice/by-name/config                 0660   system     system
 
 # CDMA radio interface MUX
 /dev/ts0710mux*           0640   radio      radio
@@ -102,6 +108,3 @@ subsystem adf
 
 # DVB API device nodes
 /dev/dvb*                 0660   root       system
-
-# secure clock
-/dev/secclk               0600   system     system

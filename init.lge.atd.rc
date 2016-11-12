@@ -1,5 +1,5 @@
 service atd /system/bin/atd
-    socket atd stream 0660 system inet
+    socket atd stream 0660 system system
     class main
 
 service frstd /system/bin/frstd

@@ -37,6 +37,8 @@ on chargerlogo
 
 on chargerlogo_exec
    setprop persist.service.kernel.enable 4
+   setprop persist.cne.feature 0
+   setprop persist.dpm.feature 0
    start log-kernel
    stop bootanim
    write /sys/class/android_usb/android0/enable 0
@@ -50,13 +52,28 @@ on chargerlogo_exec
    write /persist-lg/chargerlogo/autoboot_nosound 0
    chmod 0666 /persist-lg/chargerlogo/autoboot_nosound
 
-   wait /dev/block/bootdevice/by-name/system
-   mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
-   chown root system /sys/class/power_supply/bms/current_now
-   chown root system /sys/class/power_supply/bms/voltage_ocv
-   chmod 0664 /sys/class/power_supply/bms/current_now
-   chmod 0664 /sys/class/power_supply/bms/voltage_ocv
-   start vm_bms
+# Start charger_monitor on chargerlogo
+   chown root system /sys/module/qpnp_charger/parameters/charger_monitor
+   chown root system /sys/module/qpnp_charger/parameters/ext_ovp_isns_online
+   chown root system /sys/module/qpnp_charger/parameters/ext_ovp_isns_present
+   chown root system /sys/module/qpnp_charger/parameters/ext_ovp_isns_r
+   chown root system /sys/module/qpnp_charger/parameters/ext_ovp_isns_ua
+   chown root system /sys/module/qpnp_charger/parameters/ext_ovp_present
+   chown root system /sys/class/power_supply/battery/input_current_max
+   chown root system /sys/class/power_supply/battery/input_current_trim
+   chown root system /sys/class/power_supply/battery/voltage_min
+   chown root system /sys/class/power_supply/battery/input_current_settled
+   chmod 0664 /sys/module/qpnp_charger/parameters/charger_monitor
+   chmod 0644 /sys/module/qpnp_charger/parameters/ext_ovp_isns_online
+   chmod 0644 /sys/module/qpnp_charger/parameters/ext_ovp_isns_present
+   chmod 0644 /sys/module/qpnp_charger/parameters/ext_ovp_isns_r
+   chmod 0644 /sys/module/qpnp_charger/parameters/ext_ovp_isns_ua
+   chmod 0644 /sys/module/qpnp_charger/parameters/ext_ovp_present
+   chmod 0664 /sys/class/power_supply/battery/input_current_max
+   chmod 0664 /sys/class/power_supply/battery/input_current_trim
+   chmod 0664 /sys/class/power_supply/battery/voltage_min
+   chmod 0664 /sys/class/power_supply/battery/input_current_settled
+   start charger_monitor
 
    exec u:r:chargerlogo:s0 -- /sbin/chargerlogo
 

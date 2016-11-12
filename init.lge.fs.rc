@@ -11,13 +11,14 @@ on init
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
+on early-fs
     # setup_fs
     wait /dev/block/bootdevice/by-name/userdata
     wait /dev/block/bootdevice/by-name/cache
     wait /dev/block/bootdevice/by-name/sns
     wait /dev/block/bootdevice/by-name/drm
     wait /dev/block/bootdevice/by-name/persist
-    exec u:r:setup_fs:s0 -- /sbin/setup_fs_static \
+    exec u:r:setup_fs:s0 root root system -- /sbin/setup_fs_static \
         /dev/block/bootdevice/by-name/userdata \
         /dev/block/bootdevice/by-name/cache \
         /dev/block/bootdevice/by-name/sns \

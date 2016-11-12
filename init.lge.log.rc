@@ -1,5 +1,6 @@
 on post-fs-data
     mkdir /data/logger 0775 system system
+    mkdir /data/ccaudit 0775 system system
     mkdir /data/logger/setup 0770 system system
     mkdir /cache/encryption_log 0775 system system
 
@@ -35,12 +36,32 @@ on property:persist.service.kernel.enable=1
 on property:persist.service.kernel.enable=0
     stop log-kernel
 
-# power log
-service log-power /system/bin/sh /system/bin/logger_power.sh
+# Enable CC Audit for MDFPP [S]
+on property:vold.decrypt=trigger_restart_framework
+    restart logcat-ccaudit
+
+on property:vold.encrypt_progress=0
+    restart logcat-ccaudit
+
+service logcat-ccaudit /system/bin/sh /system/bin/logger_ccaudit.sh
     class main
     disabled
     oneshot
     seclabel u:r:log_services:s0
+
+on property:persist.service.ccaudit.enable=1
+    restart logcat-ccaudit
+
+on property:persist.service.ccaudit.enable=0
+    stop logcat-ccaudit
+# Enable CC Audit for MDFPP [E]
+
+
+# power log
+service log-power /system/bin/logger_power.sh
+    class main
+    disabled
+    oneshot
 
 on property:persist.service.power.enable=6
     restart log-power
@@ -213,6 +234,24 @@ on property:persist.service.logger.full=0
     restart logcat-events
     restart logcat-memory
 
+on property:persist.service.logsize.enable=1
+    restart log-kernel
+    restart log-power
+    restart logcat-main
+    restart logcat-system
+    restart logcat-radio
+    restart logcat-events
+    restart logcat-memory
+
+on property:persist.service.logsize.enable=0
+    restart log-kernel
+    restart log-power
+    restart logcat-main
+    restart logcat-system
+    restart logcat-radio
+    restart logcat-events
+    restart logcat-memory
+
 # locat setupwizard
     service logcat-setwiz /system/bin/sh /system/bin/logger_setupwizard.sh
     class main
@@ -311,3 +350,17 @@ on property:persist.service.xfrm.enable=1
 
 on property:persist.service.xfrm.enable=0
     stop log-xfrm
+
+
+#tcpdump - ims packet log
+service log-ims /system/bin/sh /system/bin/logger_ims_packet.sh
+    class main
+    disabled
+    oneshot
+    seclabel u:r:log_services:s0
+
+on property:persist.service.ims.packet.enable=1
+    start log-ims
+
+on property:persist.service.ims.packet.enable=0
+    stop log-ims

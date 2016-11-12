@@ -6,7 +6,7 @@ case "$target_operator" in
     "ATT")
         default="charge_only"
         ;;
-    "MPCS")
+    "TRF")
         default="mtp"
         ;;
     "VZW")
@@ -21,17 +21,12 @@ case "$target_operator" in
         fi
         ;;
     *)
-        case "$ui_version" in
-            "4.2")
-                default="mtp"
-                ;;
-            "5.0")
-                default="charge_only"
-                ;;
-            *)
-                default="mtp"
-                ;;
-        esac
+        if [ "${ui_version//./}" -ge "50" ];
+        then
+            default="charge_only"
+        else
+            default="mtp"
+        fi
     ;;
 esac
 
