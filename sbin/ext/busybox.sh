@@ -29,8 +29,8 @@ CLEAN_BUSYBOX;
 cd /;
 
 # execute launch_demonsu script
-chmod 06755 /sbin/launch_daemonsu.sh;
-$BB sh /sbin/launch_daemonsu.sh;
+#chmod 06755 /sbin/launch_daemonsu.sh;
+#$BB sh /sbin/launch_daemonsu.sh;
 
 # Install latest busybox to ROM
 if [ -d /su/xbin ]; then
