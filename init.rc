@@ -666,6 +666,5 @@ on property:ro.debuggable=1
 service flash_recovery /system/bin/install-recovery.sh
     class main
     oneshot
-
 # SuperSU:PATCH:278
-# SuperSU:STOCK:b1c7e924e9c8cf8c87d3f0c331e927c005770878
+# SuperSU:STOCK:85d87400a38a79ad545cd75ae0403ad4807c2c0d
