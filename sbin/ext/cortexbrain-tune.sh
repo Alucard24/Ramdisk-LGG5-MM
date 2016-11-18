@@ -343,6 +343,15 @@ CPU_GOV_TWEAKS()
 				pump_dec_step_tmp_23="/dev/null";
 			fi;
 
+			cpus_up_rate_at_min_freq_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/cpus_up_rate_at_min_freq";
+			if [ ! -e $cpus_up_rate_at_min_freq_tmp_01 ]; then
+				cpus_up_rate_at_min_freq_tmp_01="/dev/null";
+			fi;
+			cpus_up_rate_at_min_freq_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/cpus_up_rate_at_min_freq";
+			if [ ! -e $cpus_up_rate_at_min_freq_tmp_23 ]; then
+				cpus_up_rate_at_min_freq_tmp_23="/dev/null";
+			fi;
+
 			cpus_up_rate_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/cpus_up_rate";
 			if [ ! -e $cpus_up_rate_tmp_01 ]; then
 				cpus_up_rate_tmp_01="/dev/null";
@@ -350,6 +359,15 @@ CPU_GOV_TWEAKS()
 			cpus_up_rate_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/cpus_up_rate";
 			if [ ! -e $cpus_up_rate_tmp_23 ]; then
 				cpus_up_rate_tmp_23="/dev/null";
+			fi;
+
+			cpus_down_rate_at_min_freq_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/cpus_down_rate_at_min_freq";
+			if [ ! -e $cpus_down_rate_at_min_freq_tmp_01 ]; then
+				cpus_down_rate_at_min_freq_tmp_01="/dev/null";
+			fi;
+			cpus_down_rate_at_min_freq_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/cpus_down_rate_at_min_freq";
+			if [ ! -e $cpus_down_rate_at_min_freq_tmp_23 ]; then
+				cpus_down_rate_at_min_freq_tmp_23="/dev/null";
 			fi;
 
 			cpus_down_rate_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/cpus_down_rate";
@@ -405,8 +423,12 @@ CPU_GOV_TWEAKS()
 			echo "$pump_dec_step_at_min_freq_23" > $pump_dec_step_at_min_freq_tmp_23;
 			echo "$pump_dec_step_01" > $pump_dec_step_tmp_01;
 			echo "$pump_dec_step_23" > $pump_dec_step_tmp_23;
+			echo "$cpus_up_rate_at_min_freq_01" > $cpus_up_rate_at_min_freq_tmp_01;
+			echo "$cpus_up_rate_at_min_freq_23" > $cpus_up_rate_at_min_freq_tmp_23;
 			echo "$cpus_up_rate_01" > $cpus_up_rate_tmp_01;
 			echo "$cpus_up_rate_23" > $cpus_up_rate_tmp_23;
+			echo "$cpus_down_rate_at_min_freq_01" > $cpus_down_rate_at_min_freq_tmp_01;
+			echo "$cpus_down_rate_at_min_freq_23" > $cpus_down_rate_at_min_freq_tmp_23;
 			echo "$cpus_down_rate_01" > $cpus_down_rate_tmp_01;
 			echo "$cpus_down_rate_23" > $cpus_down_rate_tmp_23;
 
