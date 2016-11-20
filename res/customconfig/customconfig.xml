@@ -383,7 +383,7 @@
 
 		<seekBar description="Number of samples to evaluate cpus frequency scaling up when current cpu(CPU0 or CPU1) frequency is greater than freq_responsiveness. (Default: 1)" name="cpus_up_rate_01" action="generic_cortex /tmp/cpus_up_rate_01" unit="int" min="1" reversed="false" step="1" max="5"/>
 
-		<seekBar description="Number of samples to evaluate cpus frequency scaling up when current cpu(CPU2 or CPU3) frequency is greater than freq_responsiveness. (Default: 1)" name="cpus_up_rate_23" action="generic_cortex /tmp/cpus_up_rate_23" unit="int" min="1" reversed="false" step="1" max="5"/>
+		<seekBar description="Number of samples to evaluate cpus frequency scaling up when current cpu(CPU2 or CPU3) frequency is greater than freq_responsiveness. (Default: 3)" name="cpus_up_rate_23" action="generic_cortex /tmp/cpus_up_rate_23" unit="int" min="1" reversed="false" step="1" max="5"/>
 
 		<seekBar description="Number of samples to evaluate cpu frequency scaling down when current cpu(CPU0 or CPU1) frequency is equal or lower than freq_responsiveness. (Default: 1)" name="cpus_down_rate_at_min_freq_01" action="generic_cortex /tmp/cpus_down_rate_at_min_freq_01" unit="int" min="1" reversed="false" step="1" max="5"/>
 
