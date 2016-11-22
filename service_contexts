@@ -146,7 +146,7 @@ wifiscanner                               u:object_r:wifiscanner_service:s0
 wifi                                      u:object_r:wifi_service:s0
 window                                    u:object_r:window_service:s0
 *                                         u:object_r:default_android_service:s0
-#line 1 "out-h1_lgu_kr/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "out-h1_global_com/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/lge/common/sepolicy/service_contexts"
 ABTPersistenceService         u:object_r:abt_persistence_service:s0
@@ -253,7 +253,7 @@ wifiLgeExtService             u:object_r:lge_system_server_service:s0
 wifiOffloadingService         u:object_r:lge_system_server_service:s0
 wifiSapService                u:object_r:lge_system_server_service:s0
 callfwDebugService            u:object_r:radio_service:s0
-#line 1 "out-h1_lgu_kr/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "out-h1_global_com/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/qcom/sepolicy/common/service_contexts"
 android.apps.IQfpService                       u:object_r:iqfp_service:s0
@@ -290,7 +290,7 @@ uce                                            u:object_r:uce_service:s0
 eSEPowerManagerService                         u:object_r:esepmdaemon_service:s0
 wigigp2p                                       u:object_r:wigigp2p_service:s0
 wigig                                          u:object_r:wigig_service:s0
-#line 1 "out-h1_lgu_kr/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "out-h1_global_com/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/qcom/sepolicy/test/service_contexts"
 # Copyright (c) 2015, The Linux Foundation. All rights reserved.
@@ -323,7 +323,7 @@ wigig                                          u:object_r:wigig_service:s0
 com.qualcomm.qti.auth.securesampleauthdaemon   u:object_r:fidotest_service:s0
 com.qualcomm.qti.qseeproxysample               u:object_r:qseeproxysample_service:s0
 
-#line 1 "out-h1_lgu_kr/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "out-h1_global_com/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/qcom/sepolicy/msm8996/service_contexts"
 # Copyright (c) 2015, The Linux Foundation. All rights reserved.
@@ -354,5 +354,5 @@ com.qualcomm.qti.qseeproxysample               u:object_r:qseeproxysample_servic
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 android.apps.IQvopService             u:object_r:iqvop_service:s0
-#line 1 "out-h1_lgu_kr/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "out-h1_global_com/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 

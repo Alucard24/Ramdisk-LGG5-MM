@@ -380,8 +380,6 @@ on post-fs-data
     write /sys/block/dm-0/queue/read_ahead_kb 2048
     write /sys/block/dm-1/queue/read_ahead_kb 2048
 
-    # make lge_modem_ramdump_loc for ssr dump.
-    mkdir /data/lge_modem_ramdump_loc 0775 system system
 
 service perfd /system/vendor/bin/perfd
    class main
@@ -430,6 +428,7 @@ on property:persist.sys.ssr.restart_level=*
 
 on property:persist.sys.ssr.enable_ramdumps=1
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 1
+    mkdir /data/lge_modem_ramdump_loc 775 system system
     start ss_ramdump
 
 on property:persist.sys.ssr.enable_ramdumps=0

@@ -1,3 +1,24 @@
+on init
+    exec u:r:setup_fs:s0 -- /sbin/setup_fs_static \
+        /dev/block/bootdevice/by-name/cust \
+        /dev/block/bootdevice/by-name/OP \
+        /dev/block/bootdevice/by-name/userdata \
+        no_reboot
+
+on fs
+    mkdir /cust 0771 system system
+    wait /dev/block/bootdevice/by-name/cust
+    exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/cust
+    mount ext4 /dev/block/bootdevice/by-name/cust /cust rw nosuid nodev barrier=1 noauto_da_alloc
+    restorecon_recursive /cust
+    mount ext4 /dev/block/bootdevice/by-name/cust /cust ro remount nosuid nodev barrier=1 noauto_da_alloc
+
+    mkdir /OP 0771 system system
+    exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/OP
+    mount ext4 /dev/block/bootdevice/by-name/OP /OP rw nosuid nodev barrier=1 noauto_da_alloc
+    restorecon_recursive /OP
+    mount ext4 /dev/block/bootdevice/by-name/OP /OP ro remount nosuid nodev barrier=1 noauto_da_alloc
+
 on post-fs-data
     # NFC: create data/nfc for nv storage
     mkdir /data/nfc 0770 nfc nfc
@@ -9,83 +30,14 @@ service imswmsproxy /system/bin/imswmsproxy
     user system
     group radio system net_admin net_raw
 
-on post-fs-data
-# LGE_CHANGE_S LGT_REQ  [hanchul.shin@lgepartner.com][2014-05-08][BEGIN]
-    mkdir /data/data/com.ubivelox.wipiplayer/W 0777 system lgt_gid
-    mkdir /data/LGTContents 0771 system lgt_gid
-    mkdir /data/LGTContents/app 0771 system lgt_gid
-    mkdir /data/LGTContents/video 0771 system lgt_gid
-    mkdir /data/LGTContents/music 0771 system lgt_gid
-    mkdir /data/LGTContents/bell 0771 system lgt_gid
-    mkdir /data/LGTContents/DLtmp 0771 system lgt_gid
-    mkdir /data/LGTContents/ringforme 0771 system lgt_gid
-    chmod 771 /system/persist
-    chmod 665 /system/persist/LGUPlus_Api.xml
-
-# [hanchul.shin@lgepartner.com][2014-05-08] add LGTConents
-    chown system lgt_gid /data/data/com.ubivelox.wipiplayer/W
-    chown system lgt_gid /data/LGTContents
-    chown system lgt_gid /data/LGTContents/video
-    chown system lgt_gid /data/LGTContents/music
-    chown system lgt_gid /data/LGTContents/bell
-    chown system lgt_gid /data/LGTContents/app
-    chown system lgt_gid /data/LGTContents/DLtmp
-    chown system lgt_gid /data/LGTContents/ringforme
-# LGE_CHANGE_E LGT_REQ  [hanchul.shin@lgepartner.com][2014-05-08][END]
-    restorecon_recursive /data/LGTContents
-
-#Broadcast Service [tdmb-fwk@lge.com]
-on post-fs-data
-    mkdir /data/cas 0770 system media
-
-service broadcast /system/bin/libbroadcast_server
-    class main
-    user media
-    group system audio media graphics sdcard_rw net_raw
-    socket dmb_socket stream 0660 media media
-
-on property:init.svc.media=restarting
-    restart broadcast
-
-# LGE IMS ipsec solution [START]
+# LGE IMS Features - LGIMS ipsec solution [START]
 service ipsecclient /system/bin/ipsecclient
-    class main
-    group system net_admin net_raw
-    disabled
+  class main
+  group system net_admin net_raw
+  disabled
 
 service ipsecstarter /system/bin/ipsecstarter
-    class main
-    user system
-    group system net_admin net_raw
-# LGE IMS ipsec solution [END]
-
-# For t-base
-service mobicore /system/bin/mcDriverDaemon
-    setenv MC_AUTH_TOKEN_PATH /persist-lg/mcRegistry
-    class core
-    user system
-    group system
-    disabled
-
-service tbaseLoader /system/bin/tbaseLoader tbase
-    user system
-    group system
-    class core
-    oneshot
-    disabled
-
-on property:vold.decrypt=trigger_restart_framework
-    mkdir /data/misc/mcRegistry 0775 system system
-    mkdir /data/misc/mcRegistry/TbStorage 0700 system system
-
-on post-fs-data && property:ro.boot.laf=MID
-    mkdir /data/misc/mcRegistry 0775 system system
-    mkdir /data/misc/mcRegistry/TbStorage 0700 system system
-
-on property:sys.listeners.registered=true
-    start tbaseLoader
-
-on property:mobicore.tbase.loaded=1
-    start mobicore
-
-# t-base END
+  class main
+  user system
+  group system net_admin net_raw
+# LGE IMS Features -LGIMS ipsec solution [END]

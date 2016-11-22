@@ -4,3 +4,5 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 /dev/block/platform/soc/624000.ufshc/by-name/cache	/cache		ext4	nodev,barrier=1,noauto_da_alloc,errors=continue		wait,check
+/dev/block/platform/soc/624000.ufshc/by-name/cust	/cust		ext4	rw,barrier=1,noatime                                    wait
+/dev/block/platform/soc/624000.ufshc/by-name/OP 	/OP		ext4	rw,barrier=1,noatime                                    wait

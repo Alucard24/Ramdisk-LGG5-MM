@@ -28,10 +28,11 @@ dalvik.vm.usejit=true
 dalvik.vm.usejitprofiles=true
 dalvik.vm.appimageformat=lz4
 debug.atrace.tags.enableflags=0
+ro.lge.fmframework.enabled=true
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
-ro.bootimage.build.date=Sat Oct 29 16:15:34 KST 2016
-ro.bootimage.build.date.utc=1477725334
-ro.bootimage.build.fingerprint=lge/h1_lgu_kr/h1:7.0/NRD90U/1630316159fe6:user/release-keys
+ro.bootimage.build.date=Sun Oct 30 10:49:24 KST 2016
+ro.bootimage.build.date.utc=1477792164
+ro.bootimage.build.fingerprint=lge/h1_global_com/h1:7.0/NRD90U/163041049db12:user/release-keys
 

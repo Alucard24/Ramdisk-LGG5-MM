@@ -22,9 +22,22 @@ on fota-update-trigger
     symlink /system/etc /etc
 
     mkdir /sdcard
+    mkdir /cust
+    mkdir /OP
     mkdir /cache
     mount /tmp /tmp tmpfs
 
+    #mount rootfs rootfs / rw remount
+
+# mount mmc partitions
+	#wait /dev/block/bootdevice/by-name/system
+	#wait /dev/block/platform/soc.0/f9824900.sdhci/by-name/system
+
+	#wait /dev/block/bootdevice/by-name/cache
+	#wait /dev/block/bootdevice/by-name/cache
+	#wait /dev/block/bootdevice/by-name/cache
+	#wait /dev/block/bootdevice/by-name/cache
+	#wait /dev/block/bootdevice/by-name/cache
 	wait /dev/block/platform/soc/624000.ufshc/by-name/cache
 
 	mount_all /fstab.fota
