@@ -172,24 +172,6 @@ CPU_GOV_TWEAKS()
 				up_threshold_tmp_23="/dev/null";
 			fi;
 
-			inc_cpu_load_at_min_freq_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/inc_cpu_load_at_min_freq";
-			if [ ! -e $inc_cpu_load_at_min_freq_tmp_01 ]; then
-				inc_cpu_load_at_min_freq_tmp_01="/dev/null";
-			fi;
-			inc_cpu_load_at_min_freq_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/inc_cpu_load_at_min_freq";
-			if [ ! -e $inc_cpu_load_at_min_freq_tmp_23 ]; then
-				inc_cpu_load_at_min_freq_tmp_23="/dev/null";
-			fi;
-
-			dec_cpu_load_at_min_freq_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/dec_cpu_load_at_min_freq";
-			if [ ! -e $dec_cpu_load_at_min_freq_tmp_01 ]; then
-				dec_cpu_load_at_min_freq_tmp_01="/dev/null";
-			fi;
-			dec_cpu_load_at_min_freq_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/dec_cpu_load_at_min_freq";
-			if [ ! -e $dec_cpu_load_at_min_freq_tmp_23 ]; then
-				dec_cpu_load_at_min_freq_tmp_23="/dev/null";
-			fi;
-
 			down_threshold_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/down_threshold";
 			if [ ! -e $down_threshold_tmp_01 ]; then
 				down_threshold_tmp_01="/dev/null";
@@ -235,6 +217,15 @@ CPU_GOV_TWEAKS()
 				freq_for_responsiveness_max_tmp_23="/dev/null";
 			fi;
 
+			freq_responsiveness_max_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/freq_responsiveness_max";
+			if [ ! -e $freq_responsiveness_max_tmp_01 ]; then
+				freq_responsiveness_max_tmp_01="/dev/null";
+			fi;
+			freq_responsiveness_max_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/freq_responsiveness_max";
+			if [ ! -e $freq_responsiveness_max_tmp_23 ]; then
+				freq_responsiveness_max_tmp_23="/dev/null";
+			fi;
+
 			freq_step_at_min_freq_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/freq_step_at_min_freq";
 			if [ ! -e $freq_step_at_min_freq_tmp_01 ]; then
 				freq_step_at_min_freq_tmp_01="/dev/null";
@@ -269,24 +260,6 @@ CPU_GOV_TWEAKS()
 			freq_step_dec_at_max_freq_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/freq_step_dec_at_max_freq";
 			if [ ! -e $freq_step_dec_at_max_freq_tmp_23 ]; then
 				freq_step_dec_at_max_freq_tmp_23="/dev/null";
-			fi;
-
-			inc_cpu_load_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/inc_cpu_load";
-			if [ ! -e $inc_cpu_load_tmp_01 ]; then
-				inc_cpu_load_tmp_01="/dev/null";
-			fi;
-			inc_cpu_load_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/inc_cpu_load";
-			if [ ! -e $inc_cpu_load_tmp_23 ]; then
-				inc_cpu_load_tmp_23="/dev/null";
-			fi;
-
-			dec_cpu_load_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/dec_cpu_load";
-			if [ ! -e $dec_cpu_load_tmp_01 ]; then
-				dec_cpu_load_tmp_01="/dev/null";
-			fi;
-			dec_cpu_load_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/dec_cpu_load";
-			if [ ! -e $dec_cpu_load_tmp_23 ]; then
-				dec_cpu_load_tmp_23="/dev/null";
 			fi;
 
 			freq_up_brake_at_min_freq_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/freq_up_brake_at_min_freq";
@@ -343,13 +316,13 @@ CPU_GOV_TWEAKS()
 				pump_dec_step_tmp_23="/dev/null";
 			fi;
 
-			cpus_up_rate_at_min_freq_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/cpus_up_rate_at_min_freq";
-			if [ ! -e $cpus_up_rate_at_min_freq_tmp_01 ]; then
-				cpus_up_rate_at_min_freq_tmp_01="/dev/null";
+			cpus_up_rate_at_max_freq_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/cpus_up_rate_at_max_freq";
+			if [ ! -e $cpus_up_rate_at_max_freq_tmp_01 ]; then
+				cpus_up_rate_at_max_freq_tmp_01="/dev/null";
 			fi;
-			cpus_up_rate_at_min_freq_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/cpus_up_rate_at_min_freq";
-			if [ ! -e $cpus_up_rate_at_min_freq_tmp_23 ]; then
-				cpus_up_rate_at_min_freq_tmp_23="/dev/null";
+			cpus_up_rate_at_max_freq_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/cpus_up_rate_at_max_freq";
+			if [ ! -e $cpus_up_rate_at_max_freq_tmp_23 ]; then
+				cpus_up_rate_at_max_freq_tmp_23="/dev/null";
 			fi;
 
 			cpus_up_rate_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/cpus_up_rate";
@@ -361,13 +334,13 @@ CPU_GOV_TWEAKS()
 				cpus_up_rate_tmp_23="/dev/null";
 			fi;
 
-			cpus_down_rate_at_min_freq_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/cpus_down_rate_at_min_freq";
-			if [ ! -e $cpus_down_rate_at_min_freq_tmp_01 ]; then
-				cpus_down_rate_at_min_freq_tmp_01="/dev/null";
+			cpus_down_rate_at_max_freq_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/cpus_down_rate_at_max_freq";
+			if [ ! -e $cpus_down_rate_at_max_freq_tmp_01 ]; then
+				cpus_down_rate_at_max_freq_tmp_01="/dev/null";
 			fi;
-			cpus_down_rate_at_min_freq_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/cpus_down_rate_at_min_freq";
-			if [ ! -e $cpus_down_rate_at_min_freq_tmp_23 ]; then
-				cpus_down_rate_at_min_freq_tmp_23="/dev/null";
+			cpus_down_rate_at_max_freq_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/cpus_down_rate_at_max_freq";
+			if [ ! -e $cpus_down_rate_at_max_freq_tmp_23 ]; then
+				cpus_down_rate_at_max_freq_tmp_23="/dev/null";
 			fi;
 
 			cpus_down_rate_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/cpus_down_rate";
@@ -385,10 +358,6 @@ CPU_GOV_TWEAKS()
 			echo "$timer_rate_23" > $timer_rate_tmp_23;
 			echo "$up_threshold_01" > $up_threshold_tmp_01;
 			echo "$up_threshold_23" > $up_threshold_tmp_23;
-			echo "$inc_cpu_load_at_min_freq_01" > $inc_cpu_load_at_min_freq_tmp_01;
-			echo "$inc_cpu_load_at_min_freq_23" > $inc_cpu_load_at_min_freq_tmp_23;
-			echo "$dec_cpu_load_at_min_freq_01" > $dec_cpu_load_at_min_freq_tmp_01;
-			echo "$dec_cpu_load_at_min_freq_23" > $dec_cpu_load_at_min_freq_tmp_23;
 			echo "$down_threshold_01" > $down_threshold_tmp_01;
 			echo "$down_threshold_23" > $down_threshold_tmp_23;
 			echo "$sampling_down_factor_01" > $sampling_down_factor_tmp_01;
@@ -407,10 +376,8 @@ CPU_GOV_TWEAKS()
 			echo "$freq_responsiveness_23" > $freq_responsiveness_tmp_23;
 			echo "$freq_for_responsiveness_max_01" > $freq_for_responsiveness_max_tmp_01;
 			echo "$freq_for_responsiveness_max_23" > $freq_for_responsiveness_max_tmp_23;
-			echo "$inc_cpu_load_01" > $inc_cpu_load_tmp_01;
-			echo "$inc_cpu_load_23" > $inc_cpu_load_tmp_23;
-			echo "$dec_cpu_load_01" > $dec_cpu_load_tmp_01;
-			echo "$dec_cpu_load_23" > $dec_cpu_load_tmp_23;
+			echo "$freq_responsiveness_max_01" > $freq_responsiveness_max_tmp_01;
+			echo "$freq_responsiveness_max_23" > $freq_responsiveness_max_tmp_23;
 			echo "$freq_up_brake_at_min_freq_01" > $freq_up_brake_at_min_freq_tmp_01;
 			echo "$freq_up_brake_at_min_freq_23" > $freq_up_brake_at_min_freq_tmp_23;
 			echo "$freq_up_brake_01" > $freq_up_brake_tmp_01;
@@ -423,12 +390,12 @@ CPU_GOV_TWEAKS()
 			echo "$pump_dec_step_at_min_freq_23" > $pump_dec_step_at_min_freq_tmp_23;
 			echo "$pump_dec_step_01" > $pump_dec_step_tmp_01;
 			echo "$pump_dec_step_23" > $pump_dec_step_tmp_23;
-			echo "$cpus_up_rate_at_min_freq_01" > $cpus_up_rate_at_min_freq_tmp_01;
-			echo "$cpus_up_rate_at_min_freq_23" > $cpus_up_rate_at_min_freq_tmp_23;
+			echo "$cpus_up_rate_at_max_freq_01" > $cpus_up_rate_at_max_freq_tmp_01;
+			echo "$cpus_up_rate_at_max_freq_23" > $cpus_up_rate_at_max_freq_tmp_23;
 			echo "$cpus_up_rate_01" > $cpus_up_rate_tmp_01;
 			echo "$cpus_up_rate_23" > $cpus_up_rate_tmp_23;
-			echo "$cpus_down_rate_at_min_freq_01" > $cpus_down_rate_at_min_freq_tmp_01;
-			echo "$cpus_down_rate_at_min_freq_23" > $cpus_down_rate_at_min_freq_tmp_23;
+			echo "$cpus_down_rate_at_max_freq_01" > $cpus_down_rate_at_max_freq_tmp_01;
+			echo "$cpus_down_rate_at_max_freq_23" > $cpus_down_rate_at_max_freq_tmp_23;
 			echo "$cpus_down_rate_01" > $cpus_down_rate_tmp_01;
 			echo "$cpus_down_rate_23" > $cpus_down_rate_tmp_23;
 
