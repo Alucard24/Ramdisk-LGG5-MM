@@ -18,8 +18,8 @@ on post-fs
     mkdir /persist-lg/kmstore 0770 system system
 
     #USE_SECUREBOOT
-    verity_update_state
-    determine_run_wallpaper
+    #verity_update_state
+    #determine_run_wallpaper
 
     #QFUSE
     write /sys/devices/platform/lge-qfprom/sec_read 0
@@ -360,8 +360,8 @@ service rmplb /system/vendor/bin/rmplb.sh
 on property:sys.boot_completed=1
     start rmplb
 
-on run-wallpaper
-    exec u:r:wallpaper:s0 -- /sbin/wallpaper
+#on run-wallpaper
+    #exec u:r:wallpaper:s0 -- /sbin/wallpaper
 
 # LG RCT(Rooting Check Tool)
 service rctd /sbin/rctd
