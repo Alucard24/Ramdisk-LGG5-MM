@@ -667,4 +667,4 @@ service flash_recovery /system/bin/install-recovery.sh
     class main
     oneshot
 # SuperSU:PATCH:278
-# SuperSU:STOCK:9b5690af8b2d8e6a12458aa7bd9a9773dafc3268
+# SuperSU:STOCK:8b049dedf4d7dc9f4a0c0b92ccc681535eed6440

@@ -32,7 +32,7 @@ ro.lge.fmframework.enabled=true
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
-ro.bootimage.build.date=Sun Oct 30 10:49:24 KST 2016
-ro.bootimage.build.date.utc=1477792164
-ro.bootimage.build.fingerprint=lge/h1_global_com/h1:7.0/NRD90U/163041049db12:user/release-keys
+ro.bootimage.build.date=Wed Dec 14 17:13:20 IST 2016
+ro.bootimage.build.date.utc=1481715800
+ro.bootimage.build.fingerprint=lge/h1_global_com/h1:7.0/NRD90U/163492043cb14:user/release-keys
 

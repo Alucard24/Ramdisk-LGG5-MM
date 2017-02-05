@@ -343,8 +343,8 @@ service socks /system/xbin/redsocks -c /system/etc/redsocks.conf
         stop socks
 # 2015-06-11 hyoseab.song@lge.com LGP_DATA_TCPIP_MPTCP_SOCKS [END]
 # bugreport is triggered by holding down volume down, volume up and power
-service bugreport /system/bin/dumpstate -d -p -B \
-        -o /data/data/com.android.shell/files/bugreports/bugreport
+service bugreport /system/bin/dumpstate -d -p -B -z \
+        -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
     class main
     disabled
     oneshot

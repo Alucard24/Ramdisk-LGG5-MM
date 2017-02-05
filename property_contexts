@@ -400,6 +400,8 @@ pre.gps.value                    u:object_r:pre_gps_value_prop:s0
 pre.qr.display            u:object_r:pre_qr_display_prop:s0
 qrcode.img.size           u:object_r:minios_prop:s0
 radio.noril                      u:object_r:radio_noril_prop:s0
+ro.lge.suffix             u:object_r:lge_suffix_prop:s0
+ro.radio.noril            u:object_r:radio_noril_prop:s0
 sbp.bootanim              u:object_r:system_prop:s0
 sbp.lge.opname            u:object_r:system_prop:s0
 sbp.oppartition.          u:object_r:update_prop:s0
