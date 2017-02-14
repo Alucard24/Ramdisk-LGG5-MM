@@ -132,6 +132,7 @@
 
 		<spinner description="This will set the CPU0 and CPU1 governors. Default CPU governor will only be set during early stages of booting (before init.d execution), and can be overridden by any other scripts or applications. (Default: Alucard)" name="Default CPU Governor" action="scaling_governor_cpu01">
 			<spinnerItem name="alucard" value="alucard"/>
+			<spinnerItem name="alucardsched" value="alucardsched"/>
 			<spinnerItem name="conservative" value="conservative"/> 
 			<spinnerItem name="darkness" value="darkness"/>
 			<spinnerItem name="interactive" value="interactive"/> 
@@ -143,6 +144,7 @@
 
 		<spinner description="This will set the CPU2 and CPU3 governors. Default CPU governor will only be set during early stages of booting (before init.d execution), and can be overridden by any other scripts or applications. (Default: Alucard)" name="Default CPU Governor" action="scaling_governor_cpu23">
 			<spinnerItem name="alucard" value="alucard"/>
+			<spinnerItem name="alucardsched" value="alucardsched"/>
 			<spinnerItem name="conservative" value="conservative"/> 
 			<spinnerItem name="darkness" value="darkness"/>
 			<spinnerItem name="interactive" value="interactive"/> 
