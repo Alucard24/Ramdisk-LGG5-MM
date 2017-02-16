@@ -135,6 +135,7 @@
 			<spinnerItem name="alucardsched" value="alucardsched"/>
 			<spinnerItem name="conservative" value="conservative"/> 
 			<spinnerItem name="darkness" value="darkness"/>
+			<spinnerItem name="darknesssched" value="darknesssched"/>
 			<spinnerItem name="interactive" value="interactive"/> 
 			<spinnerItem name="nightmare" value="nightmare"/> 
 			<spinnerItem name="ondemand" value="ondemand"/> 
@@ -147,6 +148,7 @@
 			<spinnerItem name="alucardsched" value="alucardsched"/>
 			<spinnerItem name="conservative" value="conservative"/> 
 			<spinnerItem name="darkness" value="darkness"/>
+			<spinnerItem name="darknesssched" value="darknesssched"/>
 			<spinnerItem name="interactive" value="interactive"/> 
 			<spinnerItem name="nightmare" value="nightmare"/> 
 			<spinnerItem name="ondemand" value="ondemand"/> 
