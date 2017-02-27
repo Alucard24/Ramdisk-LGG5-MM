@@ -174,9 +174,9 @@
 
 		<seekBar description="Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU2 or CPU3) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Interactive, Nightmare, Darkness, Alucard). (Default: 20.000 µs)" name="timer_rate_23" action="generic_cortex /tmp/timer_rate_23" unit="µs" min="10000" reversed="false" step="10000" max="200000"/>
 
-		<seekBar description="Up Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU0 or CPU1) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Alucardsched, DarknessSched). (Default: 2.000 µs)" name="up_rate_limit_us_01" action="generic_cortex /tmp/up_rate_limit_us_01" unit="µs" min="1000" reversed="false" step="1000" max="80000"/>
+		<seekBar description="Up Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU0 or CPU1) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Alucardsched, DarknessSched). (Default: 20.000 µs)" name="up_rate_limit_us_01" action="generic_cortex /tmp/up_rate_limit_us_01" unit="µs" min="1000" reversed="false" step="1000" max="80000"/>
 
-		<seekBar description="Up Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU2 or CPU3) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Alucardsched, DarknessSched). (Default: 1.000 µs)" name="up_rate_limit_us_23" action="generic_cortex /tmp/up_rate_limit_us_23" unit="µs" min="1000" reversed="false" step="1000" max="80000"/>
+		<seekBar description="Up Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU2 or CPU3) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Alucardsched, DarknessSched). (Default: 10.000 µs)" name="up_rate_limit_us_23" action="generic_cortex /tmp/up_rate_limit_us_23" unit="µs" min="1000" reversed="false" step="1000" max="80000"/>
 
 		<seekBar description="Down Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU0 or CPU1) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Alucardsched, DarknessSched). (Default: 20.000 µs)" name="down_rate_limit_us_01" action="generic_cortex /tmp/down_rate_limit_us_01" unit="µs" min="1000" reversed="false" step="1000" max="80000"/>
 
@@ -394,9 +394,9 @@
 
 		<seekBar description="Governor should increase CPU2 and CPU3 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, Alucardsched). (Default: 3)" name="pump_inc_step_23" action="generic_cortex /tmp/pump_inc_step_23" unit="step" min="1" reversed="false" step="1" max="6"/>
 
-		<seekBar description="Governor should decrease CPU0 and CPU1 frequency by n step each time CPU load is below target_cpu_load. (Only for Alucard, Alucardsched). (Default: 1)" name="pump_dec_step_at_min_freq_01" action="generic_cortex /tmp/pump_dec_step_at_min_freq_01" unit="step" min="1" reversed="false" step="1" max="6"/>
+		<seekBar description="Governor should decrease CPU0 and CPU1 frequency by n step each time CPU load is below target_cpu_load. (Only for Alucard, Alucardsched). (Default: 3)" name="pump_dec_step_at_min_freq_01" action="generic_cortex /tmp/pump_dec_step_at_min_freq_01" unit="step" min="1" reversed="false" step="1" max="6"/>
 
-		<seekBar description="Governor should decrease CPU2 and CPU3 frequency by n step each time CPU load is below target_cpu_load. (Only for Alucard, Alucardsched). (Default: 1)" name="pump_dec_step_at_min_freq_23" action="generic_cortex /tmp/pump_dec_step_at_min_freq_23" unit="step" min="1" reversed="false" step="1" max="6"/>
+		<seekBar description="Governor should decrease CPU2 and CPU3 frequency by n step each time CPU load is below target_cpu_load. (Only for Alucard, Alucardsched). (Default: 3)" name="pump_dec_step_at_min_freq_23" action="generic_cortex /tmp/pump_dec_step_at_min_freq_23" unit="step" min="1" reversed="false" step="1" max="6"/>
 
 		<seekBar description="Governor should decrease CPU0 and CPU1 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, Alucardsched). (Default: 1)" name="pump_dec_step_01" action="generic_cortex /tmp/pump_dec_step_01" unit="step" min="1" reversed="false" step="1" max="6"/>
 
