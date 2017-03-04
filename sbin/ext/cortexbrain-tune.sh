@@ -370,6 +370,15 @@ CPU_GOV_TWEAKS()
 				cpus_down_rate_tmp_23="/dev/null";
 			fi;
 
+			load_mode_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/load_mode";
+			if [ ! -e $load_mode_tmp_01 ]; then
+				load_mode_tmp_01="/dev/null";
+			fi;
+			load_mode_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/load_mode";
+			if [ ! -e $load_mode_tmp_23 ]; then
+				load_mode_tmp_23="/dev/null";
+			fi;
+
 			echo "$sampling_rate_01" > $sampling_rate_tmp_01;
 			echo "$sampling_rate_23" > $sampling_rate_tmp_23;
 			echo "$timer_rate_01" > $timer_rate_tmp_01;
@@ -420,6 +429,8 @@ CPU_GOV_TWEAKS()
 			echo "$cpus_down_rate_at_max_freq_23" > $cpus_down_rate_at_max_freq_tmp_23;
 			echo "$cpus_down_rate_01" > $cpus_down_rate_tmp_01;
 			echo "$cpus_down_rate_23" > $cpus_down_rate_tmp_23;
+			echo "$load_mode_01" > $load_mode_tmp_01;
+			echo "$load_mode_23" > $load_mode_tmp_23;
 
 			# re-enable thermal and BCL hotplug;
 			echo 1 > /sys/module/msm_thermal/core_control/enabled;

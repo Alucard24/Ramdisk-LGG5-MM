@@ -130,7 +130,7 @@
 
 	<settingsPane description="Set advanced governor settings. These settings are active only if the screen is on." name="Governor Parameters tuning">
 
-		<spinner description="This will set the CPU0 and CPU1 governors. Default CPU governor will only be set during early stages of booting (before init.d execution), and can be overridden by any other scripts or applications. (Default: Alucardsched)" name="Default CPU Governor" action="scaling_governor_cpu01">
+		<spinner description="This will set the CPU0 and CPU1 governors. Default CPU governor will only be set during early stages of booting (before init.d execution), and can be overridden by any other scripts or applications. (Default: Alucard)" name="Default CPU Governor" action="scaling_governor_cpu01">
 			<spinnerItem name="alucard" value="alucard"/>
 			<spinnerItem name="alucardsched" value="alucardsched"/>
 			<spinnerItem name="conservative" value="conservative"/> 
@@ -143,7 +143,7 @@
 			<spinnerItem name="schedutil" value="schedutil"/>
 		</spinner>
 
-		<spinner description="This will set the CPU2 and CPU3 governors. Default CPU governor will only be set during early stages of booting (before init.d execution), and can be overridden by any other scripts or applications. (Default: Alucardsched)" name="Default CPU Governor" action="scaling_governor_cpu23">
+		<spinner description="This will set the CPU2 and CPU3 governors. Default CPU governor will only be set during early stages of booting (before init.d execution), and can be overridden by any other scripts or applications. (Default: Alucard)" name="Default CPU Governor" action="scaling_governor_cpu23">
 			<spinnerItem name="alucard" value="alucard"/>
 			<spinnerItem name="alucardsched" value="alucardsched"/>
 			<spinnerItem name="conservative" value="conservative"/> 
@@ -437,6 +437,18 @@
 		<seekBar description="Number of samples to evaluate cpu frequency scaling down when current cpu(CPU0 or CPU1) frequency is greater than freq_responsiveness. (Only for Alucard). (Default: 1)" name="cpus_down_rate_01" action="generic_cortex /tmp/cpus_down_rate_01" unit="int" min="1" reversed="false" step="1" max="5"/>
 
 		<seekBar description="Number of samples to evaluate cpu frequency scaling down when current cpu(CPU2 or CPU3) frequency is greater than freq_responsiveness. (Only for Alucard). (Default: 1)" name="cpus_down_rate_23" action="generic_cortex /tmp/cpus_down_rate_23" unit="int" min="1" reversed="false" step="1" max="5"/>
+
+		<spinner description="Load(CPU0 and CPU1) calculation for increasing and decresing frequency. (Only for Alucard, Darkness, Nightmare). (Default: Average Load)" name="load_mode_01" action="generic_cortex /tmp/load_mode_01">
+			<spinnerItem name="Current Load" value="0"/> 
+			<spinnerItem name="Average Load" value="1"/> 
+			<spinnerItem name="Maximum Load" value="2"/> 
+		</spinner>
+
+		<spinner description="Load(CPU2 and CPU3) calculation for increasing and decresing frequency. (Only for Alucard, Darkness, Nightmare). (Default: Average Load)" name="load_mode_23" action="generic_cortex /tmp/load_mode_23">
+			<spinnerItem name="Current Load" value="0"/> 
+			<spinnerItem name="Average Load" value="1"/> 
+			<spinnerItem name="Maximum Load" value="2"/> 
+		</spinner>
 
 	</settingsPane>
 
