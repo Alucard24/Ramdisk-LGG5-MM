@@ -20,9 +20,10 @@ carrier_config                            u:object_r:radio_service:s0
 clipboard                                 u:object_r:clipboard_service:s0
 com.android.net.IProxyService             u:object_r:IProxyService_service:s0
 commontime_management                     u:object_r:commontime_management_service:s0
-common_time.clock                        u:object_r:mediaserver_service:s0
-common_time.config                       u:object_r:mediaserver_service:s0
+common_time.clock                         u:object_r:mediaserver_service:s0
+common_time.config                        u:object_r:mediaserver_service:s0
 connectivity                              u:object_r:connectivity_service:s0
+connmetrics                               u:object_r:connmetrics_service:s0
 consumer_ir                               u:object_r:consumer_ir_service:s0
 content                                   u:object_r:content_service:s0
 contexthub_service                        u:object_r:contexthub_service:s0
@@ -35,7 +36,7 @@ devicestoragemonitor                      u:object_r:devicestoragemonitor_servic
 diskstats                                 u:object_r:diskstats_service:s0
 display.qservice                          u:object_r:surfaceflinger_service:s0
 display                                   u:object_r:display_service:s0
-dns_listener                              u:object_r:dns_listener_service:s0
+netd_listener                             u:object_r:netd_listener_service:s0
 DockObserver                              u:object_r:DockObserver_service:s0
 dreams                                    u:object_r:dreams_service:s0
 drm.drmManager                            u:object_r:drmserver_service:s0
@@ -146,116 +147,33 @@ wifiscanner                               u:object_r:wifiscanner_service:s0
 wifi                                      u:object_r:wifi_service:s0
 window                                    u:object_r:window_service:s0
 *                                         u:object_r:default_android_service:s0
-#line 1 "out-h1_global_com/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
-
-#line 1 "device/lge/common/sepolicy/service_contexts"
-ABTPersistenceService         u:object_r:abt_persistence_service:s0
-AAT                           u:object_r:lge_system_server_service:s0
-BTFM                          u:object_r:btfm_service:s0
-BluetoothService              u:object_r:bluetooth_service:s0
-BtLgeExt                      u:object_r:lge_system_server_service:s0
-CCModeService                 u:object_r:ccmode_service:s0
-DeviceManager3LM              u:object_r:lge_system_server_service:s0
-FrpService                    u:object_r:lge_system_server_service:s0
-FingerprintServiceEx          u:object_r:fingerprint_service:s0
-FeliCaService                 u:object_r:nfc_service:s0
-Jphone                        u:object_r:radio_service:s0
-LTECall                       u:object_r:call_server_service:s0
-LgFmService                   u:object_r:lge_system_server_service:s0
-LGP2pService                  u:object_r:lgp2p_service:s0
-MInputService                 u:object_r:minput_service:s0
-MSensorService                u:object_r:msensor_service:s0
-OemExtendedApi3LM             u:object_r:lge_system_server_service:s0
-PowerSaving3LM                u:object_r:lge_system_server_service:s0
-SplitWindowPolicy             u:object_r:lge_system_server_service:s0
-TouchLocation                 u:object_r:touchlocation_service:s0
-VZW_LOCATION_SERVICE          u:object_r:vzw_location_service:s0
-WfdsService                   u:object_r:lge_system_server_service:s0
-artwindowservice              u:object_r:lge_system_server_service:s0
-ble_quietmode                 u:object_r:lge_system_server_service:s0
-broadcast.dmb                 u:object_r:broadcast_server_service:s0
-cliptray                      u:object_r:lge_system_server_service:s0
-com.lge.fido                  u:object_r:lge_fido_service:s0
-com.lge.ims.media             u:object_r:mediaserver_service:s0
-com.lge.ims.phone             u:object_r:radio_service:s0
-com.lge.ims.rcs.media         u:object_r:mediaserver_service:s0
-com.lge.server.ims.sms        u:object_r:ims_service:s0
-com.lge.wfd.send              u:object_r:lge_system_server_service:s0
-com.skt.tbase.INativeService  u:object_r:skt_tbase_service:s0
-com.smartcom.root.APNWidgetRootService    u:object_r:apn_service:s0
-deathmonitor                  u:object_r:lge_system_server_service:s0
-emotionled                    u:object_r:surfaceflinger_service:s0
-encryption                    u:object_r:encryption_service:s0
-extensionservice              u:object_r:extensionservice:s0
-fast_download                 u:object_r:fast_download_service:s0
-felica                        u:object_r:nfc_service:s0
-flashlight                    u:object_r:lge_system_server_service:s0
-glanceview                    u:object_r:lge_system_server_service:s0
-gmeminfo                      u:object_r:lge_system_server_service:s0
-infocollector                 u:object_r:lge_system_server_service:s0
-integrity                     u:object_r:lge_system_server_service:s0
-kernel_monitoring             u:object_r:kernel_monitoring_service:s0
-ktuca                         u:object_r:ktuca_service:s0
-leccp                         u:object_r:leccp_service:s0
-lg_bluetoothapi_service       u:object_r:lge_system_server_service:s0
-lgdatascheduler               u:object_r:lgdatascheduler_service:s0
-lgdataui                      u:object_r:lgdataui_service:s0
-lgdevencryption               u:object_r:lge_system_server_service:s0
-lgdisplay                     u:object_r:lge_system_server_service:s0
-lgdrm                         u:object_r:drmserver_service:s0
-lge.apdu                      u:object_r:lge_system_server_service:s0
-lge.irrc                      u:object_r:irrc_service:s0
-lgeims_mmpf                   u:object_r:radio_service:s0
-lghashstorage                 u:object_r:lge_system_server_service:s0
-lgmdm_device_policy_manager   u:object_r:lgmdm_device_policy_service:s0
-lgminiclockservice            u:object_r:lge_system_server_service:s0
-lgnetworkmanagementservice    u:object_r:lge_system_server_service:s0
-lgpowermanagerhelper          u:object_r:lge_system_server_service:s0
-lgsdencryption                u:object_r:lge_system_server_service:s0
-lgsecclk                      u:object_r:lge_system_server_service:s0
-lguicc                        u:object_r:radio_service:s0
-lguiccpbm                     u:object_r:radio_service:s0
-logcatcher                    u:object_r:lge_system_server_service:s0
-media.allegro_service         u:object_r:mediaserver_service:s0
-media.media_editor            u:object_r:mediaserver_service:s0
-minios.                       u:object_r:minios_service:s0
-mirrorlinkservice             u:object_r:lge_system_server_service:s0
-mobileHotSpot                 u:object_r:lge_system_server_service:s0
-mobilehotspot                 u:object_r:mobilehotspot_service:s0
-myfolder                      u:object_r:lge_system_server_service:s0
-nfc_LgService                 u:object_r:lge_system_server_service:s0
-nfcaddon                      u:object_r:nfc_service:s0
-nfcvendor                     u:object_r:nfc_service:s0
-nfcoperator                   u:object_r:nfc_service:s0
-nvitemservice                 u:object_r:nvitemservice:s0
-operator.dm                   u:object_r:operator_service:s0
-osservice                     u:object_r:lge_system_server_service:s0
-overlay                       u:object_r:overlay_service:s0
-quickaccess                   u:object_r:lge_system_server_service:s0
-quicktools                    u:object_r:lge_system_server_service:s0
-signboard                     u:object_r:lge_system_server_service:s0
-smartcover                    u:object_r:lge_system_server_service:s0
-softphone_service             u:object_r:softphone_service:s0
-splitwindowpolicy             u:object_r:surfaceflinger_service:s0
-themeicon                     u:object_r:lge_system_server_service:s0
-unifiedSettingsService        u:object_r:osf_service:s0
-vzw_poa_service               u:object_r:osf_service:s0
-volumevibrator                u:object_r:lge_system_server_service:s0
-vzweab                        u:object_r:radio_service:s0
-vzwho                         u:object_r:radio_service:s0
-vzwsdm                        u:object_r:radio_service:s0
-vzwsip                        u:object_r:radio_service:s0
-watchnetstorage               u:object_r:lge_system_server_service:s0
-wfdService                    u:object_r:lge_system_server_service:s0
-wifiAggregationService        u:object_r:lge_system_server_service:s0
-wifiExtService                u:object_r:lge_system_server_service:s0
-wifiLgeExtService             u:object_r:lge_system_server_service:s0
-wifiOffloadingService         u:object_r:lge_system_server_service:s0
-wifiSapService                u:object_r:lge_system_server_service:s0
-callfwDebugService            u:object_r:radio_service:s0
-#line 1 "out-h1_global_com/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/buildbot/mkn-mr1/out/target/product/h850/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/qcom/sepolicy/common/service_contexts"
+# Copyright (c) 2015-2016 Dolby Laboratories, Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 android.apps.IQfpService                       u:object_r:iqfp_service:s0
 AtCmdFwd                                       u:object_r:atfwd_service:s0
 dpmservice                                     u:object_r:dpmservice:s0
@@ -290,7 +208,10 @@ uce                                            u:object_r:uce_service:s0
 eSEPowerManagerService                         u:object_r:esepmdaemon_service:s0
 wigigp2p                                       u:object_r:wigigp2p_service:s0
 wigig                                          u:object_r:wigig_service:s0
-#line 1 "out-h1_global_com/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+# DOLBY_START
+media.dolby_memoryservice                      u:object_r:audioserver_service:s0
+# DOLBY_END
+#line 1 "/buildbot/mkn-mr1/out/target/product/h850/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/qcom/sepolicy/test/service_contexts"
 # Copyright (c) 2015, The Linux Foundation. All rights reserved.
@@ -323,7 +244,7 @@ wigig                                          u:object_r:wigig_service:s0
 com.qualcomm.qti.auth.securesampleauthdaemon   u:object_r:fidotest_service:s0
 com.qualcomm.qti.qseeproxysample               u:object_r:qseeproxysample_service:s0
 
-#line 1 "out-h1_global_com/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/buildbot/mkn-mr1/out/target/product/h850/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 
 #line 1 "device/qcom/sepolicy/msm8996/service_contexts"
 # Copyright (c) 2015, The Linux Foundation. All rights reserved.
@@ -354,5 +275,26 @@ com.qualcomm.qti.qseeproxysample               u:object_r:qseeproxysample_servic
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 android.apps.IQvopService             u:object_r:iqvop_service:s0
-#line 1 "out-h1_global_com/target/product/h1/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+#line 1 "/buildbot/mkn-mr1/out/target/product/h850/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
+
+#line 1 "vendor/mk/sepolicy/service_contexts"
+edgegestureservice                        u:object_r:edge_gesture_service:s0
+themes                                    u:object_r:themes_service:s0
+torch                                     u:object_r:torch_service:s0
+killswitch                                u:object_r:kill_switch_service:s0
+mkstatusbar                               u:object_r:mk_status_bar_service:s0
+profile                                   u:object_r:mk_profile_service:s0
+mkpartnerinterface                        u:object_r:mk_partner_interface:s0
+mktelephonymanager                        u:object_r:mk_telephony_service:s0
+mkhardware                                u:object_r:mk_hardware_service:s0
+mkperformance                             u:object_r:mk_performance_service:s0
+mkthemes                                  u:object_r:mk_themes_service:s0
+mkiconcache                               u:object_r:mk_iconcache_service:s0
+mklivelockscreen                          u:object_r:mk_livelockscreen_service:s0
+mkweather                                 u:object_r:mk_weather_service:s0
+mklivedisplay                             u:object_r:mk_livedisplay_service:s0
+mkaudio                                   u:object_r:mk_audio_service:s0
+overlay                                   u:object_r:overlay_service:s0
+interfacer                                u:object_r:interfacer_service:s0
+#line 1 "/buildbot/mkn-mr1/out/target/product/h850/obj/ETC/sectxfile_nl_intermediates/sectxfile_nl"
 

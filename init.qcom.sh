@@ -326,48 +326,11 @@ echo 1 > /data/misc/radio/db_check_done
 #
 # Make modem config folder and copy firmware config to that folder for RIL
 #
-if [ -f /data/misc/radio/ver_info.txt ]; then
-    prev_version_info=`cat /data/misc/radio/ver_info.txt`
-else
-    prev_version_info=""
-fi
-
-cur_version_info=`cat /firmware/verinfo/ver_info.txt`
-
-# HERE : LG_FW_MCFG_QCRIL_DB_ALWAYS_UPDATE
-
-build_product=`getprop ro.build.product`
-product_name=`getprop ro.product.name`
-
-# dj.seo elsa does not check version
-if [ "$build_product" = "elsa" ]; then
-    #echo "elsa"
-    rm -rf /data/misc/radio/modem_config
-    mkdir /data/misc/radio/modem_config
-    chmod 770 /data/misc/radio/modem_config
-    if [ "$product_name" = "elsa_nao_us" ]; then
-        setprop persist.radio.sw_mbn_loaded 0
-        # setprop persist.radio.hw_mbn_loaded 0
-        cp -r /firmware/image/modem_pr/mcfg/configs/* /data/misc/radio/modem_config
-    fi
-    chown -hR radio.radio /data/misc/radio/modem_config
-    cp /firmware/verinfo/ver_info.txt /data/misc/radio/ver_info.txt
-    chown radio.radio /data/misc/radio/ver_info.txt
-else
-    # non elsa check version
-    #echo "non elsa"
-    if [ ! -f /firmware/verinfo/ver_info.txt -o "$prev_version_info" != "$cur_version_info" ]; then
-        rm -rf /data/misc/radio/modem_config
-        mkdir /data/misc/radio/modem_config
-        chmod 770 /data/misc/radio/modem_config
-        cp -r /firmware/image/modem_pr/mcfg/configs/* /data/misc/radio/modem_config
-        chown -hR radio.radio /data/misc/radio/modem_config
-        cp /firmware/verinfo/ver_info.txt /data/misc/radio/ver_info.txt
-        chown radio.radio /data/misc/radio/ver_info.txt
-    fi
-fi
-cp /firmware/image/modem_pr/mbn_ota.txt /data/misc/radio/modem_config
-chown radio.radio /data/misc/radio/modem_config/mbn_ota.txt
+rm -rf /data/misc/radio/modem_config
+mkdir /data/misc/radio/modem_config
+chmod 770 /data/misc/radio/modem_config
+cp -r /system/vendor/firmware/image/modem_pr/mcfg/configs/* /data/misc/radio/modem_config
+chown -hR radio.radio /data/misc/radio/modem_config
 echo 1 > /data/misc/radio/copy_complete
 
 #check build variant for printk logging
@@ -376,14 +339,10 @@ buildvariant=`getprop ro.build.type`
 case "$buildvariant" in
     "userdebug" | "eng")
         #set default loglevel to KERN_INFO
-        #echo "6 6 1 7" > /proc/sys/kernel/printk
-        #LGE change log level
-        echo "7 6 1 7" > /proc/sys/kernel/printk
+        echo "6 6 1 7" > /proc/sys/kernel/printk
         ;;
     *)
         #set default loglevel to KERN_WARNING
-        #echo "4 4 1 4" > /proc/sys/kernel/printk
-        #LGE change log level
-        echo "7 6 1 7" > /proc/sys/kernel/printk
+        echo "4 4 1 4" > /proc/sys/kernel/printk
         ;;
 esac

@@ -109,7 +109,7 @@ MEMORY_TWEAKS()
 		echo "4" > /proc/sys/vm/min_free_order_shift; # default: 4
 		echo "1" > /proc/sys/vm/overcommit_memory; # default: 1
 		echo "50" > /proc/sys/vm/overcommit_ratio; # default: 50
-		echo "0" > /proc/sys/vm/page-cluster; # default: 0
+		echo "3" > /proc/sys/vm/page-cluster; # default: 3
 		# mem calc here in pages. so 16384 x 4 = 64MB reserved for fast access by kernel and VM
 		echo "32768" > /proc/sys/vm/mmap_min_addr; #default: 32768
 

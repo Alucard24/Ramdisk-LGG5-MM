@@ -4,14 +4,16 @@
 # This is a common source of Android security bugs.
 #
 
-import /init.lge.early.rc
 import /init.environ.rc
 import /init.usb.rc
 import /init.${ro.hardware}.rc
-#import /init.usb.configfs.rc
+import /init.usb.configfs.rc
 import /init.${ro.zygote}.rc
-import /init.lge.rc
 import init.supersu.rc
+
+# Include MK's extra init file
+import /init.mk.rc
+
 
 on early-init
     # Set init and its forked children's oom_adj.
@@ -54,18 +56,22 @@ on init
     mount cgroup none /dev/stune schedtune
     mkdir /dev/stune/foreground
     mkdir /dev/stune/background
+    mkdir /dev/stune/system-background
     mkdir /dev/stune/top-app
     chown system system /dev/stune
     chown system system /dev/stune/foreground
     chown system system /dev/stune/background
+    chown system system /dev/stune/system-background
     chown system system /dev/stune/top-app
     chown system system /dev/stune/tasks
     chown system system /dev/stune/foreground/tasks
     chown system system /dev/stune/background/tasks
+    chown system system /dev/stune/system-background/tasks
     chown system system /dev/stune/top-app/tasks
     chmod 0664 /dev/stune/tasks
     chmod 0664 /dev/stune/foreground/tasks
     chmod 0664 /dev/stune/background/tasks
+    chmod 0664 /dev/stune/system-background/tasks
     chmod 0664 /dev/stune/top-app/tasks
 
     # Mount staging areas for devices managed by vold
@@ -118,7 +124,6 @@ on init
     write /proc/sys/kernel/sched_tunable_scaling 0
     write /proc/sys/kernel/sched_latency_ns 10000000
     write /proc/sys/kernel/sched_wakeup_granularity_ns 2000000
-    # write /proc/sys/kernel/sched_compat_yield 1
     write /proc/sys/kernel/sched_child_runs_first 0
 
     write /proc/sys/kernel/randomize_va_space 2
@@ -146,8 +151,6 @@ on init
     chown system system /dev/cpuctl
     chown system system /dev/cpuctl/tasks
     chmod 0666 /dev/cpuctl/tasks
-    # write /dev/cpuctl/cpu.shares 1024
-    # write /dev/cpuctl/cpu.rt_runtime_us 800000
     write /dev/cpuctl/cpu.rt_period_us 1000000
     write /dev/cpuctl/cpu.rt_runtime_us 950000
 
@@ -156,7 +159,6 @@ on init
     chmod 0666 /dev/cpuctl/bg_non_interactive/tasks
     # 5.0 %
     write /dev/cpuctl/bg_non_interactive/cpu.shares 52
-    # write /dev/cpuctl/bg_non_interactive/cpu.rt_runtime_us 700000
     write /dev/cpuctl/bg_non_interactive/cpu.rt_period_us 1000000
     # active FIFO threads will never be in BG
     write /dev/cpuctl/bg_non_interactive/cpu.rt_runtime_us 10000
@@ -241,6 +243,11 @@ on init
     # expecting it to point to /proc/self/fd
     symlink /proc/self/fd /dev/fd
 
+    export DOWNLOAD_CACHE ${ro.device.cache_dir}
+
+    # set RLIMIT_NICE to allow priorities from 19 to -20
+    setrlimit 13 40 40
+
 # Healthd can trigger a full boot from charger mode by signaling this
 # property when the power button is held.
 on property:sys.boot_from_charger_mode=1
@@ -256,9 +263,6 @@ on load_persist_props_action
     start logd
     start logd-reinit
 
-on single_binary_init_action
-    single_binary_init
-
 # Indicate to fw loaders that the relevant mounts are up.
 on firmware_mounts_complete
     rm /dev/.booting
@@ -266,19 +270,31 @@ on firmware_mounts_complete
 # Mount filesystems and start core system services.
 on late-init
     trigger early-fs
+
+    # Mount fstab in init.{$device}.rc by mount_all command. Optional parameter
+    # '--early' can be specified to skip entries with 'latemount'.
+    # /system and /vendor must be mounted by the end of the fs stage,
+    # while /data is optional.
     trigger fs
     trigger post-fs
 
-    # Trigger SBP
-    trigger single_binary_init_action
     # Load properties from /system/ + /factory after fs mount. Place
     # this in another action so that the load will be scheduled after the prior
     # issued fs triggers have completed.
     trigger load_system_props_action
 
+    # Mount fstab in init.{$device}.rc by mount_all with '--late' parameter
+    # to only mount entries with 'latemount'. This is needed if '--early' is
+    # specified in the previous mount_all command on the fs stage.
+    # With /system mounted and properties form /system + /factory available,
+    # some services can be started.
+    trigger late-fs
+
     # Now we can mount /data. File encryption requires keymaster to decrypt
-    # /data, which in turn can only be loaded when system properties are present
+    # /data, which in turn can only be loaded when system properties are present.
     trigger post-fs-data
+
+    # Load persist properties and override properties (if enabled) from /data.
     trigger load_persist_props_action
 
     # Remove a file to wake up anything waiting for firmware.
@@ -298,12 +314,7 @@ on post-fs
     mount none /mnt/runtime/default /storage slave bind rec
 
     # Make sure /sys/kernel/debug (if present) is labeled properly
-    # LGE - booting time reduction
-    # 1. removing 'restorecon_recursive /sys/kernel/debug' on post-fs in system/core/rootdir/init.rc
-    # 2. adding 'restorecon_recursive /sys/kernel/debug' on boot_completed in device/lge/${CHIPSET}/init.${CHIPSET}_core.rc
-    # 3. execute build and download
-    # 4. adding labeling debugfs nodes which are found from audit denied kernel boot log on post-fs in device/lge/${CHIPSET}/init.${CHIPSET}_core.rc
-    # restorecon_recursive /sys/kernel/debug
+    restorecon_recursive /sys/kernel/debug
 
     # We chown/chmod /cache again so because mount is run as root + defaults
     chown system cache /cache
@@ -360,9 +371,6 @@ on post-fs-data
     mkdir /data/bootchart 0755 shell shell
     bootchart_init
 
-    # It guarantees that entropy.dat copies to /dev/urandom,
-    # after /dev/urandom was mknod.
-    wait /dev/urandom
     # Avoid predictable entropy pool. Carry over entropy from previous boot.
     copy /data/system/entropy.dat /dev/urandom
 
@@ -372,7 +380,8 @@ on post-fs-data
     # Fix the access permissions and group ownership for 'bt_config.conf'
     chmod 0660 /data/misc/bluedroid/bt_config.conf
     chown bluetooth net_bt_stack /data/misc/bluedroid/bt_config.conf
-    mkdir /data/misc/bluetooth 0770 system system
+    mkdir /data/misc/bluetooth 0770 bluetooth net_bt_stack
+    mkdir /data/misc/bluetooth/logs 0770 bluetooth net_bt_stack
     mkdir /data/misc/keystore 0700 keystore keystore
     mkdir /data/misc/gatekeeper 0700 system system
     mkdir /data/misc/keychain 0771 system system
@@ -423,6 +432,10 @@ on post-fs-data
     # create the A/B OTA directory, so as to enforce our permissions
     mkdir /data/ota 0771 root root
 
+    # create the OTA package directory. It will be accessed by GmsCore (cache
+    # group), update_engine and update_verifier.
+    mkdir /data/ota_package 0770 system cache
+
     # create resource-cache and double-check the perms
     mkdir /data/resource-cache 0771 system system
     chown system system /data/resource-cache
@@ -440,10 +453,6 @@ on post-fs-data
     mkdir /data/mediadrm 0770 mediadrm mediadrm
 
     mkdir /data/anr 0775 system system
-
-    # symlink to bugreport storage location
-    rm /data/bugreports
-    symlink /data/user_de/0/com.android.shell/files/bugreports /data/bugreports
 
     # Separate location for storing security policy files on data
     mkdir /data/security 0711 system system
@@ -470,12 +479,20 @@ on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
     mkdir /data/media/obb 0770 media_rw media_rw
 
+    mkdir /data/cache 0770 system cache
+    mkdir /data/cache/recovery 0770 system cache
+    mkdir /data/cache/backup_stage 0700 system system
+    mkdir /data/cache/backup 0700 system system
+
     init_user0
 
     # Reload policy from /data/security if present.
 
     # Set SELinux security contexts on upgrade or policy update.
     restorecon_recursive /data
+    restorecon /data/data
+    restorecon /data/user
+    restorecon /data/user/0
 
     # Check any timezone data in /data is newer than the copy in /system, delete if not.
     exec - system system -- /system/bin/tzdatacheck /system/usr/share/zoneinfo /data/misc/zoneinfo
@@ -491,9 +508,6 @@ on boot
     ifup lo
     hostname localhost
     domainname localdomain
-
-    # set RLIMIT_NICE to allow priorities from 19 to -20
-    setrlimit 13 40 40
 
     # Memory management.  Basic kernel parameters, and allow the high
     # level system server to be able to adjust the kernel OOM driver
@@ -560,7 +574,9 @@ on boot
     chown system system /sys/class/leds/red/brightness
     chown system system /sys/class/leds/red/blink
     chown system system /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/green/blink
     chown system system /sys/class/leds/blue/brightness
+    chown system system /sys/class/leds/blue/blink
     chown system system /sys/class/leds/red/device/grpfreq
     chown system system /sys/class/leds/red/device/grppwm
     chown system system /sys/class/leds/red/device/blink
@@ -581,7 +597,7 @@ on boot
 
 on nonencrypted
     # A/B update verifier that marks a successful boot.
-    exec - root -- /system/bin/update_verifier nonencrypted
+    exec - root cache -- /system/bin/update_verifier nonencrypted
     class_start main
     class_start late_start
 
@@ -604,12 +620,12 @@ on property:vold.decrypt=trigger_post_fs_data
 
 on property:vold.decrypt=trigger_restart_min_framework
     # A/B update verifier that marks a successful boot.
-    exec - root -- /system/bin/update_verifier trigger_restart_min_framework
+    exec - root cache -- /system/bin/update_verifier trigger_restart_min_framework
     class_start main
 
 on property:vold.decrypt=trigger_restart_framework
     # A/B update verifier that marks a successful boot.
-    exec - root -- /system/bin/update_verifier trigger_restart_framework
+    exec - root cache -- /system/bin/update_verifier trigger_restart_framework
     class_start main
     class_start late_start
 
@@ -662,9 +678,5 @@ on property:ro.debuggable=1
     # The folder is used to store method traces.
     chmod 0773 /data/misc/trace
     start console
-
-service flash_recovery /system/bin/install-recovery.sh
-    class main
-    oneshot
-# SuperSU:PATCH:278
-# SuperSU:STOCK:8b049dedf4d7dc9f4a0c0b92ccc681535eed6440
+# SuperSU:PATCH:282
+# SuperSU:STOCK:5bc129c48fb1ff2f86b925f77e415fc929005798
