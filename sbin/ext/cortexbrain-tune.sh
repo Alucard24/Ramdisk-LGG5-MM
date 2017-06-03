@@ -453,24 +453,6 @@ if [ "$apply_cpu" == "update" ]; then
 	CPU_GOV_TWEAKS "tune";
 fi;
 
-WORKQUEUE_CONTROL()
-{
-	local state="$1";
-
-	if [ "$state" == "awake" ]; then
-		if [ "$power_efficient" == "on" ]; then
-			echo "1" > /sys/module/workqueue/parameters/power_efficient;
-		else
-			echo "0" > /sys/module/workqueue/parameters/power_efficient;
-		fi;
-	elif [ "$state" == "sleep" ]; then
-		if [ "$power_efficient" == "sleep" ]; then
-			echo "1" > /sys/module/workqueue/parameters/power_efficient;
-		fi;
-	fi;
-	log -p i -t "$FILE_NAME" "*** WORKQUEUE_CONTROL ***: done";
-}
-
 # ==============================================================
 # TWEAKS: if Screen-ON
 # ==============================================================
@@ -478,7 +460,6 @@ AWAKE_MODE()
 {
 	# not on call, check if was powerd by USB on sleep, or didnt sleep at all
 	if [ "$USB_POWER" -eq "0" ]; then
-		WORKQUEUE_CONTROL "awake";
 		echo "0" > /data/alu_cortex_sleep;
 	else
 		# Was powered by USB, and half sleep
@@ -506,7 +487,6 @@ SLEEP_MODE()
 
 	# check if we powered by USB, if not sleep
 	if [ "$CHARGER_STATUS" == "Discharging" ]; then
-		WORKQUEUE_CONTROL "sleep";
 		echo "1" > /data/alu_cortex_sleep;
 		log -p i -t "$FILE_NAME" "*** SLEEP mode ***";
 	else

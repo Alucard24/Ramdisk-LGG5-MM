@@ -5,7 +5,6 @@ scaling_min_freq_cpu01=307200
 scaling_min_freq_cpu23=307200
 gentle_fair_sleepers=on
 power_enabled=on
-power_efficient=off
 scaling_governor_cpu01=alucardsched
 scaling_governor_cpu23=alucardsched
 up_threshold_01=80
