@@ -34,14 +34,6 @@ if [ ! -d /system/lib/modules ]; then
         $BB mkdir /system/lib/modules;
 fi;
 
-#$BB chmod 644 /lib/modules/*.ko;
-#cd /lib/modules/;
-#for i in *.ko; do
-#        $BB rm -f /system/lib/modules/"$i";
-#done;
-#$BB cp -avr * /system/lib/modules/;
-#cd /;
-
 # create init.d folder if missing
 if [ ! -d /system/etc/init.d ]; then
 	mkdir -p /system/etc/init.d/
@@ -188,11 +180,12 @@ if [ "$(pgrep -f "cortexbrain-tune.sh" | wc -l)" -eq "0" ]; then
 fi;
 
 OPEN_RW;
-
 # get values from profile
 PROFILE=$(cat /data/.alucard/.active.profile);
 . /data/.alucard/"$PROFILE".profile;
 
+sleep 5;
+OPEN_RW;
 if [ "$stweaks_boot_control" == "yes" ]; then
 	# apply STweaks settings
 	$BB sh /res/uci_boot.sh apply;
