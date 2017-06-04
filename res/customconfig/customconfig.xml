@@ -124,7 +124,7 @@
 
 	<settingsPane description="Set advanced governor settings. These settings are active only if the screen is on." name="Governor Parameters tuning">
 
-		<spinner description="This will set the CPU0 and CPU1 governors. Default CPU governor will only be set during early stages of booting (before init.d execution), and can be overridden by any other scripts or applications. (Default: AlucardSched)" name="Default CPU Governor" action="scaling_governor_cpu01">
+		<spinner description="This will set the CPU0 and CPU1 governors. Default CPU governor will only be set during early stages of booting (before init.d execution), and can be overridden by any other scripts or applications. (Default: SchedUtil)" name="Default CPU Governor" action="scaling_governor_cpu01">
 			<spinnerItem name="alucard" value="alucard"/>
 			<spinnerItem name="alucardsched" value="alucardsched"/>
 			<spinnerItem name="conservative" value="conservative"/> 
@@ -137,7 +137,7 @@
 			<spinnerItem name="schedutil" value="schedutil"/>
 		</spinner>
 
-		<spinner description="This will set the CPU2 and CPU3 governors. Default CPU governor will only be set during early stages of booting (before init.d execution), and can be overridden by any other scripts or applications. (Default: AlucardSched)" name="Default CPU Governor" action="scaling_governor_cpu23">
+		<spinner description="This will set the CPU2 and CPU3 governors. Default CPU governor will only be set during early stages of booting (before init.d execution), and can be overridden by any other scripts or applications. (Default: SchedUtil)" name="Default CPU Governor" action="scaling_governor_cpu23">
 			<spinnerItem name="alucard" value="alucard"/>
 			<spinnerItem name="alucardsched" value="alucardsched"/>
 			<spinnerItem name="conservative" value="conservative"/> 
@@ -168,13 +168,13 @@
 
 		<seekBar description="Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU2 or CPU3) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Interactive, Nightmare, Darkness, Alucard). (Default: 20.000 µs)" name="timer_rate_23" action="generic_cortex /tmp/timer_rate_23" unit="µs" min="10000" reversed="false" step="10000" max="200000"/>
 
-		<seekBar description="Up Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU0 or CPU1) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Alucardsched, DarknessSched). (Default: 20.000 µs)" name="up_rate_limit_us_01" action="generic_cortex /tmp/up_rate_limit_us_01" unit="µs" min="500" reversed="false" step="500" max="80000"/>
+		<seekBar description="Up Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU0 or CPU1) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Alucardsched, DarknessSched). (Default: 1.000 µs)" name="up_rate_limit_us_01" action="generic_cortex /tmp/up_rate_limit_us_01" unit="µs" min="500" reversed="false" step="500" max="80000"/>
 
-		<seekBar description="Up Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU2 or CPU3) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Alucardsched, DarknessSched). (Default: 10.000 µs)" name="up_rate_limit_us_23" action="generic_cortex /tmp/up_rate_limit_us_23" unit="µs" min="500" reversed="false" step="500" max="80000"/>
+		<seekBar description="Up Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU2 or CPU3) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Alucardsched, DarknessSched). (Default: 2.000 µs)" name="up_rate_limit_us_23" action="generic_cortex /tmp/up_rate_limit_us_23" unit="µs" min="500" reversed="false" step="500" max="80000"/>
 
-		<seekBar description="Down Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU0 or CPU1) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Alucardsched, DarknessSched). (Default: 20.000 µs)" name="down_rate_limit_us_01" action="generic_cortex /tmp/down_rate_limit_us_01" unit="µs" min="500" reversed="false" step="500" max="80000"/>
+		<seekBar description="Down Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU0 or CPU1) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Alucardsched, DarknessSched). (Default: 6.000 µs)" name="down_rate_limit_us_01" action="generic_cortex /tmp/down_rate_limit_us_01" unit="µs" min="500" reversed="false" step="500" max="80000"/>
 
-		<seekBar description="Down Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU2 or CPU3) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Alucardsched, DarknessSched). (Default: 20.000 µs)" name="down_rate_limit_us_23" action="generic_cortex /tmp/down_rate_limit_us_23" unit="µs" min="500" reversed="false" step="500" max="80000"/>
+		<seekBar description="Down Sampling Interval, measured in µs. This factor determines how often the governor should poll for CPU(CPU2 or CPU3) usage in terms of frequency and load percentage to make scaling decisions - either scale CPU Up or scale it Down. (Only for Alucardsched, DarknessSched). (Default: 6.000 µs)" name="down_rate_limit_us_23" action="generic_cortex /tmp/down_rate_limit_us_23" unit="µs" min="500" reversed="false" step="500" max="80000"/>
 
 		<seekBar description="Acts as a multiplier for sampling interval for re-evaluating the load when CPU(CPU0 or CPU1) is truly busy and is on highest clock frequency (policy max). Setting to 1 makes no difference and causes CPU to immediately scale down from highest frequency. Sampling down factor is NOT valid for lower frequencies and low load conditions. Note that CPU is scaled up to max frequency when max_load_freq is greater than up_threshold X current frequency. (or to cur_freq + (freq_step X policy.max_freq) whichever is smaller) Max_load_freq is an arbitrary frequency calculated as the maximum of load_frequencies. (Only for Ondemand, Conservartive). (Default: 1)" name="sampling_down_factor_01" action="generic_cortex /tmp/sampling_down_factor_01" unit="int" min="1" reversed="false" step="1" max="10"/>
 
