@@ -432,6 +432,10 @@ CPU_GOV_TWEAKS()
 			echo "$load_mode_01" > $load_mode_tmp_01;
 			echo "$load_mode_23" > $load_mode_tmp_23;
 
+			# Fix: set scaling_min_freq again
+			echo "$scaling_min_freq_cpu01" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq;
+			echo "$scaling_min_freq_cpu23" > /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq;
+
 			# re-enable thermal and BCL hotplug;
 			echo 1 > /sys/module/msm_thermal/core_control/enabled;
 			echo -n disable > /sys/devices/soc/soc:qcom,bcl/mode;
