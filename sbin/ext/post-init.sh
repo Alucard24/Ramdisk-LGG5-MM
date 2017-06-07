@@ -243,14 +243,15 @@ OPEN_RW;
 # Fix critical perms again after init.d mess
 CRITICAL_PERM_FIX;
 
-if [ "$stweaks_boot_control" == "yes" ]; then
+#if [ "$stweaks_boot_control" == "yes" ]; then
 	# Load Custom Modules
 	# MODULES_LOAD;
-fi;
+#fi;
 
 (
 	sleep 30;
 
+	OPEN_RW;
 	# get values from profile
 	PROFILE=$(cat /data/.alucard/.active.profile);
 	. /data/.alucard/"$PROFILE".profile;
