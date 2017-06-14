@@ -9,7 +9,6 @@ import /init.usb.rc
 import /init.${ro.hardware}.rc
 import /init.usb.configfs.rc
 import /init.${ro.zygote}.rc
-import init.supersu.rc
 
 # Include MK's extra init file
 import /init.mk.rc
@@ -478,6 +477,7 @@ on post-fs-data
     init_user0
 
     # Reload policy from /data/security if present.
+    setprop selinux.reload_policy 1
 
     # Set SELinux security contexts on upgrade or policy update.
     restorecon_recursive /data
@@ -669,5 +669,3 @@ on property:ro.debuggable=1
     # The folder is used to store method traces.
     chmod 0773 /data/misc/trace
     start console
-# SuperSU:PATCH:282
-# SuperSU:STOCK:42d9ad1dfef3dc92ae9d7c145a6b35ec0f12db60
