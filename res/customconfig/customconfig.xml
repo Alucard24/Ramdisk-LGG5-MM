@@ -380,6 +380,16 @@
 			<spinnerItem name="307.200 kHz" value="307200"/> 
 		</spinner>
 
+		<spinner description="Jump directly to frequency responsiveness value when cpu0_1 frequency is going to increase and it will be lower than it. (Only for SchedAlucard, SchedDarkness). (Default: Off)" name="freq_responsiveness_jump_01" action="generic_cortex /tmp/freq_responsiveness_jump_01">
+			<spinnerItem name="On" value="1"/> 
+			<spinnerItem name="Off" value="0"/> 
+		</spinner>
+
+		<spinner description="Jump directly to frequency responsiveness value when cpu2_3 frequency is going to increase and it will be lower than it. (Only for SchedAlucard, SchedDarkness). (Default: Off)" name="freq_responsiveness_jump_23" action="generic_cortex /tmp/freq_responsiveness_jump_23">
+			<spinnerItem name="On" value="1"/> 
+			<spinnerItem name="Off" value="0"/> 
+		</spinner>
+
 		<seekBar description="Governor should increase CPU0 and CPU1 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 5)" name="pump_inc_step_at_min_freq_01" action="generic_cortex /tmp/pump_inc_step_at_min_freq_01" unit="step" min="1" reversed="false" step="1" max="6"/>
 
 		<seekBar description="Governor should increase CPU2 and CPU3 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 5)" name="pump_inc_step_at_min_freq_23" action="generic_cortex /tmp/pump_inc_step_at_min_freq_23" unit="step" min="1" reversed="false" step="1" max="6"/>
