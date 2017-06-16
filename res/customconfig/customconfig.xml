@@ -380,34 +380,34 @@
 			<spinnerItem name="307.200 kHz" value="307200"/> 
 		</spinner>
 
-		<spinner description="Jump directly to frequency responsiveness value when cpu0_1 frequency is going to increase and it will be lower than it. (Only for SchedAlucard, SchedDarkness). (Default: Off)" name="freq_responsiveness_jump_01" action="generic_cortex /tmp/freq_responsiveness_jump_01">
+		<spinner description="Jump directly to frequency responsiveness value when CPU(CPU0 or CPU1) frequency is going to increase and it will be lower than it. (Only for SchedAlucard, SchedDarkness). (Default: Off)" name="freq_responsiveness_jump_01" action="generic_cortex /tmp/freq_responsiveness_jump_01">
 			<spinnerItem name="On" value="1"/> 
 			<spinnerItem name="Off" value="0"/> 
 		</spinner>
 
-		<spinner description="Jump directly to frequency responsiveness value when cpu2_3 frequency is going to increase and it will be lower than it. (Only for SchedAlucard, SchedDarkness). (Default: Off)" name="freq_responsiveness_jump_23" action="generic_cortex /tmp/freq_responsiveness_jump_23">
+		<spinner description="Jump directly to frequency responsiveness value when CPU(CPU2 or CPU3) frequency is going to increase and it will be lower than it. (Only for SchedAlucard, SchedDarkness). (Default: Off)" name="freq_responsiveness_jump_23" action="generic_cortex /tmp/freq_responsiveness_jump_23">
 			<spinnerItem name="On" value="1"/> 
 			<spinnerItem name="Off" value="0"/> 
 		</spinner>
 
-		<spinner description="Do not reduce the frequency if the CPU0_1 has not been idle recently, as the reduction is likely to be premature then. (Only for SchedAlucard, SchedDarkness, SchedUtil). (Default: Off)" name="eval_busy_for_freq_01" action="generic_cortex /tmp/eval_busy_for_freq_01">
+		<spinner description="Do not reduce the frequency if the CPU(CPU0 or CPU1) has not been idle recently, as the reduction is likely to be premature then. (Only for SchedAlucard, SchedDarkness, SchedUtil). (Default: Off)" name="eval_busy_for_freq_01" action="generic_cortex /tmp/eval_busy_for_freq_01">
 			<spinnerItem name="Current Frequency" value="2"/> 
 			<spinnerItem name="Frequency Responsiveness" value="1"/>
 			<spinnerItem name="Off" value="0"/> 
 		</spinner>
 
-		<spinner description="Do not reduce the frequency if the CPU2_3 has not been idle recently, as the reduction is likely to be premature then. (Only for SchedAlucard, SchedDarkness, SchedUtil). (Default: Off)" name="eval_busy_for_freq_23" action="generic_cortex /tmp/eval_busy_for_freq_23">
+		<spinner description="Do not reduce the frequency if the CPU(CPU2 or CPU3) has not been idle recently, as the reduction is likely to be premature then. (Only for SchedAlucard, SchedDarkness, SchedUtil). (Default: Off)" name="eval_busy_for_freq_23" action="generic_cortex /tmp/eval_busy_for_freq_23">
 			<spinnerItem name="Current Frequency" value="2"/> 
 			<spinnerItem name="Frequency Responsiveness" value="1"/>
 			<spinnerItem name="Off" value="0"/> 
 		</spinner>
 
-		<spinner description="This is a flag that determines if waiting for various IO should increase the CPU0_1 utilization in bump up the cpu frequency. (Only for SchedAlucard, SchedDarkness, SchedUtil). (Default: Off)" name="iowait_boost_enable_01" action="generic_cortex /tmp/iowait_boost_enable_01">
+		<spinner description="This is a flag that determines if waiting for various IO should increase the CPU(CPU0 or CPU1) utilization in bump up the cpu frequency. (Only for SchedAlucard, SchedDarkness, SchedUtil). (Default: Off)" name="iowait_boost_enable_01" action="generic_cortex /tmp/iowait_boost_enable_01">
 			<spinnerItem name="On" value="1"/> 
 			<spinnerItem name="Off" value="0"/> 
 		</spinner>
 
-		<spinner description="This is a flag that determines if waiting for various IO should increase the CPU2_3 utilization in bump up the cpu frequency. (Only for SchedAlucard, SchedDarkness, SchedUtil). (Default: Off)" name="iowait_boost_enable_23" action="generic_cortex /tmp/iowait_boost_enable_23">
+		<spinner description="This is a flag that determines if waiting for various IO should increase the CPU(CPU2 or CPU3) utilization in bump up the cpu frequency. (Only for SchedAlucard, SchedDarkness, SchedUtil). (Default: Off)" name="iowait_boost_enable_23" action="generic_cortex /tmp/iowait_boost_enable_23">
 			<spinnerItem name="On" value="1"/> 
 			<spinnerItem name="Off" value="0"/> 
 		</spinner>
