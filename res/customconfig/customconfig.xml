@@ -412,9 +412,9 @@
 			<spinnerItem name="Off" value="0"/> 
 		</spinner>
 
-		<seekBar description="Governor should increase CPU0 and CPU1 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 5)" name="pump_inc_step_at_min_freq_01" action="generic_cortex /tmp/pump_inc_step_at_min_freq_01" unit="step" min="1" reversed="false" step="1" max="6"/>
+		<seekBar description="Governor should increase CPU0 and CPU1 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 1)" name="pump_inc_step_at_min_freq_01" action="generic_cortex /tmp/pump_inc_step_at_min_freq_01" unit="step" min="1" reversed="false" step="1" max="6"/>
 
-		<seekBar description="Governor should increase CPU2 and CPU3 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 5)" name="pump_inc_step_at_min_freq_23" action="generic_cortex /tmp/pump_inc_step_at_min_freq_23" unit="step" min="1" reversed="false" step="1" max="6"/>
+		<seekBar description="Governor should increase CPU2 and CPU3 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 1)" name="pump_inc_step_at_min_freq_23" action="generic_cortex /tmp/pump_inc_step_at_min_freq_23" unit="step" min="1" reversed="false" step="1" max="6"/>
 
 		<seekBar description="Governor should increase CPU0 and CPU1 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 1)" name="pump_inc_step_01" action="generic_cortex /tmp/pump_inc_step_01" unit="step" min="1" reversed="false" step="1" max="6"/>
 
