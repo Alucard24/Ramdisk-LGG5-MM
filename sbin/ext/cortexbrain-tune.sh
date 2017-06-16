@@ -253,6 +253,15 @@ CPU_GOV_TWEAKS()
 				freq_responsiveness_jump_tmp_23="/dev/null";
 			fi;
 
+			iowait_boost_enable_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/iowait_boost_enable";
+			if [ ! -e $iowait_boost_enable_tmp_01 ]; then
+				iowait_boost_enable_tmp_01="/dev/null";
+			fi;
+			iowait_boost_enable_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/iowait_boost_enable";
+			if [ ! -e $iowait_boost_enable_tmp_23 ]; then
+				iowait_boost_enable_tmp_23="/dev/null";
+			fi;
+
 			freq_step_at_min_freq_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/freq_step_at_min_freq";
 			if [ ! -e $freq_step_at_min_freq_tmp_01 ]; then
 				freq_step_at_min_freq_tmp_01="/dev/null";
@@ -420,6 +429,8 @@ CPU_GOV_TWEAKS()
 			echo "$freq_responsiveness_max_23" > $freq_responsiveness_max_tmp_23;
 			echo "$freq_responsiveness_jump_01" > $freq_responsiveness_jump_tmp_01;
 			echo "$freq_responsiveness_jump_23" > $freq_responsiveness_jump_tmp_23;
+			echo "$iowait_boost_enable_01" > $iowait_boost_enable_tmp_01;
+			echo "$iowait_boost_enable_23" > $iowait_boost_enable_tmp_23;
 			echo "$freq_up_brake_at_min_freq_01" > $freq_up_brake_at_min_freq_tmp_01;
 			echo "$freq_up_brake_at_min_freq_23" > $freq_up_brake_at_min_freq_tmp_23;
 			echo "$freq_up_brake_01" > $freq_up_brake_tmp_01;
