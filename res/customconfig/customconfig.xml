@@ -480,6 +480,116 @@
 
 </settingsTab>
 
+<settingsTab name="CPU-LOAD-TUNING">
+
+	<settingsPane description="Use cpu load governor settings. These settings are active only if the screen is on." name="CPU-Load Governor Parameters tuning">
+
+		<spinner description="This is a flag that determines if use the below target loads table for increasing or descreasing the CPU(CPU0 or CPU1) frequency. (Only for SchedAlucard). (Default: Off)" name="little_use_target_loads" action="generic_cortex /tmp/little_use_target_loads">
+			<spinnerItem name="On" value="1"/> 
+			<spinnerItem name="Off" value="0"/> 
+		</spinner>
+
+		<spinner description="This is a flag that determines if use the below target loads table for increasing or descreasing the CPU(CPU2 or CPU3) frequency. (Only for SchedAlucard). (Default: Off)" name="big_use_target_loads" action="generic_cortex /tmp/big_use_target_loads">
+			<spinnerItem name="On" value="1"/> 
+			<spinnerItem name="Off" value="0"/> 
+		</spinner>
+
+		<button description="Use this button to push all new changes to the governor in real time!" name="CPU-LOAD GOV Policy Install" action="push-actions/cpuload_tuning_update" label="Apply cpu-load settings to GOV core"/>
+
+	</settingsPane>
+
+	<settingsPane description="Cpu load table Little CPU(CPU0 and CPU1)." name="CPU-Load table for CPU0 and CPU1">
+
+		<seekBar description="CPU Load percentage at 307.200 Khz frequency." name="little_target_loads_01" action="generic_cortex /tmp/little_target_loads_01" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 422.400 Khz frequency." name="little_target_loads_02" action="generic_cortex /tmp/little_target_loads_02" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 480.000 Khz frequency." name="little_target_loads_03" action="generic_cortex /tmp/little_target_loads_03" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 556.800 Khz frequency." name="little_target_loads_04" action="generic_cortex /tmp/little_target_loads_04" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 652.800 Khz frequency." name="little_target_loads_05" action="generic_cortex /tmp/little_target_loads_05" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 729.600 Khz frequency." name="little_target_loads_06" action="generic_cortex /tmp/little_target_loads_06" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 844.800 Khz frequency." name="little_target_loads_07" action="generic_cortex /tmp/little_target_loads_07" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 960.000 Khz frequency." name="little_target_loads_08" action="generic_cortex /tmp/little_target_loads_08" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1036.800 Khz frequency." name="little_target_loads_09" action="generic_cortex /tmp/little_target_loads_09" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1113.600 Khz frequency." name="little_target_loads_10" action="generic_cortex /tmp/little_target_loads_10" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1190.400 Khz frequency." name="little_target_loads_11" action="generic_cortex /tmp/little_target_loads_11" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1228.800 Khz frequency." name="little_target_loads_12" action="generic_cortex /tmp/little_target_loads_12" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1324.800 Khz frequency." name="little_target_loads_13" action="generic_cortex /tmp/little_target_loads_13" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1401.600 Khz frequency." name="little_target_loads_14" action="generic_cortex /tmp/little_target_loads_14" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1478.400 Khz frequency." name="little_target_loads_15" action="generic_cortex /tmp/little_target_loads_15" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1593.600 Khz frequency." name="little_target_loads_16" action="generic_cortex /tmp/little_target_loads_16" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+	</settingsPane>
+
+	<settingsPane description="Cpu load table Big CPU(CPU2 and CPU3)." name="CPU-Load table for CPU2 and CPU3">
+
+		<seekBar description="CPU Load percentage at 307.200 Khz frequency." name="big_target_loads_01" action="generic_cortex /tmp/big_target_loads_01" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 403.200 Khz frequency." name="big_target_loads_02" action="generic_cortex /tmp/big_target_loads_02" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 480.000 Khz frequency." name="big_target_loads_03" action="generic_cortex /tmp/big_target_loads_03" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 556.800 Khz frequency." name="big_target_loads_04" action="generic_cortex /tmp/big_target_loads_04" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 652.800 Khz frequency." name="big_target_loads_05" action="generic_cortex /tmp/big_target_loads_05" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 729.600 Khz frequency." name="big_target_loads_06" action="generic_cortex /tmp/big_target_loads_06" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 806.400 Khz frequency." name="big_target_loads_07" action="generic_cortex /tmp/big_target_loads_07" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 883.200 Khz frequency." name="big_target_loads_08" action="generic_cortex /tmp/big_target_loads_08" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 940.800 Khz frequency." name="big_target_loads_09" action="generic_cortex /tmp/big_target_loads_09" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1036.800 Khz frequency." name="big_target_loads_10" action="generic_cortex /tmp/big_target_loads_10" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1113.600 Khz frequency." name="big_target_loads_11" action="generic_cortex /tmp/big_target_loads_11" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1190.400 Khz frequency." name="big_target_loads_12" action="generic_cortex /tmp/big_target_loads_12" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1248.000 Khz frequency." name="big_target_loads_13" action="generic_cortex /tmp/big_target_loads_13" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1324.800 Khz frequency." name="big_target_loads_14" action="generic_cortex /tmp/big_target_loads_14" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1401.600 Khz frequency." name="big_target_loads_15" action="generic_cortex /tmp/big_target_loads_15" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1478.400 Khz frequency." name="big_target_loads_16" action="generic_cortex /tmp/big_target_loads_16" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1555.200 Khz frequency." name="big_target_loads_17" action="generic_cortex /tmp/big_target_loads_17" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1632.000 Khz frequency." name="big_target_loads_18" action="generic_cortex /tmp/big_target_loads_18" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1708.800 Khz frequency." name="big_target_loads_19" action="generic_cortex /tmp/big_target_loads_19" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1785.600 Khz frequency." name="big_target_loads_20" action="generic_cortex /tmp/big_target_loads_20" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1824.000 Khz frequency." name="big_target_loads_21" action="generic_cortex /tmp/big_target_loads_21" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1920.000 Khz frequency." name="big_target_loads_22" action="generic_cortex /tmp/big_target_loads_22" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 1996.800 Khz frequency." name="big_target_loads_23" action="generic_cortex /tmp/big_target_loads_23" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 2073.600 Khz frequency." name="big_target_loads_24" action="generic_cortex /tmp/big_target_loads_24" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+		<seekBar description="CPU Load percentage at 2150.400 Khz frequency." name="big_target_loads_25" action="generic_cortex /tmp/big_target_loads_25" unit="%" min="0" reversed="false" step="1" max="100"/>
+
+	</settingsPane>
+
+</settingsTab>
+
 <settingsTab name="GPU CORE">
 
 	<settingsPane description="Here you can select the GPU Governor, set Min and Max GPU frequency." name="GPU Governors and settings">

@@ -490,6 +490,54 @@ if [ "$apply_cpu" == "update" ]; then
 	CPU_GOV_TWEAKS "tune";
 fi;
 
+CPULOAD_GOV_TWEAKS()
+{
+	local state="$1";
+
+	if [ "$cortexbrain_cpu" == "on" ]; then		
+		# tune-settings
+		if [ "$state" == "tune" ]; then
+			SYSTEM_GOVERNOR_01=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor);
+			SYSTEM_GOVERNOR_23=$(cat /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor);
+			sep=":";
+
+			use_target_loads_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/use_target_loads";
+			if [ ! -e $use_target_loads_tmp_01 ]; then
+				use_target_loads_tmp_01="/dev/null";
+			fi;
+			use_target_loads_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/use_target_loads";
+			if [ ! -e $use_target_loads_tmp_23 ]; then
+				use_target_loads_tmp_23="/dev/null";
+			fi;
+			target_loads_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/target_loads";
+			if [ ! -e $target_loads_tmp_01 ]; then
+				target_loads_tmp_01="/dev/null";
+			fi;
+			target_loads_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/target_loads";
+			if [ ! -e $target_loads_tmp_23 ]; then
+				target_loads_tmp_23="/dev/null";
+			fi;
+
+			little_target_loads="$little_target_loads_01$sep$little_target_loads_02$sep$little_target_loads_03$sep$little_target_loads_04$sep$little_target_loads_05$sep$little_target_loads_06$sep$little_target_loads_07$sep$little_target_loads_08$sep$little_target_loads_09$sep$little_target_loads_10$sep$little_target_loads_11$sep$little_target_loads_12$sep$little_target_loads_13$sep$little_target_loads_14$sep$little_target_loads_15$sep$little_target_loads_16";
+			echo "$little_target_loads" > $target_loads_tmp_01;
+			echo "$little_use_target_loads" > $use_target_loads_tmp_01;
+
+			big_target_loads="$big_target_loads_01$sep$big_target_loads_02$sep$big_target_loads_03$sep$big_target_loads_04$sep$big_target_loads_05$sep$big_target_loads_06$sep$big_target_loads_07$sep$big_target_loads_08$sep$big_target_loads_09$sep$big_target_loads_10$sep$big_target_loads_11$sep$big_target_loads_12$sep$big_target_loads_13$sep$big_target_loads_14$sep$big_target_loads_15$sep$big_target_loads_16$sep$big_target_loads_17$sep$big_target_loads_18$sep$big_target_loads_19$sep$big_target_loads_20$sep$big_target_loads_21$sep$big_target_loads_22$sep$big_target_loads_23$sep$big_target_loads_24$sep$big_target_loads_25";
+			echo "$big_target_loads" > $target_loads_tmp_23;
+			echo "$big_use_target_loads" > $use_target_loads_tmp_23;
+		fi;
+
+		log -p i -t "$FILE_NAME" "*** CPULOAD_GOV_TWEAKS: $state ***: enabled";
+	else
+		return 0;
+	fi;
+}
+# this needed for cpu tweaks apply from STweaks in real time
+apply_cpu_load="$2";
+if [ "$apply_cpu_load" == "update" ]; then
+	CPULOAD_GOV_TWEAKS "tune";
+fi;
+
 # ==============================================================
 # TWEAKS: if Screen-ON
 # ==============================================================
