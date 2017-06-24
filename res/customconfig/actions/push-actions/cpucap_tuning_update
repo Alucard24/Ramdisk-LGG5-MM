@@ -1,0 +1,20 @@
+#!/sbin/busybox sh
+
+(
+	/sbin/ext/cortexbrain-tune.sh apply_cpu_cap update > /dev/null;
+
+	SYSTEM_GOVERNOR_01=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor);
+	SYSTEM_GOVERNOR_23=$(cat /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor);
+
+	rm /data/.alucard/cpu_cap_status;
+	cd /sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/;
+	echo "Tuning applied to '$SYSTEM_GOVERNOR_01' core!" >> /data/.alucard/cpu_cap_status;
+	grep "." * >> /data/.alucard/cpu_cap_status;
+	cd /sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/;
+	echo "Tuning applied to '$SYSTEM_GOVERNOR_23' core!" >> /data/.alucard/cpu_cap_status;
+	grep "." * >> /data/.alucard/cpu_cap_status;
+	cd /;
+)&
+sleep 2;
+CPU_CAP_LOG=`cat /data/.alucard/cpu_cap_status`;
+echo $CPU_CAP_LOG;

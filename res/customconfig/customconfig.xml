@@ -480,111 +480,183 @@
 
 </settingsTab>
 
-<settingsTab name="CPU-LOAD-TUNING">
+<settingsTab name="CPU-CAPACITY-TUNING">
 
-	<settingsPane description="Use cpu load governor settings. These settings are active only if the screen is on." name="CPU-Load Governor Parameters tuning">
+	<settingsPane description="Use cpu capacity governor settings. These settings are active only if the screen is on." name="CPU-Capacity Governor Parameters tuning">
 
-		<spinner description="This is a flag that determines if use the below target loads table for increasing or descreasing the CPU(CPU0 or CPU1) frequency. (Only for SchedAlucard). (Default: Off)" name="little_use_target_loads" action="generic_cortex /tmp/little_use_target_loads">
-			<spinnerItem name="On" value="1"/> 
-			<spinnerItem name="Off" value="0"/> 
-		</spinner>
-
-		<spinner description="This is a flag that determines if use the below target loads table for increasing or descreasing the CPU(CPU2 or CPU3) frequency. (Only for SchedAlucard). (Default: Off)" name="big_use_target_loads" action="generic_cortex /tmp/big_use_target_loads">
-			<spinnerItem name="On" value="1"/> 
-			<spinnerItem name="Off" value="0"/> 
-		</spinner>
-
-		<button description="Use this button to push all new changes to the governor in real time!" name="CPU-LOAD GOV Policy Install" action="push-actions/cpuload_tuning_update" label="Apply cpu-load settings to GOV core"/>
+		<button description="Use this button to push all new changes to the governor in real time!" name="CPU-CAPACITY GOV Policy Install" action="push-actions/cpucap_tuning_update" label="Apply cpu-capacity settings to GOV core"/>
 
 	</settingsPane>
 
-	<settingsPane description="Cpu load table Little CPU(CPU0 and CPU1)." name="CPU-Load table for CPU0 and CPU1">
+	<settingsPane description="Cpu capacity table Little CPU(CPU0 and CPU1)." name="CPU-Capacity table for CPU0 and CPU1">
 
-		<seekBar description="CPU Load percentage at 307.200 Khz frequency." name="little_target_loads_01" action="generic_cortex /tmp/little_target_loads_01" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 307.200 Khz frequency.(Default: 149)" name="little_up_target_capacity_01" action="generic_cortex /tmp/little_up_target_capacity_01" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 422.400 Khz frequency." name="little_target_loads_02" action="generic_cortex /tmp/little_target_loads_02" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 307.200 Khz frequency.(Default: 0)" name="little_down_target_capacity_01" action="generic_cortex /tmp/little_down_target_capacity_01" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 480.000 Khz frequency." name="little_target_loads_03" action="generic_cortex /tmp/little_target_loads_03" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 422.400 Khz frequency.(Default: 205)" name="little_up_target_capacity_02" action="generic_cortex /tmp/little_up_target_capacity_02" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 556.800 Khz frequency." name="little_target_loads_04" action="generic_cortex /tmp/little_target_loads_04" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 422.400 Khz frequency.(Default: 149)" name="little_down_target_capacity_02" action="generic_cortex /tmp/little_down_target_capacity_02" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 652.800 Khz frequency." name="little_target_loads_05" action="generic_cortex /tmp/little_target_loads_05" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 480.000 Khz frequency.(Default: 229)" name="little_up_target_capacity_03" action="generic_cortex /tmp/little_up_target_capacity_03" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 729.600 Khz frequency." name="little_target_loads_06" action="generic_cortex /tmp/little_target_loads_06" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 480.000 Khz frequency.(Default: 205)" name="little_down_target_capacity_03" action="generic_cortex /tmp/little_down_target_capacity_03" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 844.800 Khz frequency." name="little_target_loads_07" action="generic_cortex /tmp/little_target_loads_07" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 556.800 Khz frequency.(Default: 253)" name="little_up_target_capacity_04" action="generic_cortex /tmp/little_up_target_capacity_04" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 960.000 Khz frequency." name="little_target_loads_08" action="generic_cortex /tmp/little_target_loads_08" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 556.800 Khz frequency.(Default: 229)" name="little_down_target_capacity_04" action="generic_cortex /tmp/little_down_target_capacity_04" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 1036.800 Khz frequency." name="little_target_loads_09" action="generic_cortex /tmp/little_target_loads_09" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 652.800 Khz frequency.(Default: 296)" name="little_up_target_capacity_05" action="generic_cortex /tmp/little_up_target_capacity_05" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 1113.600 Khz frequency." name="little_target_loads_10" action="generic_cortex /tmp/little_target_loads_10" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 652.800 Khz frequency.(Default: 253)" name="little_down_target_capacity_05" action="generic_cortex /tmp/little_down_target_capacity_05" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 1190.400 Khz frequency." name="little_target_loads_11" action="generic_cortex /tmp/little_target_loads_11" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 729.600 Khz frequency.(Default: 350)" name="little_up_target_capacity_06" action="generic_cortex /tmp/little_up_target_capacity_06" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 1228.800 Khz frequency." name="little_target_loads_12" action="generic_cortex /tmp/little_target_loads_12" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 729.600 Khz frequency.(Default: 296)" name="little_down_target_capacity_06" action="generic_cortex /tmp/little_down_target_capacity_06" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 1324.800 Khz frequency." name="little_target_loads_13" action="generic_cortex /tmp/little_target_loads_13" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 844.800 Khz frequency.(Default: 406)" name="little_up_target_capacity_07" action="generic_cortex /tmp/little_up_target_capacity_07" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 1401.600 Khz frequency." name="little_target_loads_14" action="generic_cortex /tmp/little_target_loads_14" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 844.800 Khz frequency.(Default: 350)" name="little_down_target_capacity_07" action="generic_cortex /tmp/little_down_target_capacity_07" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 1478.400 Khz frequency." name="little_target_loads_15" action="generic_cortex /tmp/little_target_loads_15" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 960.000 Khz frequency.(Default: 469)" name="little_up_target_capacity_08" action="generic_cortex /tmp/little_up_target_capacity_08" unit="u" min="0" reversed="false" step="1" max="763"/>
 
-		<seekBar description="CPU Load percentage at 1593.600 Khz frequency." name="little_target_loads_16" action="generic_cortex /tmp/little_target_loads_16" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 960.000 Khz frequency.(Default: 406)" name="little_down_target_capacity_08" action="generic_cortex /tmp/little_down_target_capacity_08" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="UP CPU capacity at 1036.800 Khz frequency.(Default: 491)" name="little_up_target_capacity_09" action="generic_cortex /tmp/little_up_target_capacity_09" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="DOWN CPU capacity at 1036.800 Khz frequency.(Default: 469)" name="little_down_target_capacity_09" action="generic_cortex /tmp/little_down_target_capacity_09" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="UP CPU capacity at 1113.600 Khz frequency.(Default: 527)" name="little_up_target_capacity_10" action="generic_cortex /tmp/little_up_target_capacity_10" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="DOWN CPU capacity at 1113.600 Khz frequency.(Default: 491)" name="little_down_target_capacity_10" action="generic_cortex /tmp/little_down_target_capacity_10" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="UP CPU capacity at 1190.400 Khz frequency.(Default: 572)" name="little_up_target_capacity_11" action="generic_cortex /tmp/little_up_target_capacity_11" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="DOWN CPU capacity at 1190.400 Khz frequency.(Default: 527)" name="little_down_target_capacity_11" action="generic_cortex /tmp/little_down_target_capacity_11" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="UP CPU capacity at 1228.800 Khz frequency.(Default: 584)" name="little_up_target_capacity_12" action="generic_cortex /tmp/little_up_target_capacity_12" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="DOWN CPU capacity at 1228.800 Khz frequency.(Default: 572)" name="little_down_target_capacity_12" action="generic_cortex /tmp/little_down_target_capacity_12" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="UP CPU capacity at 1324.800 Khz frequency.(Default: 630)" name="little_up_target_capacity_13" action="generic_cortex /tmp/little_up_target_capacity_13" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="DOWN CPU capacity at 1324.800 Khz frequency.(Default: 584)" name="little_down_target_capacity_13" action="generic_cortex /tmp/little_down_target_capacity_13" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="UP CPU capacity at 1401.600 Khz frequency.(Default: 666)" name="little_up_target_capacity_14" action="generic_cortex /tmp/little_up_target_capacity_14" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="DOWN CPU capacity at 1401.600 Khz frequency.(Default: 630)" name="little_down_target_capacity_14" action="generic_cortex /tmp/little_down_target_capacity_14" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="UP CPU capacity at 1478.400 Khz frequency.(Default: 711)" name="little_up_target_capacity_15" action="generic_cortex /tmp/little_up_target_capacity_15" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="DOWN CPU capacity at 1478.400 Khz frequency.(Default: 666)" name="little_down_target_capacity_15" action="generic_cortex /tmp/little_down_target_capacity_15" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="UP CPU capacity at 1593.600 Khz frequency.(Default: 763)" name="little_up_target_capacity_16" action="generic_cortex /tmp/little_up_target_capacity_16" unit="u" min="0" reversed="false" step="1" max="763"/>
+
+		<seekBar description="DOWN CPU capacity at 1593.600 Khz frequency.(Default: 711)" name="little_down_target_capacity_16" action="generic_cortex /tmp/little_down_target_capacity_16" unit="u" min="0" reversed="false" step="1" max="763"/>
 
 	</settingsPane>
 
-	<settingsPane description="Cpu load table Big CPU(CPU2 and CPU3)." name="CPU-Load table for CPU2 and CPU3">
+	<settingsPane description="Cpu capacity table Big CPU(CPU2 and CPU3)." name="CPU-Capacity table for CPU2 and CPU3">
 
-		<seekBar description="CPU Load percentage at 307.200 Khz frequency." name="big_target_loads_01" action="generic_cortex /tmp/big_target_loads_01" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 307.200 Khz frequency.(Default: 149)" name="big_up_target_capacity_01" action="generic_cortex /tmp/big_up_target_capacity_01" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 403.200 Khz frequency." name="big_target_loads_02" action="generic_cortex /tmp/big_target_loads_02" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 307.200 Khz frequency.(Default: 0)" name="big_down_target_capacity_01" action="generic_cortex /tmp/big_down_target_capacity_01" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 480.000 Khz frequency." name="big_target_loads_03" action="generic_cortex /tmp/big_target_loads_03" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 403.200 Khz frequency.(Default: 197)" name="big_up_target_capacity_02" action="generic_cortex /tmp/big_up_target_capacity_02" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 556.800 Khz frequency." name="big_target_loads_04" action="generic_cortex /tmp/big_target_loads_04" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 403.200 Khz frequency.(Default: 149)" name="big_down_target_capacity_02" action="generic_cortex /tmp/big_down_target_capacity_02" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 652.800 Khz frequency." name="big_target_loads_05" action="generic_cortex /tmp/big_target_loads_05" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 480.000 Khz frequency.(Default: 229)" name="big_up_target_capacity_03" action="generic_cortex /tmp/big_up_target_capacity_03" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 729.600 Khz frequency." name="big_target_loads_06" action="generic_cortex /tmp/big_target_loads_06" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 480.000 Khz frequency.(Default: 197)" name="big_down_target_capacity_03" action="generic_cortex /tmp/big_down_target_capacity_03" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 806.400 Khz frequency." name="big_target_loads_07" action="generic_cortex /tmp/big_target_loads_07" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 556.800 Khz frequency.(Default: 253)" name="big_up_target_capacity_04" action="generic_cortex /tmp/big_up_target_capacity_04" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 883.200 Khz frequency." name="big_target_loads_08" action="generic_cortex /tmp/big_target_loads_08" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 556.800 Khz frequency.(Default: 229)" name="big_down_target_capacity_04" action="generic_cortex /tmp/big_down_target_capacity_04" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 940.800 Khz frequency." name="big_target_loads_09" action="generic_cortex /tmp/big_target_loads_09" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 652.800 Khz frequency.(Default: 296)" name="big_up_target_capacity_05" action="generic_cortex /tmp/big_up_target_capacity_05" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 1036.800 Khz frequency." name="big_target_loads_10" action="generic_cortex /tmp/big_target_loads_10" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 652.800 Khz frequency.(Default: 253)" name="big_down_target_capacity_05" action="generic_cortex /tmp/big_down_target_capacity_05" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 1113.600 Khz frequency." name="big_target_loads_11" action="generic_cortex /tmp/big_target_loads_11" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 729.600 Khz frequency.(Default: 350)" name="big_up_target_capacity_06" action="generic_cortex /tmp/big_up_target_capacity_06" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 1190.400 Khz frequency." name="big_target_loads_12" action="generic_cortex /tmp/big_target_loads_12" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 729.600 Khz frequency.(Default: 296)" name="big_down_target_capacity_06" action="generic_cortex /tmp/big_down_target_capacity_06" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 1248.000 Khz frequency." name="big_target_loads_13" action="generic_cortex /tmp/big_target_loads_13" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 806.400 Khz frequency.(Default: 372)" name="big_up_target_capacity_07" action="generic_cortex /tmp/big_up_target_capacity_07" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 1324.800 Khz frequency." name="big_target_loads_14" action="generic_cortex /tmp/big_target_loads_14" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 806.400 Khz frequency.(Default: 350)" name="big_down_target_capacity_07" action="generic_cortex /tmp/big_down_target_capacity_07" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 1401.600 Khz frequency." name="big_target_loads_15" action="generic_cortex /tmp/big_target_loads_15" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 883.200 Khz frequency.(Default: 400)" name="big_up_target_capacity_08" action="generic_cortex /tmp/big_up_target_capacity_08" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 1478.400 Khz frequency." name="big_target_loads_16" action="generic_cortex /tmp/big_target_loads_16" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 883.200 Khz frequency.(Default: 372)" name="big_down_target_capacity_08" action="generic_cortex /tmp/big_down_target_capacity_08" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 1555.200 Khz frequency." name="big_target_loads_17" action="generic_cortex /tmp/big_target_loads_17" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 940.800 Khz frequency.(Default: 445)" name="big_up_target_capacity_09" action="generic_cortex /tmp/big_up_target_capacity_09" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 1632.000 Khz frequency." name="big_target_loads_18" action="generic_cortex /tmp/big_target_loads_18" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 940.800 Khz frequency.(Default: 400)" name="big_down_target_capacity_09" action="generic_cortex /tmp/big_down_target_capacity_09" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 1708.800 Khz frequency." name="big_target_loads_19" action="generic_cortex /tmp/big_target_loads_19" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 1036.800 Khz frequency.(Default: 495)" name="big_up_target_capacity_10" action="generic_cortex /tmp/big_up_target_capacity_10" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 1785.600 Khz frequency." name="big_target_loads_20" action="generic_cortex /tmp/big_target_loads_20" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 1036.800 Khz frequency.(Default: 445)" name="big_down_target_capacity_10" action="generic_cortex /tmp/big_down_target_capacity_10" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 1824.000 Khz frequency." name="big_target_loads_21" action="generic_cortex /tmp/big_target_loads_21" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 1113.600 Khz frequency.(Default: 527)" name="big_up_target_capacity_11" action="generic_cortex /tmp/big_up_target_capacity_11" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 1920.000 Khz frequency." name="big_target_loads_22" action="generic_cortex /tmp/big_target_loads_22" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 1113.600 Khz frequency.(Default: 495)" name="big_down_target_capacity_11" action="generic_cortex /tmp/big_down_target_capacity_11" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 1996.800 Khz frequency." name="big_target_loads_23" action="generic_cortex /tmp/big_target_loads_23" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 1190.400 Khz frequency.(Default: 572)" name="big_up_target_capacity_12" action="generic_cortex /tmp/big_up_target_capacity_12" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 2073.600 Khz frequency." name="big_target_loads_24" action="generic_cortex /tmp/big_target_loads_24" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="DOWN CPU capacity at 1190.400 Khz frequency.(Default: 527)" name="big_down_target_capacity_12" action="generic_cortex /tmp/big_down_target_capacity_12" unit="u" min="0" reversed="false" step="1" max="1024"/>
 
-		<seekBar description="CPU Load percentage at 2150.400 Khz frequency." name="big_target_loads_25" action="generic_cortex /tmp/big_target_loads_25" unit="%" min="0" reversed="false" step="1" max="100"/>
+		<seekBar description="UP CPU capacity at 1248.000 Khz frequency.(Default: 598)" name="big_up_target_capacity_13" action="generic_cortex /tmp/big_up_target_capacity_13" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="DOWN CPU capacity at 1248.000 Khz frequency.(Default: 572)" name="big_down_target_capacity_13" action="generic_cortex /tmp/big_down_target_capacity_13" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="UP CPU capacity at 1324.800 Khz frequency.(Default: 630)" name="big_up_target_capacity_14" action="generic_cortex /tmp/big_up_target_capacity_14" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="DOWN CPU capacity at 1324.800 Khz frequency.(Default: 598)" name="big_down_target_capacity_14" action="generic_cortex /tmp/big_down_target_capacity_14" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="UP CPU capacity at 1401.600 Khz frequency.(Default: 666)" name="big_up_target_capacity_15" action="generic_cortex /tmp/big_up_target_capacity_15" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="DOWN CPU capacity at 1401.600 Khz frequency.(Default: 630)" name="big_down_target_capacity_15" action="generic_cortex /tmp/big_down_target_capacity_15" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="UP CPU capacity at 1478.400 Khz frequency.(Default: 711)" name="big_up_target_capacity_16" action="generic_cortex /tmp/big_up_target_capacity_16" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="DOWN CPU capacity at 1478.400 Khz frequency.(Default: 666)" name="big_down_target_capacity_16" action="generic_cortex /tmp/big_down_target_capacity_16" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="UP CPU capacity at 1555.200 Khz frequency.(Default: 743)" name="big_up_target_capacity_17" action="generic_cortex /tmp/big_up_target_capacity_17" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="DOWN CPU capacity at 1555.200 Khz frequency.(Default: 711)" name="big_down_target_capacity_17" action="generic_cortex /tmp/big_down_target_capacity_17" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="UP CPU capacity at 1632.000 Khz frequency.(Default: 780)" name="big_up_target_capacity_18" action="generic_cortex /tmp/big_up_target_capacity_18" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="DOWN CPU capacity at 1632.000 Khz frequency.(Default: 743)" name="big_down_target_capacity_18" action="generic_cortex /tmp/big_down_target_capacity_18" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="UP CPU capacity at 1708.800 Khz frequency.(Default: 812)" name="big_up_target_capacity_19" action="generic_cortex /tmp/big_up_target_capacity_19" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="DOWN CPU capacity at 1708.800 Khz frequency.(Default: 780)" name="big_down_target_capacity_19" action="generic_cortex /tmp/big_down_target_capacity_19" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="UP CPU capacity at 1785.600 Khz frequency.(Default: 850)" name="big_up_target_capacity_20" action="generic_cortex /tmp/big_up_target_capacity_20" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="DOWN CPU capacity at 1785.600 Khz frequency.(Default: 812)" name="big_down_target_capacity_20" action="generic_cortex /tmp/big_down_target_capacity_20" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="UP CPU capacity at 1824.000 Khz frequency.(Default: 868)" name="big_up_target_capacity_21" action="generic_cortex /tmp/big_up_target_capacity_21" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="DOWN CPU capacity at 1824.000 Khz frequency.(Default: 850)" name="big_down_target_capacity_21" action="generic_cortex /tmp/big_down_target_capacity_21" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="UP CPU capacity at 1920.000 Khz frequency.(Default: 914)" name="big_up_target_capacity_22" action="generic_cortex /tmp/big_up_target_capacity_22" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="DOWN CPU capacity at 1920.000 Khz frequency.(Default: 868)" name="big_down_target_capacity_22" action="generic_cortex /tmp/big_down_target_capacity_22" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="UP CPU capacity at 1996.800 Khz frequency.(Default: 961)" name="big_up_target_capacity_23" action="generic_cortex /tmp/big_up_target_capacity_23" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="DOWN CPU capacity at 1996.800 Khz frequency.(Default: 914)" name="big_down_target_capacity_23" action="generic_cortex /tmp/big_down_target_capacity_23" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="UP CPU capacity at 2073.600 Khz frequency.(Default: 988)" name="big_up_target_capacity_24" action="generic_cortex /tmp/big_up_target_capacity_24" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="DOWN CPU capacity at 2073.600 Khz frequency.(Default: 961)" name="big_down_target_capacity_24" action="generic_cortex /tmp/big_down_target_capacity_24" unit="u" min="0" reversed="false" step="1" max="1024"/>
+
+		<seekBar description="UP CPU capacity at 2150.400 Khz frequency.(Default: 1024)" name="big_up_target_capacity_25" action="generic_cortex /tmp/big_up_target_capacity_25" unit="u" min="0" reversed="false" step="1" max="1024"/>
+		
+		<seekBar description="DOWN CPU capacity at 2150.400 Khz frequency.(Default: 988)" name="big_down_target_capacity_25" action="generic_cortex /tmp/big_down_target_capacity_25" unit="u" min="0" reversed="false" step="1" max="1024"/>	
 
 	</settingsPane>
 

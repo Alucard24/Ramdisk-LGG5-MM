@@ -490,7 +490,7 @@ if [ "$apply_cpu" == "update" ]; then
 	CPU_GOV_TWEAKS "tune";
 fi;
 
-CPULOAD_GOV_TWEAKS()
+CPUCAP_GOV_TWEAKS()
 {
 	local state="$1";
 
@@ -501,41 +501,45 @@ CPULOAD_GOV_TWEAKS()
 			SYSTEM_GOVERNOR_23=$(cat /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor);
 			sep=":";
 
-			use_target_loads_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/use_target_loads";
-			if [ ! -e $use_target_loads_tmp_01 ]; then
-				use_target_loads_tmp_01="/dev/null";
+			up_target_capacity_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/up_target_capacity";
+			if [ ! -e $up_target_capacity_tmp_01 ]; then
+				up_target_capacity_tmp_01="/dev/null";
 			fi;
-			use_target_loads_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/use_target_loads";
-			if [ ! -e $use_target_loads_tmp_23 ]; then
-				use_target_loads_tmp_23="/dev/null";
+			down_target_capacity_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/down_target_capacity";
+			if [ ! -e $down_target_capacity_tmp_01 ]; then
+				down_target_capacity_tmp_01="/dev/null";
 			fi;
-			target_loads_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/target_loads";
-			if [ ! -e $target_loads_tmp_01 ]; then
-				target_loads_tmp_01="/dev/null";
+			up_target_capacity_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/up_target_capacity";
+			if [ ! -e $up_target_capacity_tmp_23 ]; then
+				up_target_capacity_tmp_23="/dev/null";
 			fi;
-			target_loads_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/target_loads";
-			if [ ! -e $target_loads_tmp_23 ]; then
-				target_loads_tmp_23="/dev/null";
+			down_target_capacity_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/down_target_capacity";
+			if [ ! -e $down_target_capacity_tmp_23 ]; then
+				down_target_capacity_tmp_23="/dev/null";
 			fi;
 
-			little_target_loads="$little_target_loads_01$sep$little_target_loads_02$sep$little_target_loads_03$sep$little_target_loads_04$sep$little_target_loads_05$sep$little_target_loads_06$sep$little_target_loads_07$sep$little_target_loads_08$sep$little_target_loads_09$sep$little_target_loads_10$sep$little_target_loads_11$sep$little_target_loads_12$sep$little_target_loads_13$sep$little_target_loads_14$sep$little_target_loads_15$sep$little_target_loads_16";
-			echo "$little_target_loads" > $target_loads_tmp_01;
-			echo "$little_use_target_loads" > $use_target_loads_tmp_01;
+			little_up_target_capacity="$little_up_target_capacity_01$sep$little_up_target_capacity_02$sep$little_up_target_capacity_03$sep$little_up_target_capacity_04$sep$little_up_target_capacity_05$sep$little_up_target_capacity_06$sep$little_up_target_capacity_07$sep$little_up_target_capacity_08$sep$little_up_target_capacity_09$sep$little_up_target_capacity_10$sep$little_up_target_capacity_11$sep$little_up_target_capacity_12$sep$little_up_target_capacity_13$sep$little_up_target_capacity_14$sep$little_up_target_capacity_15$sep$little_up_target_capacity_16";
+			echo "$little_up_target_capacity" > $up_target_capacity_tmp_01;
 
-			big_target_loads="$big_target_loads_01$sep$big_target_loads_02$sep$big_target_loads_03$sep$big_target_loads_04$sep$big_target_loads_05$sep$big_target_loads_06$sep$big_target_loads_07$sep$big_target_loads_08$sep$big_target_loads_09$sep$big_target_loads_10$sep$big_target_loads_11$sep$big_target_loads_12$sep$big_target_loads_13$sep$big_target_loads_14$sep$big_target_loads_15$sep$big_target_loads_16$sep$big_target_loads_17$sep$big_target_loads_18$sep$big_target_loads_19$sep$big_target_loads_20$sep$big_target_loads_21$sep$big_target_loads_22$sep$big_target_loads_23$sep$big_target_loads_24$sep$big_target_loads_25";
-			echo "$big_target_loads" > $target_loads_tmp_23;
-			echo "$big_use_target_loads" > $use_target_loads_tmp_23;
+			little_down_target_capacity="$little_down_target_capacity_01$sep$little_down_target_capacity_02$sep$little_down_target_capacity_03$sep$little_down_target_capacity_04$sep$little_down_target_capacity_05$sep$little_down_target_capacity_06$sep$little_down_target_capacity_07$sep$little_down_target_capacity_08$sep$little_down_target_capacity_09$sep$little_down_target_capacity_10$sep$little_down_target_capacity_11$sep$little_down_target_capacity_12$sep$little_down_target_capacity_13$sep$little_down_target_capacity_14$sep$little_down_target_capacity_15$sep$little_down_target_capacity_16";
+			echo "$little_down_target_capacity" > $down_target_capacity_tmp_01;
+
+			big_up_target_capacity="$big_up_target_capacity_01$sep$big_up_target_capacity_02$sep$big_up_target_capacity_03$sep$big_up_target_capacity_04$sep$big_up_target_capacity_05$sep$big_up_target_capacity_06$sep$big_up_target_capacity_07$sep$big_up_target_capacity_08$sep$big_up_target_capacity_09$sep$big_up_target_capacity_10$sep$big_up_target_capacity_11$sep$big_up_target_capacity_12$sep$big_up_target_capacity_13$sep$big_up_target_capacity_14$sep$big_up_target_capacity_15$sep$big_up_target_capacity_16$sep$big_up_target_capacity_17$sep$big_up_target_capacity_18$sep$big_up_target_capacity_19$sep$big_up_target_capacity_20$sep$big_up_target_capacity_21$sep$big_up_target_capacity_22$sep$big_up_target_capacity_23$sep$big_up_target_capacity_24$sep$big_up_target_capacity_25";
+			echo "$big_up_target_capacity" > $up_target_capacity_tmp_23;
+
+			big_down_target_capacity="$big_down_target_capacity_01$sep$big_down_target_capacity_02$sep$big_down_target_capacity_03$sep$big_down_target_capacity_04$sep$big_down_target_capacity_05$sep$big_down_target_capacity_06$sep$big_down_target_capacity_07$sep$big_down_target_capacity_08$sep$big_down_target_capacity_09$sep$big_down_target_capacity_10$sep$big_down_target_capacity_11$sep$big_down_target_capacity_12$sep$big_down_target_capacity_13$sep$big_down_target_capacity_14$sep$big_down_target_capacity_15$sep$big_down_target_capacity_16$sep$big_down_target_capacity_17$sep$big_down_target_capacity_18$sep$big_down_target_capacity_19$sep$big_down_target_capacity_20$sep$big_down_target_capacity_21$sep$big_down_target_capacity_22$sep$big_down_target_capacity_23$sep$big_down_target_capacity_24$sep$big_down_target_capacity_25";
+			echo "$big_down_target_capacity" > $down_target_capacity_tmp_23;
 		fi;
 
-		log -p i -t "$FILE_NAME" "*** CPULOAD_GOV_TWEAKS: $state ***: enabled";
+		log -p i -t "$FILE_NAME" "*** CPUCAP_GOV_TWEAKS: $state ***: enabled";
 	else
 		return 0;
 	fi;
 }
 # this needed for cpu tweaks apply from STweaks in real time
-apply_cpu_load="$2";
-if [ "$apply_cpu_load" == "update" ]; then
-	CPULOAD_GOV_TWEAKS "tune";
+apply_cpu_cap="$2";
+if [ "$apply_cpu_cap" == "update" ]; then
+	CPUCAP_GOV_TWEAKS "tune";
 fi;
 
 # ==============================================================
