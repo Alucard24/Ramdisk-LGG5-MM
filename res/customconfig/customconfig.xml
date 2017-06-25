@@ -662,6 +662,188 @@
 
 </settingsTab>
 
+<settingsTab name="CPU-FREQUENCY-DELAY-TUNING">
+
+	<settingsPane description="Use frequency delay governor settings. These settings are active only if the screen is on." name="CPU-Frequency Delay Governor Parameters tuning">
+
+		<button description="Use this button to push all new changes to the governor in real time!" name="CPU-FREQUENCY DELAY GOV Policy Install" action="push-actions/cpufd_tuning_update" label="Apply cpu-frequency delay settings to GOV core"/>
+
+	</settingsPane>
+
+	<settingsPane description="Cpu frequency delay table Little CPU(CPU0 and CPU1)." name="CPU-Frequency Delay table for CPU0 and CPU1">
+
+		<seekBar description="UP CPU frequency delay at 307.200 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_01" action="generic_cortex /tmp/little_up_target_frequency_delay_01" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 307.200 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_01" action="generic_cortex /tmp/little_down_target_frequency_delay_01" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 422.400 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_02" action="generic_cortex /tmp/little_up_target_frequency_delay_02" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 422.400 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_02" action="generic_cortex /tmp/little_down_target_frequency_delay_02" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 480.000 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_03" action="generic_cortex /tmp/little_up_target_frequency_delay_03" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 480.000 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_03" action="generic_cortex /tmp/little_down_target_frequency_delay_03" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 556.800 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_04" action="generic_cortex /tmp/little_up_target_frequency_delay_04" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 556.800 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_04" action="generic_cortex /tmp/little_down_target_frequency_delay_04" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 652.800 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_05" action="generic_cortex /tmp/little_up_target_frequency_delay_05" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 652.800 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_05" action="generic_cortex /tmp/little_down_target_frequency_delay_05" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 729.600 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_06" action="generic_cortex /tmp/little_up_target_frequency_delay_06" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 729.600 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_06" action="generic_cortex /tmp/little_down_target_frequency_delay_06" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 844.800 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_07" action="generic_cortex /tmp/little_up_target_frequency_delay_07" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 844.800 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_07" action="generic_cortex /tmp/little_down_target_frequency_delay_07" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 960.000 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_08" action="generic_cortex /tmp/little_up_target_frequency_delay_08" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 960.000 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_08" action="generic_cortex /tmp/little_down_target_frequency_delay_08" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1036.800 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_09" action="generic_cortex /tmp/little_up_target_frequency_delay_09" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1036.800 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_09" action="generic_cortex /tmp/little_down_target_frequency_delay_09" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1113.600 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_10" action="generic_cortex /tmp/little_up_target_frequency_delay_10" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1113.600 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_10" action="generic_cortex /tmp/little_down_target_frequency_delay_10" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1190.400 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_11" action="generic_cortex /tmp/little_up_target_frequency_delay_11" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1190.400 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_11" action="generic_cortex /tmp/little_down_target_frequency_delay_11" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1228.800 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_12" action="generic_cortex /tmp/little_up_target_frequency_delay_12" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1228.800 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_12" action="generic_cortex /tmp/little_down_target_frequency_delay_12" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1324.800 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_13" action="generic_cortex /tmp/little_up_target_frequency_delay_13" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1324.800 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_13" action="generic_cortex /tmp/little_down_target_frequency_delay_13" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1401.600 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_14" action="generic_cortex /tmp/little_up_target_frequency_delay_14" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1401.600 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_14" action="generic_cortex /tmp/little_down_target_frequency_delay_14" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1478.400 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_15" action="generic_cortex /tmp/little_up_target_frequency_delay_15" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1478.400 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_15" action="generic_cortex /tmp/little_down_target_frequency_delay_15" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1593.600 Khz frequency.(Default: 0)" name="little_up_target_frequency_delay_16" action="generic_cortex /tmp/little_up_target_frequency_delay_16" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1593.600 Khz frequency.(Default: 0)" name="little_down_target_frequency_delay_16" action="generic_cortex /tmp/little_down_target_frequency_delay_16" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+	</settingsPane>
+
+	<settingsPane description="Cpu frequency delay table Big CPU(CPU2 and CPU3)." name="CPU-Frequency Delay table for CPU2 and CPU3">
+
+		<seekBar description="UP CPU frequency delay at 307.200 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_01" action="generic_cortex /tmp/big_up_target_frequency_delay_01" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 307.200 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_01" action="generic_cortex /tmp/big_down_target_frequency_delay_01" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 403.200 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_02" action="generic_cortex /tmp/big_up_target_frequency_delay_02" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 403.200 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_02" action="generic_cortex /tmp/big_down_target_frequency_delay_02" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 480.000 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_03" action="generic_cortex /tmp/big_up_target_frequency_delay_03" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 480.000 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_03" action="generic_cortex /tmp/big_down_target_frequency_delay_03" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 556.800 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_04" action="generic_cortex /tmp/big_up_target_frequency_delay_04" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 556.800 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_04" action="generic_cortex /tmp/big_down_target_frequency_delay_04" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 652.800 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_05" action="generic_cortex /tmp/big_up_target_frequency_delay_05" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 652.800 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_05" action="generic_cortex /tmp/big_down_target_frequency_delay_05" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 729.600 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_06" action="generic_cortex /tmp/big_up_target_frequency_delay_06" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 729.600 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_06" action="generic_cortex /tmp/big_down_target_frequency_delay_06" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 806.400 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_07" action="generic_cortex /tmp/big_up_target_frequency_delay_07" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 806.400 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_07" action="generic_cortex /tmp/big_down_target_frequency_delay_07" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 883.200 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_08" action="generic_cortex /tmp/big_up_target_frequency_delay_08" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 883.200 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_08" action="generic_cortex /tmp/big_down_target_frequency_delay_08" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 940.800 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_09" action="generic_cortex /tmp/big_up_target_frequency_delay_09" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 940.800 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_09" action="generic_cortex /tmp/big_down_target_frequency_delay_09" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1036.800 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_10" action="generic_cortex /tmp/big_up_target_frequency_delay_10" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1036.800 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_10" action="generic_cortex /tmp/big_down_target_frequency_delay_10" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1113.600 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_11" action="generic_cortex /tmp/big_up_target_frequency_delay_11" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1113.600 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_11" action="generic_cortex /tmp/big_down_target_frequency_delay_11" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1190.400 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_12" action="generic_cortex /tmp/big_up_target_frequency_delay_12" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1190.400 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_12" action="generic_cortex /tmp/big_down_target_frequency_delay_12" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1248.000 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_13" action="generic_cortex /tmp/big_up_target_frequency_delay_13" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1248.000 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_13" action="generic_cortex /tmp/big_down_target_frequency_delay_13" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1324.800 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_14" action="generic_cortex /tmp/big_up_target_frequency_delay_14" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1324.800 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_14" action="generic_cortex /tmp/big_down_target_frequency_delay_14" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1401.600 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_15" action="generic_cortex /tmp/big_up_target_frequency_delay_15" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1401.600 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_15" action="generic_cortex /tmp/big_down_target_frequency_delay_15" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1478.400 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_16" action="generic_cortex /tmp/big_up_target_frequency_delay_16" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1478.400 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_16" action="generic_cortex /tmp/big_down_target_frequency_delay_16" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1555.200 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_17" action="generic_cortex /tmp/big_up_target_frequency_delay_17" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1555.200 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_17" action="generic_cortex /tmp/big_down_target_frequency_delay_17" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1632.000 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_18" action="generic_cortex /tmp/big_up_target_frequency_delay_18" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1632.000 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_18" action="generic_cortex /tmp/big_down_target_frequency_delay_18" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1708.800 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_19" action="generic_cortex /tmp/big_up_target_frequency_delay_19" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1708.800 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_19" action="generic_cortex /tmp/big_down_target_frequency_delay_19" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1785.600 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_20" action="generic_cortex /tmp/big_up_target_frequency_delay_20" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1785.600 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_20" action="generic_cortex /tmp/big_down_target_frequency_delay_20" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1824.000 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_21" action="generic_cortex /tmp/big_up_target_frequency_delay_21" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1824.000 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_21" action="generic_cortex /tmp/big_down_target_frequency_delay_21" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1920.000 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_22" action="generic_cortex /tmp/big_up_target_frequency_delay_22" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1920.000 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_22" action="generic_cortex /tmp/big_down_target_frequency_delay_22" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 1996.800 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_23" action="generic_cortex /tmp/big_up_target_frequency_delay_23" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 1996.800 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_23" action="generic_cortex /tmp/big_down_target_frequency_delay_23" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 2073.600 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_24" action="generic_cortex /tmp/big_up_target_frequency_delay_24" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="DOWN CPU frequency delay at 2073.600 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_24" action="generic_cortex /tmp/big_down_target_frequency_delay_24" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+
+		<seekBar description="UP CPU frequency delay at 2150.400 Khz frequency.(Default: 0)" name="big_up_target_frequency_delay_25" action="generic_cortex /tmp/big_up_target_frequency_delay_25" unit="µs" min="0" reversed="false" step="500" max="40000"/>
+		
+		<seekBar description="DOWN CPU frequency delay at 2150.400 Khz frequency.(Default: 0)" name="big_down_target_frequency_delay_25" action="generic_cortex /tmp/big_down_target_frequency_delay_25" unit="µs" min="0" reversed="false" step="500" max="40000"/>	
+
+	</settingsPane>
+
+</settingsTab>
+
 <settingsTab name="GPU CORE">
 
 	<settingsPane description="Here you can select the GPU Governor, set Min and Max GPU frequency." name="GPU Governors and settings">

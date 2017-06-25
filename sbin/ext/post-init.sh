@@ -107,7 +107,7 @@ $BB chmod -R 0777 /data/.alucard/;
 # just set numer $RESET_MAGIC + 1 and profiles will be reset one time on next boot with new kernel.
 # incase that ADMIN feel that something wrong with global STweaks config and profiles, then ADMIN can add +1 to CLEAN_ALU_DIR
 # to clean all files on first boot from /data/.alucard/ folder.
-RESET_MAGIC=2;
+RESET_MAGIC=1;
 CLEAN_ALU_DIR=1;
 
 if [ ! -e /data/.alucard/reset_profiles ]; then
@@ -269,6 +269,9 @@ CRITICAL_PERM_FIX;
 
 		# Apply cpuload governors settings
 		$BB sh /sbin/ext/cortexbrain-tune.sh apply_cpu_cap update > /dev/null;
+
+		# Apply cpu frequency delay governors settings
+		$BB sh /sbin/ext/cortexbrain-tune.sh apply_cpu_fd update > /dev/null;
 	fi;
 
 	# script finish here, so let me know when

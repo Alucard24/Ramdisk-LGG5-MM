@@ -542,6 +542,58 @@ if [ "$apply_cpu_cap" == "update" ]; then
 	CPUCAP_GOV_TWEAKS "tune";
 fi;
 
+CPUFD_GOV_TWEAKS()
+{
+	local state="$1";
+
+	if [ "$cortexbrain_cpu" == "on" ]; then		
+		# tune-settings
+		if [ "$state" == "tune" ]; then
+			SYSTEM_GOVERNOR_01=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor);
+			SYSTEM_GOVERNOR_23=$(cat /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor);
+			sep=":";
+
+			up_target_frequency_delay_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/up_target_frequency_delay";
+			if [ ! -e $up_target_frequency_delay_tmp_01 ]; then
+				up_target_frequency_delay_tmp_01="/dev/null";
+			fi;
+			down_target_frequency_delay_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/down_target_frequency_delay";
+			if [ ! -e $down_target_frequency_delay_tmp_01 ]; then
+				down_target_frequency_delay_tmp_01="/dev/null";
+			fi;
+			up_target_frequency_delay_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/up_target_frequency_delay";
+			if [ ! -e $up_target_frequency_delay_tmp_23 ]; then
+				up_target_frequency_delay_tmp_23="/dev/null";
+			fi;
+			down_target_frequency_delay_tmp_23="/sys/devices/system/cpu/cpu2/cpufreq/$SYSTEM_GOVERNOR_23/down_target_frequency_delay";
+			if [ ! -e $down_target_frequency_delay_tmp_23 ]; then
+				down_target_frequency_delay_tmp_23="/dev/null";
+			fi;
+
+			little_up_target_frequency_delay="$little_up_target_frequency_delay_01$sep$little_up_target_frequency_delay_02$sep$little_up_target_frequency_delay_03$sep$little_up_target_frequency_delay_04$sep$little_up_target_frequency_delay_05$sep$little_up_target_frequency_delay_06$sep$little_up_target_frequency_delay_07$sep$little_up_target_frequency_delay_08$sep$little_up_target_frequency_delay_09$sep$little_up_target_frequency_delay_10$sep$little_up_target_frequency_delay_11$sep$little_up_target_frequency_delay_12$sep$little_up_target_frequency_delay_13$sep$little_up_target_frequency_delay_14$sep$little_up_target_frequency_delay_15$sep$little_up_target_frequency_delay_16";
+			echo "$little_up_target_frequency_delay" > $up_target_frequency_delay_tmp_01;
+
+			little_down_target_frequency_delay="$little_down_target_frequency_delay_01$sep$little_down_target_frequency_delay_02$sep$little_down_target_frequency_delay_03$sep$little_down_target_frequency_delay_04$sep$little_down_target_frequency_delay_05$sep$little_down_target_frequency_delay_06$sep$little_down_target_frequency_delay_07$sep$little_down_target_frequency_delay_08$sep$little_down_target_frequency_delay_09$sep$little_down_target_frequency_delay_10$sep$little_down_target_frequency_delay_11$sep$little_down_target_frequency_delay_12$sep$little_down_target_frequency_delay_13$sep$little_down_target_frequency_delay_14$sep$little_down_target_frequency_delay_15$sep$little_down_target_frequency_delay_16";
+			echo "$little_down_target_frequency_delay" > $down_target_frequency_delay_tmp_01;
+
+			big_up_target_frequency_delay="$big_up_target_frequency_delay_01$sep$big_up_target_frequency_delay_02$sep$big_up_target_frequency_delay_03$sep$big_up_target_frequency_delay_04$sep$big_up_target_frequency_delay_05$sep$big_up_target_frequency_delay_06$sep$big_up_target_frequency_delay_07$sep$big_up_target_frequency_delay_08$sep$big_up_target_frequency_delay_09$sep$big_up_target_frequency_delay_10$sep$big_up_target_frequency_delay_11$sep$big_up_target_frequency_delay_12$sep$big_up_target_frequency_delay_13$sep$big_up_target_frequency_delay_14$sep$big_up_target_frequency_delay_15$sep$big_up_target_frequency_delay_16$sep$big_up_target_frequency_delay_17$sep$big_up_target_frequency_delay_18$sep$big_up_target_frequency_delay_19$sep$big_up_target_frequency_delay_20$sep$big_up_target_frequency_delay_21$sep$big_up_target_frequency_delay_22$sep$big_up_target_frequency_delay_23$sep$big_up_target_frequency_delay_24$sep$big_up_target_frequency_delay_25";
+			echo "$big_up_target_frequency_delay" > $up_target_frequency_delay_tmp_23;
+
+			big_down_target_frequency_delay="$big_down_target_frequency_delay_01$sep$big_down_target_frequency_delay_02$sep$big_down_target_frequency_delay_03$sep$big_down_target_frequency_delay_04$sep$big_down_target_frequency_delay_05$sep$big_down_target_frequency_delay_06$sep$big_down_target_frequency_delay_07$sep$big_down_target_frequency_delay_08$sep$big_down_target_frequency_delay_09$sep$big_down_target_frequency_delay_10$sep$big_down_target_frequency_delay_11$sep$big_down_target_frequency_delay_12$sep$big_down_target_frequency_delay_13$sep$big_down_target_frequency_delay_14$sep$big_down_target_frequency_delay_15$sep$big_down_target_frequency_delay_16$sep$big_down_target_frequency_delay_17$sep$big_down_target_frequency_delay_18$sep$big_down_target_frequency_delay_19$sep$big_down_target_frequency_delay_20$sep$big_down_target_frequency_delay_21$sep$big_down_target_frequency_delay_22$sep$big_down_target_frequency_delay_23$sep$big_down_target_frequency_delay_24$sep$big_down_target_frequency_delay_25";
+			echo "$big_down_target_frequency_delay" > $down_target_frequency_delay_tmp_23;
+		fi;
+
+		log -p i -t "$FILE_NAME" "*** CPUFD_GOV_TWEAKS: $state ***: enabled";
+	else
+		return 0;
+	fi;
+}
+# this needed for cpu tweaks apply from STweaks in real time
+apply_cpu_fd="$2";
+if [ "$apply_cpu_fd" == "update" ]; then
+	CPUFD_GOV_TWEAKS "tune";
+fi;
+
 # ==============================================================
 # TWEAKS: if Screen-ON
 # ==============================================================
