@@ -361,6 +361,26 @@ CPU_GOV_TWEAKS()
 				pump_dec_step_tmp_23="/dev/null";
 			fi;
 
+			limit_pump_inc_at_up_cap_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/limit_pump_inc_at_up_cap";
+			if [ ! -e $limit_pump_inc_at_up_cap_tmp_01 ]; then
+				limit_pump_inc_at_up_cap_tmp_01="/dev/null";
+			fi;
+
+			limit_pump_inc_at_up_cap_tmp_23="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_23/limit_pump_inc_at_up_cap";
+			if [ ! -e $limit_pump_inc_at_up_cap_tmp_23 ]; then
+				limit_pump_inc_at_up_cap_tmp_23="/dev/null";
+			fi;
+
+			limit_pump_dec_at_down_cap_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/limit_pump_dec_at_down_cap";
+			if [ ! -e $limit_pump_dec_at_down_cap_tmp_01 ]; then
+				limit_pump_dec_at_down_cap_tmp_01="/dev/null";
+			fi;
+
+			limit_pump_dec_at_down_cap_tmp_23="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_23/limit_pump_dec_at_down_cap";
+			if [ ! -e $limit_pump_dec_at_down_cap_tmp_23 ]; then
+				limit_pump_dec_at_down_cap_tmp_23="/dev/null";
+			fi;
+
 			cpus_up_rate_at_max_freq_tmp_01="/sys/devices/system/cpu/cpu0/cpufreq/$SYSTEM_GOVERNOR_01/cpus_up_rate_at_max_freq";
 			if [ ! -e $cpus_up_rate_at_max_freq_tmp_01 ]; then
 				cpus_up_rate_at_max_freq_tmp_01="/dev/null";
@@ -454,6 +474,10 @@ CPU_GOV_TWEAKS()
 			echo "$pump_dec_step_at_min_freq_23" > $pump_dec_step_at_min_freq_tmp_23;
 			echo "$pump_dec_step_01" > $pump_dec_step_tmp_01;
 			echo "$pump_dec_step_23" > $pump_dec_step_tmp_23;
+			echo "$limit_pump_inc_at_up_cap_01" > $limit_pump_inc_at_up_cap_tmp_01;
+			echo "$limit_pump_inc_at_up_cap_23" > $limit_pump_inc_at_up_cap_tmp_23;
+			echo "$limit_pump_dec_at_down_cap_01" > $limit_pump_dec_at_down_cap_tmp_01;
+			echo "$limit_pump_dec_at_down_cap_23" > $limit_pump_dec_at_down_cap_tmp_23;
 			echo "$cpus_up_rate_at_max_freq_01" > $cpus_up_rate_at_max_freq_tmp_01;
 			echo "$cpus_up_rate_at_max_freq_23" > $cpus_up_rate_at_max_freq_tmp_23;
 			echo "$cpus_up_rate_01" > $cpus_up_rate_tmp_01;
