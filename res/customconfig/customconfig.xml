@@ -412,21 +412,21 @@
 			<spinnerItem name="Off" value="0"/> 
 		</spinner>
 
-		<seekBar description="Governor should increase CPU0 and CPU1 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 1)" name="pump_inc_step_at_min_freq_01" action="generic_cortex /tmp/pump_inc_step_at_min_freq_01" unit="step" min="1" reversed="false" step="1" max="6"/>
+		<seekBar description="Governor should increase CPU0 and CPU1 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 1)" name="pump_inc_step_at_min_freq_01" action="generic_cortex /tmp/pump_inc_step_at_min_freq_01" unit="step" min="1" reversed="false" step="1" max="10"/>
 
-		<seekBar description="Governor should increase CPU2 and CPU3 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 1)" name="pump_inc_step_at_min_freq_23" action="generic_cortex /tmp/pump_inc_step_at_min_freq_23" unit="step" min="1" reversed="false" step="1" max="6"/>
+		<seekBar description="Governor should increase CPU2 and CPU3 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 1)" name="pump_inc_step_at_min_freq_23" action="generic_cortex /tmp/pump_inc_step_at_min_freq_23" unit="step" min="1" reversed="false" step="1" max="10"/>
 
-		<seekBar description="Governor should increase CPU0 and CPU1 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 1)" name="pump_inc_step_01" action="generic_cortex /tmp/pump_inc_step_01" unit="step" min="1" reversed="false" step="1" max="6"/>
+		<seekBar description="Governor should increase CPU0 and CPU1 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 1)" name="pump_inc_step_01" action="generic_cortex /tmp/pump_inc_step_01" unit="step" min="1" reversed="false" step="1" max="10"/>
 
-		<seekBar description="Governor should increase CPU2 and CPU3 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 1)" name="pump_inc_step_23" action="generic_cortex /tmp/pump_inc_step_23" unit="step" min="1" reversed="false" step="1" max="6"/>
+		<seekBar description="Governor should increase CPU2 and CPU3 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 1)" name="pump_inc_step_23" action="generic_cortex /tmp/pump_inc_step_23" unit="step" min="1" reversed="false" step="1" max="10"/>
 
-		<seekBar description="Governor should decrease CPU0 and CPU1 frequency by n step each time CPU load is below target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 2)" name="pump_dec_step_at_min_freq_01" action="generic_cortex /tmp/pump_dec_step_at_min_freq_01" unit="step" min="1" reversed="false" step="1" max="6"/>
+		<seekBar description="Governor should decrease CPU0 and CPU1 frequency by n step each time CPU load is below target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 2)" name="pump_dec_step_at_min_freq_01" action="generic_cortex /tmp/pump_dec_step_at_min_freq_01" unit="step" min="1" reversed="false" step="1" max="10"/>
 
-		<seekBar description="Governor should decrease CPU2 and CPU3 frequency by n step each time CPU load is below target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 2)" name="pump_dec_step_at_min_freq_23" action="generic_cortex /tmp/pump_dec_step_at_min_freq_23" unit="step" min="1" reversed="false" step="1" max="6"/>
+		<seekBar description="Governor should decrease CPU2 and CPU3 frequency by n step each time CPU load is below target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 2)" name="pump_dec_step_at_min_freq_23" action="generic_cortex /tmp/pump_dec_step_at_min_freq_23" unit="step" min="1" reversed="false" step="1" max="10"/>
 
-		<seekBar description="Governor should decrease CPU0 and CPU1 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 2)" name="pump_dec_step_01" action="generic_cortex /tmp/pump_dec_step_01" unit="step" min="1" reversed="false" step="1" max="6"/>
+		<seekBar description="Governor should decrease CPU0 and CPU1 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 2)" name="pump_dec_step_01" action="generic_cortex /tmp/pump_dec_step_01" unit="step" min="1" reversed="false" step="1" max="10"/>
 
-		<seekBar description="Governor should decrease CPU2 and CPU3 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 2)" name="pump_dec_step_23" action="generic_cortex /tmp/pump_dec_step_23" unit="step" min="1" reversed="false" step="1" max="6"/>
+		<seekBar description="Governor should decrease CPU2 and CPU3 frequency by n step each time CPU load reaches target_cpu_load. (Only for Alucard, SchedAlucard). (Default: 2)" name="pump_dec_step_23" action="generic_cortex /tmp/pump_dec_step_23" unit="step" min="1" reversed="false" step="1" max="10"/>
 
 		<seekBar description="Defines how much as a percentage of maximum frequency, governor should increase CPU(CPU0 or CPU1) frequency each time CPU load reaches target_cpu_load. (Only for nightmare). (Default: 30%)" name="freq_step_at_min_freq_01" action="generic_cortex /tmp/freq_step_at_min_freq_01" unit="%" min="5" reversed="false" step="1" max="100"/>
 
@@ -482,7 +482,7 @@
 
 <settingsTab name="CPU-CAPACITY-TUNING">
 
-	<settingsPane description="Use cpu capacity governor settings. These settings are active only if the screen is on." name="CPU-Capacity Governor Parameters tuning">
+	<settingsPane description="Use cpu capacity governor settings. These settings are active only if the screen is on. (Only for SchedAlucard, SchedDarkness)" name="CPU-Capacity Governor Parameters tuning">
 
 		<button description="Use this button to push all new changes to the governor in real time!" name="CPU-CAPACITY GOV Policy Install" action="push-actions/cpucap_tuning_update" label="Apply cpu-capacity settings to GOV core"/>
 
@@ -664,7 +664,7 @@
 
 <settingsTab name="CPU-FREQUENCY-DELAY-TUNING">
 
-	<settingsPane description="Use frequency delay governor settings. These settings are active only if the screen is on." name="CPU-Frequency Delay Governor Parameters tuning">
+	<settingsPane description="Use frequency delay governor settings. These settings are active only if the screen is on. (Only for SchedAlucard)" name="CPU-Frequency Delay Governor Parameters tuning">
 
 		<button description="Use this button to push all new changes to the governor in real time!" name="CPU-FREQUENCY DELAY GOV Policy Install" action="push-actions/cpufd_tuning_update" label="Apply cpu-frequency delay settings to GOV core"/>
 
