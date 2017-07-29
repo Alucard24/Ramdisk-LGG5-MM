@@ -25,9 +25,6 @@ OPEN_RW;
 # disable selinux enforcing
 echo "0" > /sys/fs/selinux/enforce;
 
-# run ROM scripts
-# $BB sh /init.qcom.post_boot.sh;
-
 OPEN_RW;
 # clean old modules from /system and add new from ramdisk
 if [ ! -d /system/lib/modules ]; then
